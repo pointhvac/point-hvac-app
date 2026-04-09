@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Hucreli Fan Secimi - Point HVAC</title>
+  <link rel="icon" type="image/x-icon" href="../assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .filter-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+    .filter-check { display: flex; align-items: center; gap: 6px; font-size: .85rem; color: var(--gray-600); cursor: pointer; }
+    .filter-check input { width: 18px; height: 18px; }
+    .note-item { font-size: .82rem; color: rgba(255,255,255,.5); padding: 2px 0; }
+    .note-item::before { content: '* '; color: var(--warning); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="../index.html" class="back-btn" onclick="event.preventDefault(); history.back();">&#8592; Ana Sayfa</a>
+
+    <div class="header" style="margin-bottom:20px">
+      <div class="header-left">
+        <div>
+          <h1>&#128306; Hucreli Fan Secimi</h1>
+          <div class="subtitle">Plug fan, G2/G4 filtre destegi</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9684;</span></button>
+      </div>
+    </div>
+
+    <!-- Kategori -->
+    <div class="card" id="categoryCard">
+      <div class="card-title">Fan Tipi</div>
+      <div id="catLoading" style="text-align:center;padding:20px;color:var(--gray-400)"><div class="spinner spinner-dark"></div></div>
+      <div class="tab-group" id="categoryTabs" style="display:none"></div>
+    </div>
+
+    <!-- Form -->
+    <div class="card" id="formCard" style="display:none">
+      <div class="card-title">Secim Kriterleri</div>
+      <div style="display:grid;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">Debi (m&sup3;/h)</label>
+            <input type="number" id="inputDebi" class="form-input" step="1" placeholder="Orn: 5000" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Basinc (Pa)</label>
+            <input type="number" id="inputBasinc" class="form-input" step="1" placeholder="Orn: 300" inputmode="numeric">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Iskonto (%)</label>
+          <input type="number" id="inputIskonto" class="form-input" value="50" min="0" max="100" inputmode="numeric">
+        </div>
+        <div class="filter-row">
+          <label class="filter-check"><input type="checkbox" id="chkG2"> G2 Filtre (+300 Pa)</label>
+          <label class="filter-check"><input type="checkbox" id="chkG4"> G4 Filtre (+200 Pa)</label>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="doSelect()">Hucreli Fan Sec</button>
+      </div>
+    </div>
+
+    <!-- Sonuc -->
+    <div id="resultSection" style="display:none">
+      <div class="result-panel" id="resultPanel"></div>
+      <button class="btn btn-success btn-block btn-sm" style="margin-top:12px" onclick="addToDIA()">&#128722; DIA Listesine Ekle</button>
+    </div>
+  </div>
+
+  <a href="../dia/index.html" class="dia-badge" style="display:none">&#128722;<span class="count">0</span></a>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/data-loader.js"></script>
+  <script src="../js/price-calc.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    // Tema
+    function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme');let n;if(!c||c==='light')n='ozel';else if(c==='ozel')n='doga';else n='light';h.setAttribute('data-theme',n);setSetting('theme',n);const b=document.querySelector('.theme-icon');if(b){if(n==='ozel')b.innerHTML='&#127807;';else if(n==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}}
+    (function(){const s=getSetting('theme','light');document.documentElement.setAttribute('data-theme',s);setTimeout(()=>{const b=document.querySelector('.theme-icon');if(b){if(s==='ozel')b.innerHTML='&#127807;';else if(s==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}},30);})();
+
+    let _allData = null;
+    let _activeSheet = null;
+    let _activeSheetName = '';
+    let _lastResult = null;
+
+    async function init() {
+      try {
+        _allData = await DataLoader.loadPlugFan();
+        const sheets = Object.keys(_allData);
+        renderCategories(sheets);
+        App.updateDIABadge();
+      } catch (e) {
+        document.getElementById('catLoading').innerHTML = '<div style="color:var(--danger)">Veri yuklenemedi</div>';
+      }
+    }
+
+    function renderCategories(sheets) {
+      document.getElementById('catLoading').style.display = 'none';
+      const tabs = document.getElementById('categoryTabs');
+      tabs.style.display = '';
+      sheets.forEach((name, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+        btn.textContent = name;
+        btn.onclick = () => {
+          tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          _activeSheetName = name;
+          _activeSheet = _allData[name];
+          document.getElementById('formCard').style.display = '';
+          document.getElementById('resultSection').style.display = 'none';
+        };
+        tabs.appendChild(btn);
+      });
+      if (sheets.length) {
+        _activeSheetName = sheets[0];
+        _activeSheet = _allData[sheets[0]];
+        document.getElementById('formCard').style.display = '';
+      }
+    }
+
+    function doSelect() {
+      const debiReq = toFloat(document.getElementById('inputDebi').value);
+      const basincReq = toFloat(document.getElementById('inputBasinc').value);
+      const iskonto = toFloat(document.getElementById('inputIskonto').value) || 0;
+      const g2 = document.getElementById('chkG2').checked;
+      const g4 = document.getElementById('chkG4').checked;
+
+      if (!debiReq || !basincReq) { App.showToast('Debi ve basinc girin', 'error'); return; }
+      if (!_activeSheet || !_activeSheet.length) { App.showToast('Bu kategoride veri yok', 'error'); return; }
+
+      // Etkin basinc hesapla
+      let etkinBasinc = basincReq;
+      if (g2) etkinBasinc += 300;
+      if (g4) etkinBasinc += 200;
+
+      const notes = [];
+      if (g2) notes.push('G2 filtre eklendi (+300 Pa)');
+      if (g4) notes.push('G4 filtre eklendi (+200 Pa)');
+
+      // Benzersiz debi ve basinc degerlerini bul
+      const data = _activeSheet.filter(m => m.debi != null && m.basinc != null);
+      if (!data.length) { App.showToast('Gecerli veri bulunamadi', 'error'); return; }
+
+      // En kucuk debi >= istenen
+      const debis = [...new Set(data.map(m => m.debi))].sort((a, b) => a - b);
+      let matchedDebi = debis.find(d => d >= debiReq);
+      if (!matchedDebi) matchedDebi = debis[debis.length - 1];
+
+      // Bu debideki modeller icinde en kucuk basinc >= etkin basinc
+      let candidates = data.filter(m => m.debi === matchedDebi);
+      candidates.sort((a, b) => a.basinc - b.basinc);
+
+      let selected = candidates.find(m => m.basinc >= etkinBasinc);
+      if (!selected) {
+        // Bu debide yeterli basinc yok, bir sonraki debiye gec
+        for (const d of debis) {
+          if (d > matchedDebi) {
+            const c2 = data.filter(m => m.debi === d);
+            c2.sort((a, b) => a.basinc - b.basinc);
+            selected = c2.find(m => m.basinc >= etkinBasinc);
+            if (selected) { matchedDebi = d; notes.push('Basinc icin ust debi modeline gecildi'); break; }
+          }
+        }
+      }
+      if (!selected) {
+        // Fallback: en buyuk
+        data.sort((a, b) => (b.debi - a.debi) || (b.basinc - a.basinc));
+        selected = data[0];
+        notes.push('Tam karsilayan model bulunamadi, en buyuk model secildi');
+      }
+
+      // Fiyat hesapla
+      const baseFiyat = selected.fiyat || 0;
+      const g2Fiyat = g2 ? (selected.g2_fiyat || 0) : 0;
+      const g4Fiyat = g4 ? (selected.g4_fiyat || 0) : 0;
+      const toplamListe = baseFiyat + g2Fiyat + g4Fiyat;
+      const iskontoTutar = toplamListe * iskonto / 100;
+      const netFiyat = toplamListe - iskontoTutar;
+
+      _lastResult = {
+        model: selected.model, debiGirilen: debiReq, basincGirilen: basincReq,
+        etkinBasinc, debiKarsilanan: selected.debi, basincKullanilan: selected.basinc,
+        baseFiyat, g2Fiyat, g4Fiyat, toplamListe, iskonto, iskontoTutar, netFiyat,
+        motor: selected.motor, g2, g4, notes, sheetName: _activeSheetName
+      };
+
+      renderResult();
+      document.getElementById('resultSection').style.display = '';
+      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+      playSound('click');
+    }
+
+    function renderResult() {
+      const r = _lastResult;
+      const p = document.getElementById('resultPanel');
+      let h = '<div class="result-title">Secilen Hucreli Fan</div>';
+      h += '<div style="font-size:1.4rem;font-weight:800;color:var(--secondary);margin-bottom:12px">' + r.model + '</div>';
+
+      h += '<div class="result-row"><span class="result-label">Girilen Debi</span><span class="result-value">' + formatNumber(r.debiGirilen) + ' m&sup3;/h</span></div>';
+      h += '<div class="result-row"><span class="result-label">Girilen Basinc</span><span class="result-value">' + formatNumber(r.basincGirilen) + ' Pa</span></div>';
+      if (r.etkinBasinc !== r.basincGirilen)
+        h += '<div class="result-row"><span class="result-label">Etkin Basinc</span><span class="result-value">' + formatNumber(r.etkinBasinc) + ' Pa</span></div>';
+      h += '<div class="result-row"><span class="result-label">Karsilanan Debi</span><span class="result-value">' + formatNumber(r.debiKarsilanan) + ' m&sup3;/h</span></div>';
+      h += '<div class="result-row"><span class="result-label">Kullanilan Basinc</span><span class="result-value">' + formatNumber(r.basincKullanilan) + ' Pa</span></div>';
+      if (r.motor != null) h += '<div class="result-row"><span class="result-label">Motor Gucu</span><span class="result-value">' + r.motor + ' kW</span></div>';
+
+      h += '<div style="height:1px;background:rgba(255,255,255,.1);margin:12px 0"></div>';
+
+      h += '<div class="result-row"><span class="result-label">Cihaz Fiyat</span><span class="result-value">' + formatCurrency(r.baseFiyat) + '</span></div>';
+      if (r.g2) h += '<div class="result-row"><span class="result-label">G2 Filtre</span><span class="result-value">' + formatCurrency(r.g2Fiyat) + '</span></div>';
+      if (r.g4) h += '<div class="result-row"><span class="result-label">G4 Filtre</span><span class="result-value">' + formatCurrency(r.g4Fiyat) + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Toplam Liste</span><span class="result-value">' + formatCurrency(r.toplamListe) + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Iskonto (%' + r.iskonto + ')</span><span class="result-value">-' + formatCurrency(r.iskontoTutar) + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Net Fiyat</span><span class="result-value highlight">' + formatCurrency(r.netFiyat) + '</span></div>';
+
+      if (r.notes.length) {
+        h += '<div style="margin-top:12px">';
+        for (const n of r.notes) h += '<div class="note-item">' + n + '</div>';
+        h += '</div>';
+      }
+
+      p.innerHTML = h;
+    }
+
+    function addToDIA() {
+      if (!_lastResult) return;
+      App.addToDIA({
+        modul: 'hucreli', kategori: _lastResult.sheetName,
+        model: _lastResult.model, debi: _lastResult.debiKarsilanan,
+        basinc: _lastResult.basincKullanilan, listeFiyat: _lastResult.toplamListe,
+        iskonto: _lastResult.iskonto, netFiyat: _lastResult.netFiyat,
+        g2: _lastResult.g2, g4: _lastResult.g4
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

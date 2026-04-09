@@ -1,0 +1,437 @@
+{
+ "ECO": [
+  {
+   "model": "P-IGK 500 ECO",
+   "debi": 500.0,
+   "fiyat": 896.0
+  },
+  {
+   "model": "P-IGK 750 ECO",
+   "debi": 750.0,
+   "fiyat": 958.0
+  },
+  {
+   "model": "P-IGK 1000 ECO",
+   "debi": 1000.0,
+   "fiyat": 986.0
+  },
+  {
+   "model": "P-IGK 1500 ECO",
+   "debi": 1500.0,
+   "fiyat": 1072.0
+  },
+  {
+   "model": "P-IGK 2000 ECO",
+   "debi": 2000.0,
+   "fiyat": 1664.0
+  },
+  {
+   "model": "P-IGK 3000 ECO",
+   "debi": 3000.0,
+   "fiyat": 2052.0
+  },
+  {
+   "model": "P-IGK 4000 ECO",
+   "debi": 4000.0,
+   "fiyat": 2324.0
+  },
+  {
+   "model": "P-IGK 5000 ECO",
+   "debi": 5000.0,
+   "fiyat": 3165.0
+  }
+ ],
+ "ECO EC": [
+  {
+   "model": "P-IGK 500 ECO EC",
+   "debi": 500.0,
+   "fiyat": 1219.0
+  },
+  {
+   "model": "P-IGK 750 ECO EC",
+   "debi": 750.0,
+   "fiyat": 1352.0
+  },
+  {
+   "model": "P-IGK 1000 ECO EC",
+   "debi": 1000.0,
+   "fiyat": 1847.0
+  },
+  {
+   "model": "P-IGK 1500 ECO EC",
+   "debi": 1500.0,
+   "fiyat": 1996.0
+  },
+  {
+   "model": "P-IGK 2000 ECO EC",
+   "debi": 2000.0,
+   "fiyat": 2383.0
+  },
+  {
+   "model": "P-IGK 3000 ECO EC",
+   "debi": 3000.0,
+   "fiyat": 4062.0
+  },
+  {
+   "model": "P-IGK 4000 ECO EC",
+   "debi": 4000.0,
+   "fiyat": 4567.0
+  },
+  {
+   "model": "P-IGK 5000 ECO EC",
+   "debi": 5000.0,
+   "fiyat": 4680.0
+  }
+ ],
+ "Çift Cidarlı": [
+  {
+   "model": "P-IGK 500",
+   "debi": 500.0,
+   "fiyat": 1143.0
+  },
+  {
+   "model": "P-IGK 750",
+   "debi": 750.0,
+   "fiyat": 1193.0
+  },
+  {
+   "model": "P-IGK 1000",
+   "debi": 1000.0,
+   "fiyat": 1229.0
+  },
+  {
+   "model": "P-IGK 1500",
+   "debi": 1500.0,
+   "fiyat": 1335.0
+  },
+  {
+   "model": "P-IGK 2000",
+   "debi": 2000.0,
+   "fiyat": 1972.0
+  },
+  {
+   "model": "P-IGK 3000",
+   "debi": 3000.0,
+   "fiyat": 2404.0
+  },
+  {
+   "model": "P-IGK 4000",
+   "debi": 4000.0,
+   "fiyat": 2715.0
+  },
+  {
+   "model": "P-IGK 5000",
+   "debi": 5000.0,
+   "fiyat": 3538.0
+  },
+  {
+   "model": "P-IGK 6000",
+   "debi": 6000.0,
+   "fiyat": 4377.0
+  }
+ ],
+ "Isıtıcı": [
+  {
+   "model": "P-EI 3000",
+   "debi": 267.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 6000",
+   "debi": 272.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 9000",
+   "debi": 282.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 12000",
+   "debi": 326.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 15000",
+   "debi": 376.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 18000",
+   "debi": 423.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 21000",
+   "debi": 477.0,
+   "fiyat": null
+  },
+  {
+   "model": "P-EI 24000",
+   "debi": 578.0,
+   "fiyat": null
+  }
+ ],
+ "IP IGK": [
+  {
+   "model": "P-IP-IGK 1000",
+   "debi": 1000.0,
+   "fiyat": 5980.0
+  },
+  {
+   "model": "P-IP-IGK 2000",
+   "debi": 2000.0,
+   "fiyat": 8091.0
+  },
+  {
+   "model": "P-IP-IGK 3000",
+   "debi": 3000.0,
+   "fiyat": 9456.0
+  },
+  {
+   "model": "P-IP-IGK 4000",
+   "debi": 4000.0,
+   "fiyat": 11520.0
+  }
+ ],
+ "Kanal Tipi Paket Sığınak": [
+  {
+   "model": "P-SV-225-MDF",
+   "debi": null,
+   "fiyat": 324.0
+  },
+  {
+   "model": "P-SV-250-MDF",
+   "debi": null,
+   "fiyat": 354.0
+  },
+  {
+   "model": "P-SV-280-MDF",
+   "debi": null,
+   "fiyat": 366.0
+  },
+  {
+   "model": "P-SV-355-MDF",
+   "debi": null,
+   "fiyat": 626.0
+  },
+  {
+   "model": "P-SV-400-MDF",
+   "debi": null,
+   "fiyat": 780.0
+  },
+  {
+   "model": "P-SV-450-MDF",
+   "debi": null,
+   "fiyat": 851.0
+  },
+  {
+   "model": "P-SV-500-MDF",
+   "debi": null,
+   "fiyat": 968.0
+  },
+  {
+   "model": "P-SV-560-MDF",
+   "debi": null,
+   "fiyat": 1008.0
+  }
+ ],
+ "Kanal Tipi Paket Sığınak W": [
+  {
+   "model": "P-SV-225-WM",
+   "debi": null,
+   "fiyat": 571.0
+  },
+  {
+   "model": "P-SV-250-WM",
+   "debi": null,
+   "fiyat": 595.0
+  },
+  {
+   "model": "P-SV-280-WM",
+   "debi": null,
+   "fiyat": 609.0
+  },
+  {
+   "model": "P-SV-355-WM",
+   "debi": null,
+   "fiyat": 940.0
+  },
+  {
+   "model": "P-SV-400-WM",
+   "debi": null,
+   "fiyat": 1431.0
+  },
+  {
+   "model": "P-SV-450-WM",
+   "debi": null,
+   "fiyat": 1524.0
+  },
+  {
+   "model": "P-SV-500-WM",
+   "debi": null,
+   "fiyat": 1696.0
+  },
+  {
+   "model": "P-SV-560-WM",
+   "debi": null,
+   "fiyat": 1753.0
+  }
+ ],
+ "Hücreli Tip Paket Sığınak": [
+  {
+   "model": "P-HSV-WM-1000",
+   "debi": null,
+   "fiyat": 3110.0
+  },
+  {
+   "model": "P-HSV-WM-1500",
+   "debi": null,
+   "fiyat": 3193.0
+  },
+  {
+   "model": "P-HSV-WM-2000",
+   "debi": null,
+   "fiyat": 3544.0
+  },
+  {
+   "model": "P-HSV-WM-2400",
+   "debi": null,
+   "fiyat": 3544.0
+  },
+  {
+   "model": "P-HSV-WM-3000",
+   "debi": null,
+   "fiyat": 3700.0
+  },
+  {
+   "model": "P-HSV-WM-4000",
+   "debi": null,
+   "fiyat": 4527.0
+  },
+  {
+   "model": "P-HSV-WM-5500",
+   "debi": null,
+   "fiyat": 4748.0
+  },
+  {
+   "model": "P-HSV-WM-6500",
+   "debi": null,
+   "fiyat": 5813.0
+  },
+  {
+   "model": "P-HSV-WM-7500",
+   "debi": null,
+   "fiyat": 6682.0
+  },
+  {
+   "model": "P-HSV-WM-8500",
+   "debi": null,
+   "fiyat": 6682.0
+  },
+  {
+   "model": "P-HSV-WM-12000",
+   "debi": null,
+   "fiyat": 10352.0
+  },
+  {
+   "model": "P-HSV-WM-15000",
+   "debi": null,
+   "fiyat": 11434.0
+  },
+  {
+   "model": "P-HSV-WM-18000",
+   "debi": null,
+   "fiyat": 11821.0
+  },
+  {
+   "model": "P-HSV-WM-21000",
+   "debi": null,
+   "fiyat": 13401.0
+  },
+  {
+   "model": "P-HSV-WM-25000",
+   "debi": null,
+   "fiyat": 15175.0
+  },
+  {
+   "model": "P-HSV-WM-28000",
+   "debi": null,
+   "fiyat": 15761.0
+  }
+ ],
+ "Aksiyel Jet Fan": [
+  {
+   "model": "P-AJF 315",
+   "debi": null,
+   "fiyat": 1066.0
+  },
+  {
+   "model": "P-AJF 355",
+   "debi": null,
+   "fiyat": 1249.0
+  },
+  {
+   "model": "P-AJF 400",
+   "debi": null,
+   "fiyat": 1326.0
+  },
+  {
+   "model": "P-AJF 450",
+   "debi": null,
+   "fiyat": 1531.0
+  },
+  {
+   "model": "W-P-AJF 315",
+   "debi": null,
+   "fiyat": 1241.0
+  },
+  {
+   "model": "W-P-AJF 355",
+   "debi": null,
+   "fiyat": 1498.0
+  },
+  {
+   "model": "W-P-AJF 400",
+   "debi": null,
+   "fiyat": 1559.0
+  },
+  {
+   "model": "W-P-AJF 450",
+   "debi": null,
+   "fiyat": 1732.0
+  },
+  {
+   "model": "W-P-AJF 315 F400",
+   "debi": null,
+   "fiyat": 2028.0
+  },
+  {
+   "model": "W-P-AJF 355 F400",
+   "debi": null,
+   "fiyat": 2208.0
+  },
+  {
+   "model": "W-P-AJF 400 F400",
+   "debi": null,
+   "fiyat": 2424.0
+  },
+  {
+   "model": "W-P-AJF 450 F400",
+   "debi": null,
+   "fiyat": 2647.0
+  }
+ ],
+ "Radyal Jet Fan": [
+  {
+   "model": "P-RJF 500",
+   "debi": null,
+   "fiyat": 1575.0
+  },
+  {
+   "model": "P-RJF 560",
+   "debi": null,
+   "fiyat": 2160.0
+  }
+ ]
+}

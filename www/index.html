@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Point HVAC - Ana Sayfa</title>
+  <link rel="icon" type="image/x-icon" href="assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+
+  <!-- ==================== SPLASH SCREEN ==================== -->
+  <div class="splash-overlay" id="splashScreen">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <img src="assets/logos/point_logo_yeni_1.png" alt="Point HVAC"
+             onerror="this.parentElement.innerHTML='<div style=&quot;padding:16px 32px;border-radius:12px;background:#141414;border:1px solid #222;font-size:1.8rem;font-weight:900;color:#f5f5f5;display:inline-block&quot;>Point HVAC</div>'">
+      </div>
+      <div class="splash-title">Point HVAC</div>
+      <div class="splash-subtitle">HVAC Secim ve Fiyatlandirma</div>
+
+      <div class="splash-progress"><div class="splash-progress-fill" id="splashFill"></div></div>
+      <div class="splash-percent" id="splashPercent">0%</div>
+
+      <div class="splash-steps" id="splashSteps">
+        <div class="splash-step" data-step="0"><div class="splash-step-dot"></div><div class="splash-step-text">Uygulama baslatiliyor...</div></div>
+        <div class="splash-step" data-step="1"><div class="splash-step-dot"></div><div class="splash-step-text">Veriler yukleniyor...</div></div>
+        <div class="splash-step" data-step="2"><div class="splash-step-dot"></div><div class="splash-step-text">Moduller hazirlaniyor...</div></div>
+        <div class="splash-step" data-step="3"><div class="splash-step-dot"></div><div class="splash-step-text">Arayuz hazirlaniyor...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== ANA ICERIK ==================== -->
+  <div class="container" id="appContainer" style="display:none">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <img src="assets/logos/point_logo_yeni_1.png" alt="Point HVAC" onerror="this.style.display='none'">
+        <div>
+          <h1>Point HVAC</h1>
+          <div class="subtitle">HVAC Secim ve Fiyatlandirma</div>
+          <div class="header-greeting" id="headerGreeting"></div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema Degistir">
+          <span class="theme-icon">&#9684;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Modul Kartlari -->
+    <div class="modules-grid">
+
+      <!-- 1. Fan Secimi -->
+      <a href="fan/index.html" class="module-card">
+        <span class="module-icon">&#127744;</span>
+        <div class="module-title">Fan Secimi</div>
+        <div class="module-desc">Kanal, cati, duvar tipi fanlar ve daha fazlasi. Debi ve basinc ile hizli secim.</div>
+        <ul class="module-features">
+          <li>20+ fan kategorisi</li>
+          <li>Basinc-debi eslesme</li>
+          <li>Toplu veri girisi</li>
+          <li>Fiyat ve iskonto</li>
+        </ul>
+        <div class="module-btn">Fan Secimine Git</div>
+      </a>
+
+      <!-- 2. Santral Secimi -->
+      <a href="santral/index.html" class="module-card">
+        <span class="module-icon">&#10052;&#65039;</span>
+        <div class="module-title">Santral Secimi</div>
+        <div class="module-desc">Santral modeli secimi, invertor hesaplama ve otomasyon maliyeti.</div>
+        <ul class="module-features">
+          <li>Invertor hesaplama motoru</li>
+          <li>Batarya kapasite hesaplayici</li>
+          <li>kcal/h - kW donusturucu</li>
+          <li>Otomasyon maliyeti</li>
+        </ul>
+        <div class="module-btn">Santral Secimine Git</div>
+      </a>
+
+      <!-- 3. Hucreli Fan Secimi -->
+      <a href="hucreli/index.html" class="module-card">
+        <span class="module-icon">&#128306;</span>
+        <div class="module-title">Hucreli Fan Secimi</div>
+        <div class="module-desc">Plug fan secimi, G2/G4 filtre destegi ve iskonto hesaplama.</div>
+        <ul class="module-features">
+          <li>G2/G4 filtre hesaplamasi</li>
+          <li>Basinc yuvarlama mantigi</li>
+          <li>Otomatik ust model</li>
+          <li>Iskonto sistemi</li>
+        </ul>
+        <div class="module-btn">Hucreli Secimine Git</div>
+      </a>
+
+      <!-- 4. Diger Cihazlar -->
+      <a href="cihaz/index.html" class="module-card">
+        <span class="module-icon">&#128295;</span>
+        <div class="module-title">Diger Cihazlar</div>
+        <div class="module-desc">Isi geri kazanim, paket siginak ve jet fan secim sistemi.</div>
+        <ul class="module-features">
+          <li>IGK: ECO, ECO EC, Cift Cidarli</li>
+          <li>Paket siginak secimi</li>
+          <li>Jet fan (aksiyel/radyal)</li>
+          <li>Isitici secimi</li>
+        </ul>
+        <div class="module-btn">Cihaz Secimine Git</div>
+      </a>
+
+      <!-- 5. AKSA Motor & Fan -->
+      <a href="aksa/index.html" class="module-card">
+        <span class="module-icon">&#9889;</span>
+        <div class="module-title">AKSA Motor &amp; Fan</div>
+        <div class="module-desc">AKSA motor ve fan 2026 fiyat listesi ve secim sistemi.</div>
+        <ul class="module-features">
+          <li>8 urun kategorisi</li>
+          <li>Debi bazli otomatik secim</li>
+          <li>EC fan destegi (Euro)</li>
+          <li>Excel export</li>
+        </ul>
+        <div class="module-btn">AKSA Secimine Git</div>
+      </a>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <strong>Point HVAC</strong> <span class="ver-badge">v2.0.0</span> &copy; 2026 | <span id="clock"></span>
+    </div>
+
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/utils.js"></script>
+  <script>
+    // ===== TEMA =====
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      let next;
+      if (!current || current === 'light') next = 'ozel';
+      else if (current === 'ozel') next = 'doga';
+      else next = 'light';
+      html.setAttribute('data-theme', next);
+      setSetting('theme', next);
+      updateThemeIcon(next);
+    }
+
+    function updateThemeIcon(theme) {
+      const btn = document.querySelector('.theme-icon');
+      if (!btn) return;
+      if (theme === 'ozel') btn.innerHTML = '&#127807;';
+      else if (theme === 'doga') btn.innerHTML = '&#9728;';
+      else btn.innerHTML = '&#9684;';
+    }
+
+    (function() {
+      const saved = getSetting('theme', 'light');
+      document.documentElement.setAttribute('data-theme', saved);
+      setTimeout(() => updateThemeIcon(saved), 30);
+    })();
+
+    // ===== SAAT =====
+    function updateClock() {
+      const el = document.getElementById('clock');
+      if (!el) return;
+      const now = new Date();
+      el.textContent = now.toLocaleDateString('tr-TR') + ' ' + now.toLocaleTimeString('tr-TR');
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    // ===== KARSILAMA =====
+    function setupGreeting() {
+      const el = document.getElementById('headerGreeting');
+      if (!el) return;
+      const h = new Date().getHours();
+      let greet = 'Merhaba!';
+      if (h >= 5 && h < 12) greet = 'Gunaydin!';
+      else if (h >= 12 && h < 18) greet = 'Iyi gunler!';
+      else if (h >= 18 && h < 22) greet = 'Iyi aksamlar!';
+      else greet = 'Iyi geceler!';
+
+      const now = new Date();
+      const gunler = ['Pazar','Pazartesi','Sali','Carsamba','Persembe','Cuma','Cumartesi'];
+      const aylar = ['Ocak','Subat','Mart','Nisan','Mayis','Haziran','Temmuz','Agustos','Eylul','Ekim','Kasim','Aralik'];
+      const tarih = gunler[now.getDay()] + ', ' + now.getDate() + ' ' + aylar[now.getMonth()] + ' ' + now.getFullYear();
+
+      el.innerHTML = '<span class="greeting-text">' + greet + '</span>'
+        + '<span class="greeting-sep">&middot;</span>'
+        + '<span class="greeting-date">' + tarih + '</span>';
+    }
+    setupGreeting();
+
+    // ===== SPLASH SCREEN =====
+    (function() {
+      const fill = document.getElementById('splashFill');
+      const pct = document.getElementById('splashPercent');
+      const steps = document.querySelectorAll('.splash-step');
+      const splash = document.getElementById('splashScreen');
+      const app = document.getElementById('appContainer');
+
+      // Splash sadece ilk acilista gosterilsin
+      if (sessionStorage.getItem('phvac_splash')) {
+        if (splash) splash.remove();
+        if (app) app.style.display = '';
+        return;
+      }
+      sessionStorage.setItem('phvac_splash', '1');
+
+      const timeline = [
+        { at: 0,   step: 0 },
+        { at: 25,  step: 1 },
+        { at: 50,  step: 2 },
+        { at: 78,  step: 3 },
+        { at: 100, done: true }
+      ];
+
+      let progress = 0;
+      let phase = 0;
+      const totalDuration = 3000; // 3 saniye (mobil icin daha kisa)
+      const interval = 30;
+      const increment = 100 / (totalDuration / interval);
+
+      function activateStep(idx) {
+        steps.forEach((s, i) => {
+          if (i < idx) { s.classList.remove('active'); s.classList.add('done'); }
+          else if (i === idx) { s.classList.add('active'); s.classList.remove('done'); }
+          else { s.classList.remove('active', 'done'); }
+        });
+      }
+
+      const timer = setInterval(() => {
+        const jitter = (Math.random() - 0.3) * increment * 0.6;
+        progress = Math.min(100, progress + increment + jitter);
+        const rounded = Math.round(progress);
+
+        fill.style.width = rounded + '%';
+        pct.textContent = rounded + '%';
+
+        while (phase < timeline.length && rounded >= timeline[phase].at) {
+          const ev = timeline[phase];
+          if (ev.step !== undefined) activateStep(ev.step);
+          if (ev.done) {
+            clearInterval(timer);
+            steps.forEach(s => { s.classList.remove('active'); s.classList.add('done'); });
+            setTimeout(() => {
+              splash.classList.add('hide');
+              app.style.display = '';
+              setTimeout(() => splash.remove(), 700);
+            }, 400);
+          }
+          phase++;
+        }
+      }, interval);
+    })();
+  </script>
+</body>
+</html>

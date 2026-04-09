@@ -1,0 +1,4733 @@
+{
+ "PLUG FANLI HÜCRELİ": [
+  {
+   "model": "P-PH-12T",
+   "debi": 2000.0,
+   "basinc": 500.0,
+   "fiyat": 1258.0,
+   "g2_fiyat": 22.8,
+   "g4_fiyat": 13.2,
+   "motor": 0.55
+  },
+  {
+   "model": "P-PH-13T",
+   "debi": 2000.0,
+   "basinc": 700.0,
+   "fiyat": 1324.0,
+   "g2_fiyat": 22.8,
+   "g4_fiyat": 13.2,
+   "motor": 0.75
+  },
+  {
+   "model": "P-PH-14T",
+   "debi": 2000.0,
+   "basinc": 900.0,
+   "fiyat": 1338.0,
+   "g2_fiyat": 22.8,
+   "g4_fiyat": 13.2,
+   "motor": 1.1
+  },
+  {
+   "model": "P-PH-15T",
+   "debi": 3000.0,
+   "basinc": 300.0,
+   "fiyat": 1324.0,
+   "g2_fiyat": 22.8,
+   "g4_fiyat": 13.2,
+   "motor": 0.75
+  },
+  {
+   "model": "P-PH-16T",
+   "debi": 3000.0,
+   "basinc": 500.0,
+   "fiyat": 1338.0,
+   "g2_fiyat": 27.6,
+   "g4_fiyat": 16.8,
+   "motor": 1.1
+  },
+  {
+   "model": "P-PH-17T",
+   "debi": 3000.0,
+   "basinc": 700.0,
+   "fiyat": 1400.0,
+   "g2_fiyat": 27.6,
+   "g4_fiyat": 16.8,
+   "motor": 1.5
+  },
+  {
+   "model": "P-PH-18T",
+   "debi": 3000.0,
+   "basinc": 900.0,
+   "fiyat": 1434.0,
+   "g2_fiyat": 27.6,
+   "g4_fiyat": 16.8,
+   "motor": 1.5
+  },
+  {
+   "model": "P-PH-19T",
+   "debi": 4000.0,
+   "basinc": 300.0,
+   "fiyat": 1357.0,
+   "g2_fiyat": 27.6,
+   "g4_fiyat": 16.8,
+   "motor": 1.1
+  },
+  {
+   "model": "P-PH-20T",
+   "debi": 4000.0,
+   "basinc": 500.0,
+   "fiyat": 1434.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-PH-21T",
+   "debi": 4000.0,
+   "basinc": 700.0,
+   "fiyat": 1481.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-22T",
+   "debi": 4000.0,
+   "basinc": 900.0,
+   "fiyat": 1481.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-24T",
+   "debi": 5000.0,
+   "basinc": 500.0,
+   "fiyat": 1623.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-25T",
+   "debi": 5000.0,
+   "basinc": 700.0,
+   "fiyat": 1620.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 30.0,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-26T",
+   "debi": 5000.0,
+   "basinc": 900.0,
+   "fiyat": 1770.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 30.0,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-27T",
+   "debi": 6000.0,
+   "basinc": 300.0,
+   "fiyat": 1667.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 30.0,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-28T",
+   "debi": 6000.0,
+   "basinc": 500.0,
+   "fiyat": 1667.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 30.0,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-29T",
+   "debi": 6000.0,
+   "basinc": 700.0,
+   "fiyat": 1819.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-30T",
+   "debi": 6000.0,
+   "basinc": 900.0,
+   "fiyat": 1819.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-31T",
+   "debi": 7000.0,
+   "basinc": 300.0,
+   "fiyat": 1667.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-32T",
+   "debi": 7000.0,
+   "basinc": 500.0,
+   "fiyat": 1819.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-33T",
+   "debi": 7000.0,
+   "basinc": 700.0,
+   "fiyat": 1819.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-34T",
+   "debi": 7000.0,
+   "basinc": 900.0,
+   "fiyat": 2044.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-35T",
+   "debi": 8000.0,
+   "basinc": 300.0,
+   "fiyat": 2023.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 1.5
+  },
+  {
+   "model": "P-PH-36T",
+   "debi": 8000.0,
+   "basinc": 500.0,
+   "fiyat": 1901.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-37T",
+   "debi": 8000.0,
+   "basinc": 700.0,
+   "fiyat": 2082.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-38T",
+   "debi": 8000.0,
+   "basinc": 900.0,
+   "fiyat": 2082.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-39T",
+   "debi": 9000.0,
+   "basinc": 300.0,
+   "fiyat": 1899.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-40T",
+   "debi": 9000.0,
+   "basinc": 500.0,
+   "fiyat": 2094.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-41T",
+   "debi": 9000.0,
+   "basinc": 700.0,
+   "fiyat": 2094.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-42T",
+   "debi": 9000.0,
+   "basinc": 900.0,
+   "fiyat": 2455.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-43T",
+   "debi": 10000.0,
+   "basinc": 300.0,
+   "fiyat": 2132.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 2.2
+  },
+  {
+   "model": "P-PH-44T",
+   "debi": 10000.0,
+   "basinc": 500.0,
+   "fiyat": 2306.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-45T",
+   "debi": 10000.0,
+   "basinc": 700.0,
+   "fiyat": 2725.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-46T",
+   "debi": 10000.0,
+   "basinc": 900.0,
+   "fiyat": 2980.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-47T",
+   "debi": 11000.0,
+   "basinc": 300.0,
+   "fiyat": 2562.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-48T",
+   "debi": 11000.0,
+   "basinc": 500.0,
+   "fiyat": 2562.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-49T",
+   "debi": 11000.0,
+   "basinc": 700.0,
+   "fiyat": 2725.0,
+   "g2_fiyat": 98.39999999999999,
+   "g4_fiyat": 56.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-50T",
+   "debi": 11000.0,
+   "basinc": 900.0,
+   "fiyat": 3148.0,
+   "g2_fiyat": 98.39999999999999,
+   "g4_fiyat": 56.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-51T",
+   "debi": 12000.0,
+   "basinc": 300.0,
+   "fiyat": 2794.0,
+   "g2_fiyat": 98.39999999999999,
+   "g4_fiyat": 56.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-52T",
+   "debi": 12000.0,
+   "basinc": 500.0,
+   "fiyat": 2956.0,
+   "g2_fiyat": 98.39999999999999,
+   "g4_fiyat": 56.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-53T",
+   "debi": 12000.0,
+   "basinc": 700.0,
+   "fiyat": 3215.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-54T",
+   "debi": 12000.0,
+   "basinc": 900.0,
+   "fiyat": 3388.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-55T",
+   "debi": 13000.0,
+   "basinc": 300.0,
+   "fiyat": 2809.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-PH-56T",
+   "debi": 13000.0,
+   "basinc": 500.0,
+   "fiyat": 2971.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-57T",
+   "debi": 13000.0,
+   "basinc": 700.0,
+   "fiyat": 3231.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-58T",
+   "debi": 13000.0,
+   "basinc": 900.0,
+   "fiyat": 3388.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-59T",
+   "debi": 14000.0,
+   "basinc": 300.0,
+   "fiyat": 2971.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-60T",
+   "debi": 14000.0,
+   "basinc": 500.0,
+   "fiyat": 3129.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-61T",
+   "debi": 14000.0,
+   "basinc": 700.0,
+   "fiyat": 3388.0,
+   "g2_fiyat": 117.6,
+   "g4_fiyat": 67.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-62T",
+   "debi": 14000.0,
+   "basinc": 900.0,
+   "fiyat": 3571.0,
+   "g2_fiyat": 117.6,
+   "g4_fiyat": 67.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-63T",
+   "debi": 15000.0,
+   "basinc": 300.0,
+   "fiyat": 3005.0,
+   "g2_fiyat": 117.6,
+   "g4_fiyat": 67.2,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-64T",
+   "debi": 15000.0,
+   "basinc": 500.0,
+   "fiyat": 3287.0,
+   "g2_fiyat": 117.6,
+   "g4_fiyat": 67.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-65T",
+   "debi": 15000.0,
+   "basinc": 700.0,
+   "fiyat": 3461.0,
+   "g2_fiyat": 133.2,
+   "g4_fiyat": 76.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-66T",
+   "debi": 15000.0,
+   "basinc": 900.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 133.2,
+   "g4_fiyat": 76.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-67T",
+   "debi": 16000.0,
+   "basinc": 300.0,
+   "fiyat": 3203.0,
+   "g2_fiyat": 133.2,
+   "g4_fiyat": 76.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-68T",
+   "debi": 16000.0,
+   "basinc": 500.0,
+   "fiyat": 3461.0,
+   "g2_fiyat": 133.2,
+   "g4_fiyat": 76.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-69T",
+   "debi": 16000.0,
+   "basinc": 700.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-70T",
+   "debi": 16000.0,
+   "basinc": 900.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-71T",
+   "debi": 17000.0,
+   "basinc": 300.0,
+   "fiyat": 3201.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-PH-72T",
+   "debi": 17000.0,
+   "basinc": 500.0,
+   "fiyat": 3461.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-73T",
+   "debi": 17000.0,
+   "basinc": 700.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-74T",
+   "debi": 17000.0,
+   "basinc": 900.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-75T",
+   "debi": 18000.0,
+   "basinc": 300.0,
+   "fiyat": 3459.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-76T",
+   "debi": 18000.0,
+   "basinc": 500.0,
+   "fiyat": 3459.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-77T",
+   "debi": 18000.0,
+   "basinc": 700.0,
+   "fiyat": 3644.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-78T",
+   "debi": 18000.0,
+   "basinc": 900.0,
+   "fiyat": 4430.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-79T",
+   "debi": 19000.0,
+   "basinc": 300.0,
+   "fiyat": 3607.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-80T",
+   "debi": 19000.0,
+   "basinc": 500.0,
+   "fiyat": 3794.0,
+   "g2_fiyat": 142.8,
+   "g4_fiyat": 82.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-81T",
+   "debi": 19000.0,
+   "basinc": 700.0,
+   "fiyat": 3794.0,
+   "g2_fiyat": 159.6,
+   "g4_fiyat": 92.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-82T",
+   "debi": 19000.0,
+   "basinc": 900.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 159.6,
+   "g4_fiyat": 92.39999999999999,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-83T",
+   "debi": 20000.0,
+   "basinc": 300.0,
+   "fiyat": 3611.0,
+   "g2_fiyat": 159.6,
+   "g4_fiyat": 92.39999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-84T",
+   "debi": 20000.0,
+   "basinc": 500.0,
+   "fiyat": 3794.0,
+   "g2_fiyat": 159.6,
+   "g4_fiyat": 92.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-85T",
+   "debi": 20000.0,
+   "basinc": 700.0,
+   "fiyat": 4682.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-86T",
+   "debi": 20000.0,
+   "basinc": 900.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-87T",
+   "debi": 21000.0,
+   "basinc": 300.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-88T",
+   "debi": 21000.0,
+   "basinc": 500.0,
+   "fiyat": 4727.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-89T",
+   "debi": 21000.0,
+   "basinc": 700.0,
+   "fiyat": 4682.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-90T",
+   "debi": 21000.0,
+   "basinc": 900.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-91T",
+   "debi": 22000.0,
+   "basinc": 300.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-92T",
+   "debi": 22000.0,
+   "basinc": 500.0,
+   "fiyat": 4682.0,
+   "g2_fiyat": 170.4,
+   "g4_fiyat": 98.39999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-93T",
+   "debi": 22000.0,
+   "basinc": 700.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-94T",
+   "debi": 22000.0,
+   "basinc": 900.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-95T",
+   "debi": 23000.0,
+   "basinc": 300.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-96T",
+   "debi": 23000.0,
+   "basinc": 500.0,
+   "fiyat": 4682.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-97T",
+   "debi": 23000.0,
+   "basinc": 700.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-98T",
+   "debi": 23000.0,
+   "basinc": 900.0,
+   "fiyat": 5319.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-99T",
+   "debi": 24000.0,
+   "basinc": 300.0,
+   "fiyat": 4992.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-100T",
+   "debi": 24000.0,
+   "basinc": 500.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 182.4,
+   "g4_fiyat": 105.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-101T",
+   "debi": 24000.0,
+   "basinc": 700.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-102T",
+   "debi": 24000.0,
+   "basinc": 900.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-103T",
+   "debi": 25000.0,
+   "basinc": 300.0,
+   "fiyat": 4993.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-PH-104T",
+   "debi": 25000.0,
+   "basinc": 500.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-105T",
+   "debi": 25000.0,
+   "basinc": 700.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-106T",
+   "debi": 25000.0,
+   "basinc": 900.0,
+   "fiyat": 5894.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-107T",
+   "debi": 26000.0,
+   "basinc": 300.0,
+   "fiyat": 4676.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-108T",
+   "debi": 26000.0,
+   "basinc": 500.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-109T",
+   "debi": 26000.0,
+   "basinc": 700.0,
+   "fiyat": 5515.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-110T",
+   "debi": 26000.0,
+   "basinc": 900.0,
+   "fiyat": 5894.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-111T",
+   "debi": 27000.0,
+   "basinc": 300.0,
+   "fiyat": 4676.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-112T",
+   "debi": 27000.0,
+   "basinc": 500.0,
+   "fiyat": 6130.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-113T",
+   "debi": 27000.0,
+   "basinc": 700.0,
+   "fiyat": 6130.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-114T",
+   "debi": 27000.0,
+   "basinc": 900.0,
+   "fiyat": 7360.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-115T",
+   "debi": 28000.0,
+   "basinc": 300.0,
+   "fiyat": 5632.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-116T",
+   "debi": 28000.0,
+   "basinc": 500.0,
+   "fiyat": 6130.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-117T",
+   "debi": 28000.0,
+   "basinc": 700.0,
+   "fiyat": 6841.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-118T",
+   "debi": 28000.0,
+   "basinc": 900.0,
+   "fiyat": 7327.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-119T",
+   "debi": 29000.0,
+   "basinc": 300.0,
+   "fiyat": 5632.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-120T",
+   "debi": 29000.0,
+   "basinc": 500.0,
+   "fiyat": 6841.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-121T",
+   "debi": 29000.0,
+   "basinc": 700.0,
+   "fiyat": 6841.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-122T",
+   "debi": 29000.0,
+   "basinc": 900.0,
+   "fiyat": 7360.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-123T",
+   "debi": 30000.0,
+   "basinc": 300.0,
+   "fiyat": 5817.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-124T",
+   "debi": 30000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 134.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-125T",
+   "debi": 30000.0,
+   "basinc": 700.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-126T",
+   "debi": 30000.0,
+   "basinc": 900.0,
+   "fiyat": 7530.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-127T",
+   "debi": 31000.0,
+   "basinc": 300.0,
+   "fiyat": 6314.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-128T",
+   "debi": 31000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-129T",
+   "debi": 31000.0,
+   "basinc": 700.0,
+   "fiyat": 7044.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-130T",
+   "debi": 31000.0,
+   "basinc": 900.0,
+   "fiyat": 7553.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-131T",
+   "debi": 32000.0,
+   "basinc": 300.0,
+   "fiyat": 6546.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-132T",
+   "debi": 32000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 277.2,
+   "g4_fiyat": 159.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-133T",
+   "debi": 32000.0,
+   "basinc": 700.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-134T",
+   "debi": 32000.0,
+   "basinc": 900.0,
+   "fiyat": 7553.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-135T",
+   "debi": 33000.0,
+   "basinc": 300.0,
+   "fiyat": 6546.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-136T",
+   "debi": 33000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-137T",
+   "debi": 33000.0,
+   "basinc": 700.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-138T",
+   "debi": 33000.0,
+   "basinc": 900.0,
+   "fiyat": 7555.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-139T",
+   "debi": 34000.0,
+   "basinc": 300.0,
+   "fiyat": 6546.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-PH-140T",
+   "debi": 34000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-141T",
+   "debi": 34000.0,
+   "basinc": 700.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-142T",
+   "debi": 34000.0,
+   "basinc": 900.0,
+   "fiyat": 7553.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-143T",
+   "debi": 35000.0,
+   "basinc": 300.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-144T",
+   "debi": 35000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-145T",
+   "debi": 35000.0,
+   "basinc": 700.0,
+   "fiyat": 7557.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-146T",
+   "debi": 35000.0,
+   "basinc": 900.0,
+   "fiyat": 7557.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-147T",
+   "debi": 36000.0,
+   "basinc": 300.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-148T",
+   "debi": 36000.0,
+   "basinc": 500.0,
+   "fiyat": 7045.0,
+   "g2_fiyat": 291.6,
+   "g4_fiyat": 168.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-149T",
+   "debi": 36000.0,
+   "basinc": 700.0,
+   "fiyat": 7557.0,
+   "g2_fiyat": 306.0,
+   "g4_fiyat": 176.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-150T",
+   "debi": 36000.0,
+   "basinc": 900.0,
+   "fiyat": 7557.0,
+   "g2_fiyat": 306.0,
+   "g4_fiyat": 176.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-151T",
+   "debi": 37000.0,
+   "basinc": 300.0,
+   "fiyat": 7311.0,
+   "g2_fiyat": 306.0,
+   "g4_fiyat": 176.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-152T",
+   "debi": 37000.0,
+   "basinc": 500.0,
+   "fiyat": 7311.0,
+   "g2_fiyat": 306.0,
+   "g4_fiyat": 176.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-153T",
+   "debi": 37000.0,
+   "basinc": 700.0,
+   "fiyat": 8716.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-154T",
+   "debi": 37000.0,
+   "basinc": 900.0,
+   "fiyat": 8720.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-155T",
+   "debi": 38000.0,
+   "basinc": 300.0,
+   "fiyat": 7311.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-156T",
+   "debi": 38000.0,
+   "basinc": 500.0,
+   "fiyat": 8234.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-157T",
+   "debi": 38000.0,
+   "basinc": 700.0,
+   "fiyat": 8720.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-158T",
+   "debi": 38000.0,
+   "basinc": 900.0,
+   "fiyat": 9290.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 18.5
+  },
+  {
+   "model": "P-PH-159T",
+   "debi": 39000.0,
+   "basinc": 300.0,
+   "fiyat": 7311.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-160T",
+   "debi": 39000.0,
+   "basinc": 500.0,
+   "fiyat": 7309.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-161T",
+   "debi": 39000.0,
+   "basinc": 700.0,
+   "fiyat": 8716.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-162T",
+   "debi": 39000.0,
+   "basinc": 900.0,
+   "fiyat": 9290.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 18.5
+  },
+  {
+   "model": "P-PH-163T",
+   "debi": 40000.0,
+   "basinc": 300.0,
+   "fiyat": 7311.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-PH-164T",
+   "debi": 40000.0,
+   "basinc": 500.0,
+   "fiyat": 8720.0,
+   "g2_fiyat": 339.6,
+   "g4_fiyat": 195.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-165T",
+   "debi": 40000.0,
+   "basinc": 700.0,
+   "fiyat": 8720.0,
+   "g2_fiyat": 356.4,
+   "g4_fiyat": 205.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-PH-166T",
+   "debi": 40000.0,
+   "basinc": 900.0,
+   "fiyat": 9245.0,
+   "g2_fiyat": 356.4,
+   "g4_fiyat": 205.2,
+   "motor": 18.5
+  }
+ ],
+ "SIK KANAT HÜCRELİ": [
+  {
+   "model": "P-SH-14T",
+   "debi": 2000.0,
+   "basinc": 200.0,
+   "fiyat": 1257.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-15T",
+   "debi": 2000.0,
+   "basinc": 300.0,
+   "fiyat": 1253.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-16T",
+   "debi": 2000.0,
+   "basinc": 400.0,
+   "fiyat": 1260.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-17T",
+   "debi": 2000.0,
+   "basinc": 500.0,
+   "fiyat": 1255.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-18T",
+   "debi": 2000.0,
+   "basinc": 700.0,
+   "fiyat": 1382.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-19T",
+   "debi": 2000.0,
+   "basinc": 900.0,
+   "fiyat": 1379.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-20T",
+   "debi": 3000.0,
+   "basinc": 200.0,
+   "fiyat": 1321.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-21T",
+   "debi": 3000.0,
+   "basinc": 300.0,
+   "fiyat": 1320.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-22T",
+   "debi": 3000.0,
+   "basinc": 400.0,
+   "fiyat": 1321.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-23T",
+   "debi": 3000.0,
+   "basinc": 500.0,
+   "fiyat": 1322.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SH-24T",
+   "debi": 3000.0,
+   "basinc": 700.0,
+   "fiyat": 1432.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-25T",
+   "debi": 3000.0,
+   "basinc": 900.0,
+   "fiyat": 1557.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-26T",
+   "debi": 4000.0,
+   "basinc": 200.0,
+   "fiyat": 1387.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-27T",
+   "debi": 4000.0,
+   "basinc": 300.0,
+   "fiyat": 1388.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-28T",
+   "debi": 4000.0,
+   "basinc": 400.0,
+   "fiyat": 1432.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-29T",
+   "debi": 4000.0,
+   "basinc": 500.0,
+   "fiyat": 1432.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-30T",
+   "debi": 4000.0,
+   "basinc": 700.0,
+   "fiyat": 1557.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-31T",
+   "debi": 4000.0,
+   "basinc": 900.0,
+   "fiyat": 1787.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-32T",
+   "debi": 5000.0,
+   "basinc": 200.0,
+   "fiyat": 1527.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-33T",
+   "debi": 5000.0,
+   "basinc": 300.0,
+   "fiyat": 1526.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-34T",
+   "debi": 5000.0,
+   "basinc": 400.0,
+   "fiyat": 1562.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 32.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-35T",
+   "debi": 5000.0,
+   "basinc": 500.0,
+   "fiyat": 1686.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-36T",
+   "debi": 5000.0,
+   "basinc": 700.0,
+   "fiyat": 1684.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-37T",
+   "debi": 5000.0,
+   "basinc": 900.0,
+   "fiyat": 1808.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-38T",
+   "debi": 6000.0,
+   "basinc": 200.0,
+   "fiyat": 1703.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SH-39T",
+   "debi": 6000.0,
+   "basinc": 300.0,
+   "fiyat": 1756.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-40T",
+   "debi": 6000.0,
+   "basinc": 400.0,
+   "fiyat": 1754.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 46.8,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-41T",
+   "debi": 6000.0,
+   "basinc": 500.0,
+   "fiyat": 1861.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-42T",
+   "debi": 6000.0,
+   "basinc": 700.0,
+   "fiyat": 1970.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-43T",
+   "debi": 6000.0,
+   "basinc": 900.0,
+   "fiyat": 1970.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-44T",
+   "debi": 7000.0,
+   "basinc": 200.0,
+   "fiyat": 1753.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-45T",
+   "debi": 7000.0,
+   "basinc": 300.0,
+   "fiyat": 1741.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SH-46T",
+   "debi": 7000.0,
+   "basinc": 400.0,
+   "fiyat": 1862.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-47T",
+   "debi": 7000.0,
+   "basinc": 500.0,
+   "fiyat": 1968.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-48T",
+   "debi": 7000.0,
+   "basinc": 700.0,
+   "fiyat": 1967.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-49T",
+   "debi": 7000.0,
+   "basinc": 900.0,
+   "fiyat": 1967.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-50T",
+   "debi": 8000.0,
+   "basinc": 200.0,
+   "fiyat": 2046.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-51T",
+   "debi": 8000.0,
+   "basinc": 300.0,
+   "fiyat": 2052.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-52T",
+   "debi": 8000.0,
+   "basinc": 400.0,
+   "fiyat": 2055.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 62.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-53T",
+   "debi": 8000.0,
+   "basinc": 500.0,
+   "fiyat": 2143.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-54T",
+   "debi": 8000.0,
+   "basinc": 700.0,
+   "fiyat": 2143.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-55T",
+   "debi": 8000.0,
+   "basinc": 900.0,
+   "fiyat": 2346.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-56T",
+   "debi": 9000.0,
+   "basinc": 200.0,
+   "fiyat": 2179.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-57T",
+   "debi": 9000.0,
+   "basinc": 300.0,
+   "fiyat": 2179.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-58T",
+   "debi": 9000.0,
+   "basinc": 400.0,
+   "fiyat": 2178.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-59T",
+   "debi": 9000.0,
+   "basinc": 500.0,
+   "fiyat": 2340.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-60T",
+   "debi": 9000.0,
+   "basinc": 700.0,
+   "fiyat": 2504.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-61T",
+   "debi": 9000.0,
+   "basinc": 900.0,
+   "fiyat": 3011.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-62T",
+   "debi": 10000.0,
+   "basinc": 200.0,
+   "fiyat": 2177.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-63T",
+   "debi": 10000.0,
+   "basinc": 300.0,
+   "fiyat": 2180.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-64T",
+   "debi": 10000.0,
+   "basinc": 400.0,
+   "fiyat": 2502.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-65T",
+   "debi": 10000.0,
+   "basinc": 500.0,
+   "fiyat": 2337.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-66T",
+   "debi": 10000.0,
+   "basinc": 700.0,
+   "fiyat": 2500.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-67T",
+   "debi": 10000.0,
+   "basinc": 900.0,
+   "fiyat": 3011.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-68T",
+   "debi": 11000.0,
+   "basinc": 200.0,
+   "fiyat": 2493.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-69T",
+   "debi": 11000.0,
+   "basinc": 300.0,
+   "fiyat": 2580.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-70T",
+   "debi": 11000.0,
+   "basinc": 400.0,
+   "fiyat": 2583.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 81.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-71T",
+   "debi": 11000.0,
+   "basinc": 500.0,
+   "fiyat": 2810.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-72T",
+   "debi": 11000.0,
+   "basinc": 700.0,
+   "fiyat": 3007.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-73T",
+   "debi": 11000.0,
+   "basinc": 900.0,
+   "fiyat": 3011.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-74T",
+   "debi": 12000.0,
+   "basinc": 200.0,
+   "fiyat": 2519.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SH-75T",
+   "debi": 12000.0,
+   "basinc": 300.0,
+   "fiyat": 2701.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-76T",
+   "debi": 12000.0,
+   "basinc": 400.0,
+   "fiyat": 2697.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-77T",
+   "debi": 12000.0,
+   "basinc": 500.0,
+   "fiyat": 2903.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-78T",
+   "debi": 12000.0,
+   "basinc": 700.0,
+   "fiyat": 3123.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-79T",
+   "debi": 12000.0,
+   "basinc": 900.0,
+   "fiyat": 3383.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-80T",
+   "debi": 13000.0,
+   "basinc": 200.0,
+   "fiyat": 2695.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-81T",
+   "debi": 13000.0,
+   "basinc": 300.0,
+   "fiyat": 2709.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-82T",
+   "debi": 13000.0,
+   "basinc": 400.0,
+   "fiyat": 2902.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-83T",
+   "debi": 13000.0,
+   "basinc": 500.0,
+   "fiyat": 2903.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-84T",
+   "debi": 13000.0,
+   "basinc": 700.0,
+   "fiyat": 3122.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-85T",
+   "debi": 13000.0,
+   "basinc": 900.0,
+   "fiyat": 3383.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-86T",
+   "debi": 14000.0,
+   "basinc": 200.0,
+   "fiyat": 2694.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-87T",
+   "debi": 14000.0,
+   "basinc": 300.0,
+   "fiyat": 2694.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SH-88T",
+   "debi": 14000.0,
+   "basinc": 400.0,
+   "fiyat": 2903.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-89T",
+   "debi": 14000.0,
+   "basinc": 500.0,
+   "fiyat": 2902.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SH-90T",
+   "debi": 14000.0,
+   "basinc": 700.0,
+   "fiyat": 3122.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-91T",
+   "debi": 14000.0,
+   "basinc": 900.0,
+   "fiyat": 3383.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-92T",
+   "debi": 15000.0,
+   "basinc": 500.0,
+   "fiyat": 3691.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-93T",
+   "debi": 15000.0,
+   "basinc": 600.0,
+   "fiyat": 3691.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-94T",
+   "debi": 15000.0,
+   "basinc": 700.0,
+   "fiyat": 3920.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 124.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-95T",
+   "debi": 15000.0,
+   "basinc": 800.0,
+   "fiyat": 3920.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-96T",
+   "debi": 15000.0,
+   "basinc": 900.0,
+   "fiyat": 3919.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-97T",
+   "debi": 15000.0,
+   "basinc": 1100.0,
+   "fiyat": 4679.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-98T",
+   "debi": 16000.0,
+   "basinc": 500.0,
+   "fiyat": 3691.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-99T",
+   "debi": 16000.0,
+   "basinc": 700.0,
+   "fiyat": 3920.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-100T",
+   "debi": 16000.0,
+   "basinc": 900.0,
+   "fiyat": 4707.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-101T",
+   "debi": 16000.0,
+   "basinc": 1100.0,
+   "fiyat": 4679.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-102T",
+   "debi": 17000.0,
+   "basinc": 500.0,
+   "fiyat": 3691.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-103T",
+   "debi": 17000.0,
+   "basinc": 600.0,
+   "fiyat": 3921.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-104T",
+   "debi": 17000.0,
+   "basinc": 700.0,
+   "fiyat": 3920.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-105T",
+   "debi": 17000.0,
+   "basinc": 900.0,
+   "fiyat": 4707.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-106T",
+   "debi": 17000.0,
+   "basinc": 1100.0,
+   "fiyat": 4679.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-107T",
+   "debi": 18000.0,
+   "basinc": 500.0,
+   "fiyat": 4014.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-108T",
+   "debi": 18000.0,
+   "basinc": 700.0,
+   "fiyat": 4259.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-109T",
+   "debi": 18000.0,
+   "basinc": 900.0,
+   "fiyat": 5592.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 150.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-110T",
+   "debi": 18000.0,
+   "basinc": 1100.0,
+   "fiyat": 5591.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-111T",
+   "debi": 19000.0,
+   "basinc": 500.0,
+   "fiyat": 4014.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-112T",
+   "debi": 19000.0,
+   "basinc": 700.0,
+   "fiyat": 4259.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-113T",
+   "debi": 19000.0,
+   "basinc": 900.0,
+   "fiyat": 5591.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-114T",
+   "debi": 19000.0,
+   "basinc": 1100.0,
+   "fiyat": 5592.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-115T",
+   "debi": 20000.0,
+   "basinc": 500.0,
+   "fiyat": 4014.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SH-116T",
+   "debi": 20000.0,
+   "basinc": 700.0,
+   "fiyat": 4259.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-117T",
+   "debi": 20000.0,
+   "basinc": 900.0,
+   "fiyat": 5591.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-118T",
+   "debi": 20000.0,
+   "basinc": 1000.0,
+   "fiyat": 5592.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-119T",
+   "debi": 21000.0,
+   "basinc": 500.0,
+   "fiyat": 4257.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-120T",
+   "debi": 21000.0,
+   "basinc": 700.0,
+   "fiyat": 5631.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-121T",
+   "debi": 21000.0,
+   "basinc": 900.0,
+   "fiyat": 5591.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-122T",
+   "debi": 21000.0,
+   "basinc": 1100.0,
+   "fiyat": 5957.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-123T",
+   "debi": 22000.0,
+   "basinc": 500.0,
+   "fiyat": 5032.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-124T",
+   "debi": 22000.0,
+   "basinc": 700.0,
+   "fiyat": 6417.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-125T",
+   "debi": 22000.0,
+   "basinc": 900.0,
+   "fiyat": 6388.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-126T",
+   "debi": 22000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-127T",
+   "debi": 23000.0,
+   "basinc": 500.0,
+   "fiyat": 5032.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-128T",
+   "debi": 23000.0,
+   "basinc": 700.0,
+   "fiyat": 6389.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 178.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-129T",
+   "debi": 23000.0,
+   "basinc": 900.0,
+   "fiyat": 6388.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-130T",
+   "debi": 23000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-131T",
+   "debi": 24000.0,
+   "basinc": 500.0,
+   "fiyat": 5032.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-132T",
+   "debi": 24000.0,
+   "basinc": 700.0,
+   "fiyat": 6389.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-133T",
+   "debi": 24000.0,
+   "basinc": 900.0,
+   "fiyat": 6388.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-134T",
+   "debi": 24000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-135T",
+   "debi": 25000.0,
+   "basinc": 500.0,
+   "fiyat": 5032.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-136T",
+   "debi": 25000.0,
+   "basinc": 700.0,
+   "fiyat": 6389.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-137T",
+   "debi": 25000.0,
+   "basinc": 900.0,
+   "fiyat": 6735.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-138T",
+   "debi": 25000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-139T",
+   "debi": 26000.0,
+   "basinc": 500.0,
+   "fiyat": 6418.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-140T",
+   "debi": 26000.0,
+   "basinc": 700.0,
+   "fiyat": 6389.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-141T",
+   "debi": 26000.0,
+   "basinc": 900.0,
+   "fiyat": 6734.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-142T",
+   "debi": 26000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-143T",
+   "debi": 27000.0,
+   "basinc": 500.0,
+   "fiyat": 6385.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-144T",
+   "debi": 27000.0,
+   "basinc": 700.0,
+   "fiyat": 6378.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-145T",
+   "debi": 27000.0,
+   "basinc": 900.0,
+   "fiyat": 6734.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-146T",
+   "debi": 27000.0,
+   "basinc": 1100.0,
+   "fiyat": 6733.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-147T",
+   "debi": 28000.0,
+   "basinc": 500.0,
+   "fiyat": 5929.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-148T",
+   "debi": 28000.0,
+   "basinc": 700.0,
+   "fiyat": 6764.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-149T",
+   "debi": 28000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 208.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-150T",
+   "debi": 28000.0,
+   "basinc": 1000.0,
+   "fiyat": 7567.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-151T",
+   "debi": 29000.0,
+   "basinc": 500.0,
+   "fiyat": 5929.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SH-152T",
+   "debi": 29000.0,
+   "basinc": 700.0,
+   "fiyat": 6764.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-153T",
+   "debi": 29000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-154T",
+   "debi": 30000.0,
+   "basinc": 500.0,
+   "fiyat": 6762.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-155T",
+   "debi": 30000.0,
+   "basinc": 700.0,
+   "fiyat": 6744.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-156T",
+   "debi": 30000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-157T",
+   "debi": 31000.0,
+   "basinc": 500.0,
+   "fiyat": 6762.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-158T",
+   "debi": 31000.0,
+   "basinc": 700.0,
+   "fiyat": 6764.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-159T",
+   "debi": 31000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-160T",
+   "debi": 32000.0,
+   "basinc": 500.0,
+   "fiyat": 6762.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-161T",
+   "debi": 32000.0,
+   "basinc": 700.0,
+   "fiyat": 7588.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-162T",
+   "debi": 32000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-163T",
+   "debi": 33000.0,
+   "basinc": 500.0,
+   "fiyat": 6762.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-164T",
+   "debi": 33000.0,
+   "basinc": 700.0,
+   "fiyat": 7561.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-165T",
+   "debi": 33000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-166T",
+   "debi": 34000.0,
+   "basinc": 500.0,
+   "fiyat": 6762.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-167T",
+   "debi": 34000.0,
+   "basinc": 700.0,
+   "fiyat": 7561.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-168T",
+   "debi": 34000.0,
+   "basinc": 900.0,
+   "fiyat": 7563.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-169T",
+   "debi": 35000.0,
+   "basinc": 500.0,
+   "fiyat": 7713.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-170T",
+   "debi": 35000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-171T",
+   "debi": 35000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 315.6,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-172T",
+   "debi": 36000.0,
+   "basinc": 500.0,
+   "fiyat": 7713.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-173T",
+   "debi": 36000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-174T",
+   "debi": 36000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-175T",
+   "debi": 37000.0,
+   "basinc": 500.0,
+   "fiyat": 7713.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-176T",
+   "debi": 37000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-177T",
+   "debi": 37000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-178T",
+   "debi": 38000.0,
+   "basinc": 500.0,
+   "fiyat": 7685.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-179T",
+   "debi": 38000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-180T",
+   "debi": 38000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-181T",
+   "debi": 39000.0,
+   "basinc": 500.0,
+   "fiyat": 7713.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-182T",
+   "debi": 39000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-183T",
+   "debi": 39000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-184T",
+   "debi": 40000.0,
+   "basinc": 500.0,
+   "fiyat": 7713.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SH-185T",
+   "debi": 40000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-186T",
+   "debi": 40000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-187T",
+   "debi": 41000.0,
+   "basinc": 500.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-188T",
+   "debi": 41000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-189T",
+   "debi": 41000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SH-190T",
+   "debi": 42000.0,
+   "basinc": 500.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-191T",
+   "debi": 42000.0,
+   "basinc": 700.0,
+   "fiyat": 8849.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SH-192T",
+   "debi": 42000.0,
+   "basinc": 900.0,
+   "fiyat": 9354.0,
+   "g2_fiyat": null,
+   "g4_fiyat": 355.2,
+   "motor": 18.5
+  }
+ ],
+ "SEYREK KANAT HÜCRELİ": [
+  {
+   "model": "P-SYH-15T",
+   "debi": 3000.0,
+   "basinc": 300.0,
+   "fiyat": 1806.0,
+   "g2_fiyat": 20.4,
+   "g4_fiyat": 12.0,
+   "motor": 0.75
+  },
+  {
+   "model": "P-SYH-16T",
+   "debi": 3000.0,
+   "basinc": 500.0,
+   "fiyat": 1813.0,
+   "g2_fiyat": 20.4,
+   "g4_fiyat": 12.0,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SYH-17T",
+   "debi": 3000.0,
+   "basinc": 700.0,
+   "fiyat": 1876.0,
+   "g2_fiyat": 20.4,
+   "g4_fiyat": 12.0,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SYH-18T",
+   "debi": 3000.0,
+   "basinc": 900.0,
+   "fiyat": 1876.0,
+   "g2_fiyat": 20.4,
+   "g4_fiyat": 12.0,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SYH-19T",
+   "debi": 4000.0,
+   "basinc": 300.0,
+   "fiyat": 1876.0,
+   "g2_fiyat": 25.2,
+   "g4_fiyat": 14.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SYH-20T",
+   "debi": 4000.0,
+   "basinc": 500.0,
+   "fiyat": 2006.0,
+   "g2_fiyat": 25.2,
+   "g4_fiyat": 14.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SYH-21T",
+   "debi": 4000.0,
+   "basinc": 700.0,
+   "fiyat": 2062.0,
+   "g2_fiyat": 25.2,
+   "g4_fiyat": 14.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SYH-22T",
+   "debi": 4000.0,
+   "basinc": 900.0,
+   "fiyat": 2105.0,
+   "g2_fiyat": 25.2,
+   "g4_fiyat": 14.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-23T",
+   "debi": 5000.0,
+   "basinc": 300.0,
+   "fiyat": 2006.0,
+   "g2_fiyat": 25.2,
+   "g4_fiyat": 14.4,
+   "motor": 1.1
+  },
+  {
+   "model": "P-SYH-24T",
+   "debi": 5000.0,
+   "basinc": 500.0,
+   "fiyat": 2062.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 1.5
+  },
+  {
+   "model": "P-SYH-25T",
+   "debi": 5000.0,
+   "basinc": 700.0,
+   "fiyat": 2105.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-26T",
+   "debi": 5000.0,
+   "basinc": 900.0,
+   "fiyat": 2104.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-27T",
+   "debi": 6000.0,
+   "basinc": 300.0,
+   "fiyat": 2104.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-28T",
+   "debi": 6000.0,
+   "basinc": 500.0,
+   "fiyat": 2105.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-29T",
+   "debi": 6000.0,
+   "basinc": 700.0,
+   "fiyat": 2271.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-30T",
+   "debi": 6000.0,
+   "basinc": 900.0,
+   "fiyat": 2270.0,
+   "g2_fiyat": 34.8,
+   "g4_fiyat": 20.4,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-31T",
+   "debi": 7000.0,
+   "basinc": 300.0,
+   "fiyat": 2202.0,
+   "g2_fiyat": 40.8,
+   "g4_fiyat": 24.0,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-32T",
+   "debi": 7000.0,
+   "basinc": 500.0,
+   "fiyat": 2203.0,
+   "g2_fiyat": 40.8,
+   "g4_fiyat": 24.0,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-33T",
+   "debi": 7000.0,
+   "basinc": 700.0,
+   "fiyat": 2358.0,
+   "g2_fiyat": 40.8,
+   "g4_fiyat": 24.0,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-34T",
+   "debi": 7000.0,
+   "basinc": 900.0,
+   "fiyat": 2358.0,
+   "g2_fiyat": 40.8,
+   "g4_fiyat": 24.0,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-35T",
+   "debi": 8000.0,
+   "basinc": 300.0,
+   "fiyat": 2359.0,
+   "g2_fiyat": 46.8,
+   "g4_fiyat": 27.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-36T",
+   "debi": 8000.0,
+   "basinc": 500.0,
+   "fiyat": 2358.0,
+   "g2_fiyat": 46.8,
+   "g4_fiyat": 27.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-37T",
+   "debi": 8000.0,
+   "basinc": 700.0,
+   "fiyat": 2358.0,
+   "g2_fiyat": 46.8,
+   "g4_fiyat": 27.6,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-38T",
+   "debi": 8000.0,
+   "basinc": 900.0,
+   "fiyat": 2621.0,
+   "g2_fiyat": 46.8,
+   "g4_fiyat": 27.6,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-39T",
+   "debi": 9000.0,
+   "basinc": 300.0,
+   "fiyat": 2463.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 31.2,
+   "motor": 2.2
+  },
+  {
+   "model": "P-SYH-40T",
+   "debi": 9000.0,
+   "basinc": 500.0,
+   "fiyat": 2620.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 31.2,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-41T",
+   "debi": 9000.0,
+   "basinc": 700.0,
+   "fiyat": 2866.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 31.2,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-42T",
+   "debi": 9000.0,
+   "basinc": 900.0,
+   "fiyat": 2869.0,
+   "g2_fiyat": 52.8,
+   "g4_fiyat": 31.2,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-43T",
+   "debi": 10000.0,
+   "basinc": 300.0,
+   "fiyat": 2869.0,
+   "g2_fiyat": 60.0,
+   "g4_fiyat": 34.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-44T",
+   "debi": 10000.0,
+   "basinc": 500.0,
+   "fiyat": 2871.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-45T",
+   "debi": 10000.0,
+   "basinc": 700.0,
+   "fiyat": 2869.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-46T",
+   "debi": 10000.0,
+   "basinc": 900.0,
+   "fiyat": 3193.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-47T",
+   "debi": 11000.0,
+   "basinc": 300.0,
+   "fiyat": 3198.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-48T",
+   "debi": 11000.0,
+   "basinc": 500.0,
+   "fiyat": 3197.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-49T",
+   "debi": 11000.0,
+   "basinc": 700.0,
+   "fiyat": 3195.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-50T",
+   "debi": 11000.0,
+   "basinc": 900.0,
+   "fiyat": 3197.0,
+   "g2_fiyat": 67.2,
+   "g4_fiyat": 38.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-51T",
+   "debi": 12000.0,
+   "basinc": 300.0,
+   "fiyat": 3054.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-52T",
+   "debi": 12000.0,
+   "basinc": 500.0,
+   "fiyat": 3403.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 3.0
+  },
+  {
+   "model": "P-SYH-53T",
+   "debi": 12000.0,
+   "basinc": 700.0,
+   "fiyat": 3589.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-54T",
+   "debi": 12000.0,
+   "basinc": 900.0,
+   "fiyat": 3593.0,
+   "g2_fiyat": 74.39999999999999,
+   "g4_fiyat": 43.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-55T",
+   "debi": 13000.0,
+   "basinc": 300.0,
+   "fiyat": 3591.0,
+   "g2_fiyat": 81.6,
+   "g4_fiyat": 46.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-56T",
+   "debi": 13000.0,
+   "basinc": 500.0,
+   "fiyat": 3593.0,
+   "g2_fiyat": 99.6,
+   "g4_fiyat": 57.59999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-57T",
+   "debi": 13000.0,
+   "basinc": 700.0,
+   "fiyat": 3590.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-58T",
+   "debi": 13000.0,
+   "basinc": 900.0,
+   "fiyat": 3590.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-59T",
+   "debi": 14000.0,
+   "basinc": 300.0,
+   "fiyat": 3576.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-60T",
+   "debi": 14000.0,
+   "basinc": 500.0,
+   "fiyat": 3574.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 4.0
+  },
+  {
+   "model": "P-SYH-61T",
+   "debi": 14000.0,
+   "basinc": 700.0,
+   "fiyat": 3864.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-62T",
+   "debi": 14000.0,
+   "basinc": 900.0,
+   "fiyat": 4200.0,
+   "g2_fiyat": 90.0,
+   "g4_fiyat": 52.8,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-63T",
+   "debi": 15000.0,
+   "basinc": 300.0,
+   "fiyat": 3864.0,
+   "g2_fiyat": 99.6,
+   "g4_fiyat": 57.59999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-64T",
+   "debi": 15000.0,
+   "basinc": 500.0,
+   "fiyat": 3864.0,
+   "g2_fiyat": 99.6,
+   "g4_fiyat": 57.59999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-65T",
+   "debi": 15000.0,
+   "basinc": 700.0,
+   "fiyat": 3864.0,
+   "g2_fiyat": 99.6,
+   "g4_fiyat": 57.59999999999999,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-66T",
+   "debi": 15000.0,
+   "basinc": 900.0,
+   "fiyat": 4209.0,
+   "g2_fiyat": 99.6,
+   "g4_fiyat": 57.59999999999999,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-67T",
+   "debi": 16000.0,
+   "basinc": 300.0,
+   "fiyat": 3864.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-68T",
+   "debi": 16000.0,
+   "basinc": 500.0,
+   "fiyat": 4199.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-69T",
+   "debi": 16000.0,
+   "basinc": 700.0,
+   "fiyat": 4196.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-70T",
+   "debi": 16000.0,
+   "basinc": 900.0,
+   "fiyat": 4190.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-71T",
+   "debi": 17000.0,
+   "basinc": 300.0,
+   "fiyat": 4199.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-72T",
+   "debi": 17000.0,
+   "basinc": 500.0,
+   "fiyat": 4200.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-73T",
+   "debi": 17000.0,
+   "basinc": 700.0,
+   "fiyat": 4196.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-74T",
+   "debi": 17000.0,
+   "basinc": 900.0,
+   "fiyat": 4963.0,
+   "g2_fiyat": 108.0,
+   "g4_fiyat": 62.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-75T",
+   "debi": 18000.0,
+   "basinc": 300.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 116.4,
+   "g4_fiyat": 67.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-76T",
+   "debi": 18000.0,
+   "basinc": 500.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 116.4,
+   "g4_fiyat": 67.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-77T",
+   "debi": 18000.0,
+   "basinc": 700.0,
+   "fiyat": 4798.0,
+   "g2_fiyat": 116.4,
+   "g4_fiyat": 67.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-78T",
+   "debi": 18000.0,
+   "basinc": 900.0,
+   "fiyat": 4798.0,
+   "g2_fiyat": 116.4,
+   "g4_fiyat": 67.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-79T",
+   "debi": 19000.0,
+   "basinc": 300.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-80T",
+   "debi": 19000.0,
+   "basinc": 500.0,
+   "fiyat": 4564.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-81T",
+   "debi": 19000.0,
+   "basinc": 700.0,
+   "fiyat": 4800.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-82T",
+   "debi": 19000.0,
+   "basinc": 900.0,
+   "fiyat": 5696.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-83T",
+   "debi": 20000.0,
+   "basinc": 300.0,
+   "fiyat": 4801.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-84T",
+   "debi": 20000.0,
+   "basinc": 500.0,
+   "fiyat": 4800.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-85T",
+   "debi": 20000.0,
+   "basinc": 700.0,
+   "fiyat": 4794.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-86T",
+   "debi": 20000.0,
+   "basinc": 900.0,
+   "fiyat": 5696.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-87T",
+   "debi": 21000.0,
+   "basinc": 300.0,
+   "fiyat": 4800.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-88T",
+   "debi": 21000.0,
+   "basinc": 500.0,
+   "fiyat": 4800.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-89T",
+   "debi": 21000.0,
+   "basinc": 700.0,
+   "fiyat": 5695.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-90T",
+   "debi": 21000.0,
+   "basinc": 900.0,
+   "fiyat": 5696.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-91T",
+   "debi": 22000.0,
+   "basinc": 300.0,
+   "fiyat": 4632.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-92T",
+   "debi": 22000.0,
+   "basinc": 500.0,
+   "fiyat": 5395.0,
+   "g2_fiyat": 127.2,
+   "g4_fiyat": 73.2,
+   "motor": 5.5
+  },
+  {
+   "model": "P-SYH-93T",
+   "debi": 22000.0,
+   "basinc": 700.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-94T",
+   "debi": 22000.0,
+   "basinc": 900.0,
+   "fiyat": 6440.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-95T",
+   "debi": 23000.0,
+   "basinc": 300.0,
+   "fiyat": 5608.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-96T",
+   "debi": 23000.0,
+   "basinc": 500.0,
+   "fiyat": 5608.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-97T",
+   "debi": 23000.0,
+   "basinc": 700.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-98T",
+   "debi": 23000.0,
+   "basinc": 900.0,
+   "fiyat": 6438.0,
+   "g2_fiyat": 136.8,
+   "g4_fiyat": 79.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-99T",
+   "debi": 24000.0,
+   "basinc": 300.0,
+   "fiyat": 5608.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-100T",
+   "debi": 24000.0,
+   "basinc": 500.0,
+   "fiyat": 5608.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-101T",
+   "debi": 24000.0,
+   "basinc": 700.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-102T",
+   "debi": 24000.0,
+   "basinc": 900.0,
+   "fiyat": 6448.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-103T",
+   "debi": 25000.0,
+   "basinc": 300.0,
+   "fiyat": 6448.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-104T",
+   "debi": 25000.0,
+   "basinc": 500.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-105T",
+   "debi": 25000.0,
+   "basinc": 700.0,
+   "fiyat": 6438.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-106T",
+   "debi": 25000.0,
+   "basinc": 900.0,
+   "fiyat": 6448.0,
+   "g2_fiyat": 148.8,
+   "g4_fiyat": 85.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-107T",
+   "debi": 26000.0,
+   "basinc": 300.0,
+   "fiyat": 6450.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-108T",
+   "debi": 26000.0,
+   "basinc": 500.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-109T",
+   "debi": 26000.0,
+   "basinc": 700.0,
+   "fiyat": 6438.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-110T",
+   "debi": 26000.0,
+   "basinc": 900.0,
+   "fiyat": 7494.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-111T",
+   "debi": 27000.0,
+   "basinc": 300.0,
+   "fiyat": 6423.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-112T",
+   "debi": 27000.0,
+   "basinc": 500.0,
+   "fiyat": 6449.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-113T",
+   "debi": 27000.0,
+   "basinc": 700.0,
+   "fiyat": 6448.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-114T",
+   "debi": 27000.0,
+   "basinc": 900.0,
+   "fiyat": 7494.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-115T",
+   "debi": 28000.0,
+   "basinc": 300.0,
+   "fiyat": 6580.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-116T",
+   "debi": 28000.0,
+   "basinc": 500.0,
+   "fiyat": 6582.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-117T",
+   "debi": 28000.0,
+   "basinc": 700.0,
+   "fiyat": 7390.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-118T",
+   "debi": 28000.0,
+   "basinc": 900.0,
+   "fiyat": 7382.0,
+   "g2_fiyat": 158.4,
+   "g4_fiyat": 91.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-119T",
+   "debi": 29000.0,
+   "basinc": 300.0,
+   "fiyat": 6582.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 7.5
+  },
+  {
+   "model": "P-SYH-120T",
+   "debi": 29000.0,
+   "basinc": 500.0,
+   "fiyat": 7387.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-121T",
+   "debi": 29000.0,
+   "basinc": 700.0,
+   "fiyat": 7484.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-122T",
+   "debi": 29000.0,
+   "basinc": 900.0,
+   "fiyat": 7906.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-123T",
+   "debi": 30000.0,
+   "basinc": 300.0,
+   "fiyat": 7485.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-124T",
+   "debi": 30000.0,
+   "basinc": 500.0,
+   "fiyat": 7480.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-125T",
+   "debi": 30000.0,
+   "basinc": 700.0,
+   "fiyat": 7484.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-126T",
+   "debi": 30000.0,
+   "basinc": 900.0,
+   "fiyat": 7910.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-127T",
+   "debi": 31000.0,
+   "basinc": 300.0,
+   "fiyat": 7481.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-128T",
+   "debi": 31000.0,
+   "basinc": 500.0,
+   "fiyat": 7484.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-129T",
+   "debi": 31000.0,
+   "basinc": 700.0,
+   "fiyat": 7906.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-130T",
+   "debi": 31000.0,
+   "basinc": 900.0,
+   "fiyat": 7915.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-131T",
+   "debi": 32000.0,
+   "basinc": 300.0,
+   "fiyat": 7912.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-132T",
+   "debi": 32000.0,
+   "basinc": 500.0,
+   "fiyat": 7907.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-133T",
+   "debi": 32000.0,
+   "basinc": 700.0,
+   "fiyat": 7906.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-134T",
+   "debi": 32000.0,
+   "basinc": 900.0,
+   "fiyat": 7915.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-135T",
+   "debi": 33000.0,
+   "basinc": 300.0,
+   "fiyat": 7912.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-136T",
+   "debi": 33000.0,
+   "basinc": 500.0,
+   "fiyat": 7910.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-137T",
+   "debi": 33000.0,
+   "basinc": 700.0,
+   "fiyat": 7906.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-138T",
+   "debi": 33000.0,
+   "basinc": 900.0,
+   "fiyat": 7915.0,
+   "g2_fiyat": 207.6,
+   "g4_fiyat": 120.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-139T",
+   "debi": 34000.0,
+   "basinc": 300.0,
+   "fiyat": 7916.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-140T",
+   "debi": 34000.0,
+   "basinc": 500.0,
+   "fiyat": 7910.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-141T",
+   "debi": 34000.0,
+   "basinc": 700.0,
+   "fiyat": 7915.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-142T",
+   "debi": 34000.0,
+   "basinc": 900.0,
+   "fiyat": 7915.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-143T",
+   "debi": 35000.0,
+   "basinc": 300.0,
+   "fiyat": 8636.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-144T",
+   "debi": 35000.0,
+   "basinc": 500.0,
+   "fiyat": 8636.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-145T",
+   "debi": 35000.0,
+   "basinc": 700.0,
+   "fiyat": 9046.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-146T",
+   "debi": 35000.0,
+   "basinc": 900.0,
+   "fiyat": 9045.0,
+   "g2_fiyat": 220.8,
+   "g4_fiyat": 127.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-147T",
+   "debi": 36000.0,
+   "basinc": 300.0,
+   "fiyat": 8636.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-148T",
+   "debi": 36000.0,
+   "basinc": 500.0,
+   "fiyat": 8635.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-149T",
+   "debi": 36000.0,
+   "basinc": 700.0,
+   "fiyat": 9046.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-150T",
+   "debi": 36000.0,
+   "basinc": 900.0,
+   "fiyat": 9045.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-151T",
+   "debi": 37000.0,
+   "basinc": 300.0,
+   "fiyat": 8636.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-152T",
+   "debi": 37000.0,
+   "basinc": 500.0,
+   "fiyat": 8635.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-153T",
+   "debi": 37000.0,
+   "basinc": 700.0,
+   "fiyat": 9046.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-154T",
+   "debi": 37000.0,
+   "basinc": 900.0,
+   "fiyat": 9045.0,
+   "g2_fiyat": 234.0,
+   "g4_fiyat": 135.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-155T",
+   "debi": 38000.0,
+   "basinc": 300.0,
+   "fiyat": 9047.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-156T",
+   "debi": 38000.0,
+   "basinc": 500.0,
+   "fiyat": 9046.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-157T",
+   "debi": 38000.0,
+   "basinc": 700.0,
+   "fiyat": 9046.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-158T",
+   "debi": 38000.0,
+   "basinc": 900.0,
+   "fiyat": 9657.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-159T",
+   "debi": 39000.0,
+   "basinc": 300.0,
+   "fiyat": 9071.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-160T",
+   "debi": 39000.0,
+   "basinc": 500.0,
+   "fiyat": 9069.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-161T",
+   "debi": 39000.0,
+   "basinc": 700.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-162T",
+   "debi": 39000.0,
+   "basinc": 900.0,
+   "fiyat": 9706.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-163T",
+   "debi": 40000.0,
+   "basinc": 300.0,
+   "fiyat": 9071.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-164T",
+   "debi": 40000.0,
+   "basinc": 500.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-165T",
+   "debi": 40000.0,
+   "basinc": 700.0,
+   "fiyat": 9069.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-166T",
+   "debi": 40000.0,
+   "basinc": 900.0,
+   "fiyat": 9705.0,
+   "g2_fiyat": 248.4,
+   "g4_fiyat": 142.8,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-167T",
+   "debi": 41000.0,
+   "basinc": 300.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-168T",
+   "debi": 41000.0,
+   "basinc": 500.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-169T",
+   "debi": 41000.0,
+   "basinc": 700.0,
+   "fiyat": 9069.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-170T",
+   "debi": 41000.0,
+   "basinc": 900.0,
+   "fiyat": 9705.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-171T",
+   "debi": 42000.0,
+   "basinc": 300.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-172T",
+   "debi": 42000.0,
+   "basinc": 500.0,
+   "fiyat": 9070.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-173T",
+   "debi": 42000.0,
+   "basinc": 700.0,
+   "fiyat": 9706.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-174T",
+   "debi": 42000.0,
+   "basinc": 900.0,
+   "fiyat": 9705.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-175T",
+   "debi": 43000.0,
+   "basinc": 300.0,
+   "fiyat": 9673.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-176T",
+   "debi": 43000.0,
+   "basinc": 500.0,
+   "fiyat": 9673.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-177T",
+   "debi": 43000.0,
+   "basinc": 700.0,
+   "fiyat": 10718.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-178T",
+   "debi": 43000.0,
+   "basinc": 900.0,
+   "fiyat": 11069.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 22.0
+  },
+  {
+   "model": "P-SYH-179T",
+   "debi": 44000.0,
+   "basinc": 300.0,
+   "fiyat": 12305.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-180T",
+   "debi": 44000.0,
+   "basinc": 500.0,
+   "fiyat": 12520.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-181T",
+   "debi": 44000.0,
+   "basinc": 700.0,
+   "fiyat": 12486.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-182T",
+   "debi": 44000.0,
+   "basinc": 900.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-183T",
+   "debi": 45000.0,
+   "basinc": 300.0,
+   "fiyat": 12298.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-184T",
+   "debi": 45000.0,
+   "basinc": 500.0,
+   "fiyat": 12492.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-185T",
+   "debi": 45000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-186T",
+   "debi": 45000.0,
+   "basinc": 900.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 261.6,
+   "g4_fiyat": 151.2,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-187T",
+   "debi": 46000.0,
+   "basinc": 300.0,
+   "fiyat": 12298.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 11.0
+  },
+  {
+   "model": "P-SYH-188T",
+   "debi": 46000.0,
+   "basinc": 500.0,
+   "fiyat": 12492.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-189T",
+   "debi": 46000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-190T",
+   "debi": 46000.0,
+   "basinc": 900.0,
+   "fiyat": 13413.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 22.0
+  },
+  {
+   "model": "P-SYH-191T",
+   "debi": 47000.0,
+   "basinc": 300.0,
+   "fiyat": 12494.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-192T",
+   "debi": 47000.0,
+   "basinc": 500.0,
+   "fiyat": 12486.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-193T",
+   "debi": 47000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-194T",
+   "debi": 47000.0,
+   "basinc": 900.0,
+   "fiyat": 13413.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 22.0
+  },
+  {
+   "model": "P-SYH-195T",
+   "debi": 48000.0,
+   "basinc": 300.0,
+   "fiyat": 12494.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-196T",
+   "debi": 48000.0,
+   "basinc": 500.0,
+   "fiyat": 12486.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-197T",
+   "debi": 48000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 276.0,
+   "g4_fiyat": 158.4,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-198T",
+   "debi": 48000.0,
+   "basinc": 900.0,
+   "fiyat": 13413.0,
+   "g2_fiyat": 307.2,
+   "g4_fiyat": 177.6,
+   "motor": 22.0
+  },
+  {
+   "model": "P-SYH-199T",
+   "debi": 49000.0,
+   "basinc": 300.0,
+   "fiyat": 12492.0,
+   "g2_fiyat": 307.2,
+   "g4_fiyat": 177.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-200T",
+   "debi": 49000.0,
+   "basinc": 500.0,
+   "fiyat": 12486.0,
+   "g2_fiyat": 307.2,
+   "g4_fiyat": 177.6,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-201T",
+   "debi": 49000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 307.2,
+   "g4_fiyat": 177.6,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-202T",
+   "debi": 49000.0,
+   "basinc": 900.0,
+   "fiyat": 13413.0,
+   "g2_fiyat": 307.2,
+   "g4_fiyat": 177.6,
+   "motor": 22.0
+  },
+  {
+   "model": "P-SYH-203T",
+   "debi": 50000.0,
+   "basinc": 300.0,
+   "fiyat": 12492.0,
+   "g2_fiyat": 322.8,
+   "g4_fiyat": 186.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-204T",
+   "debi": 50000.0,
+   "basinc": 500.0,
+   "fiyat": 12493.0,
+   "g2_fiyat": 322.8,
+   "g4_fiyat": 186.0,
+   "motor": 15.0
+  },
+  {
+   "model": "P-SYH-205T",
+   "debi": 50000.0,
+   "basinc": 700.0,
+   "fiyat": 13014.0,
+   "g2_fiyat": 322.8,
+   "g4_fiyat": 186.0,
+   "motor": 18.5
+  },
+  {
+   "model": "P-SYH-206T",
+   "debi": 50000.0,
+   "basinc": 900.0,
+   "fiyat": 13413.0,
+   "g2_fiyat": 322.8,
+   "g4_fiyat": 186.0,
+   "motor": 22.0
+  }
+ ]
+}

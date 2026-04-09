@@ -1,0 +1,184 @@
+{
+ "sheets": [
+  {
+   "name": "Kanal Tipi Yuvarlak Fanlar",
+   "file": "kanal_tipi_yuvarlak_fanlar.json",
+   "model_count": 9,
+   "basinc_count": 61
+  },
+  {
+   "name": "Kanal Tipi Dikdörtgen Fanlar",
+   "file": "kanal_tipi_dikdörtgen_fanlar.json",
+   "model_count": 11,
+   "basinc_count": 91
+  },
+  {
+   "name": "Harici Motorlu Dikdörtgen Fan M",
+   "file": "harici_motorlu_dikdörtgen_fan_m.json",
+   "model_count": 6,
+   "basinc_count": 61
+  },
+  {
+   "name": "Harici Motorlu Dikdörtgen Fan T",
+   "file": "harici_motorlu_dikdörtgen_fan_t.json",
+   "model_count": 6,
+   "basinc_count": 61
+  },
+  {
+   "name": "Harici Motorlu Ex-Proof Fanlar",
+   "file": "harici_motorlu_ex-proof_fanlar.json",
+   "model_count": 6,
+   "basinc_count": 61
+  },
+  {
+   "name": "Rad.Yat. Çatı Tipi Fan",
+   "file": "rad.yat._çatı_tipi_fan.json",
+   "model_count": 9,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Yat. Dıştan Çatı Tipi Fan M",
+   "file": "rad.yat._dıştan_çatı_tipi_fan_m.json",
+   "model_count": 7,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Yat. Dıştan Çatı Tipi Fan T",
+   "file": "rad.yat._dıştan_çatı_tipi_fan_t.json",
+   "model_count": 7,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad. Ex. Dıştan Çatı Tipi Fan T",
+   "file": "rad._ex._dıştan_çatı_tipi_fan_t.json",
+   "model_count": 7,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Dik. Çatı Tipi Fan",
+   "file": "rad.dik._çatı_tipi_fan.json",
+   "model_count": 7,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Dik. Dıştan Çatı Tipi Fan M",
+   "file": "rad.dik._dıştan_çatı_tipi_fan_m.json",
+   "model_count": 6,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Dik. Dıştan Çatı Tipi Fan T",
+   "file": "rad.dik._dıştan_çatı_tipi_fan_t.json",
+   "model_count": 6,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Yat. Çatı Tipi Fan EC",
+   "file": "rad.yat._çatı_tipi_fan_ec.json",
+   "model_count": 9,
+   "basinc_count": 91
+  },
+  {
+   "name": "Rad.Dik. Çatı Tipi Fan EC",
+   "file": "rad.dik._çatı_tipi_fan_ec.json",
+   "model_count": 7,
+   "basinc_count": 91
+  },
+  {
+   "name": "Kanal Tipi Dikdörtgen EC Fanlar",
+   "file": "kanal_tipi_dikdörtgen_ec_fanlar.json",
+   "model_count": 11,
+   "basinc_count": 91
+  },
+  {
+   "name": " Aksiyel Çatı Tipi Fan",
+   "file": "_aksiyel_çatı_tipi_fan.json",
+   "model_count": 18,
+   "basinc_count": 36
+  },
+  {
+   "name": "Basınçlandırma Fanları EX",
+   "file": "basınçlandırma_fanları_ex.json",
+   "model_count": 31,
+   "basinc_count": 121
+  },
+  {
+   "name": "Basınçlandırma Fanları EX Çatı",
+   "file": "basınçlandırma_fanları_ex_çatı.json",
+   "model_count": 31,
+   "basinc_count": 121
+  },
+  {
+   "name": "Basınçlandırma Fanları EX Hücre",
+   "file": "basınçlandırma_fanları_ex_hücre.json",
+   "model_count": 31,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duvar Tipi Aksiyal Fan",
+   "file": "duvar_tipi_aksiyal_fan.json",
+   "model_count": 18,
+   "basinc_count": 36
+  },
+  {
+   "name": "Duvar Tipi Aksiyel Fan EX",
+   "file": "duvar_tipi_aksiyel_fan_ex.json",
+   "model_count": 17,
+   "basinc_count": 36
+  },
+  {
+   "name": "Basınçlandırma Fanları",
+   "file": "basınçlandırma_fanları.json",
+   "model_count": 121,
+   "basinc_count": 121
+  },
+  {
+   "name": "Basınçlandırma Fanları Çatı Tip",
+   "file": "basınçlandırma_fanları_çatı_tip.json",
+   "model_count": 121,
+   "basinc_count": 121
+  },
+  {
+   "name": "Basınçlandırma Fanları Hücreli",
+   "file": "basınçlandırma_fanları_hücreli.json",
+   "model_count": 121,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları",
+   "file": "duman_tahliye_fanları.json",
+   "model_count": 118,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları Çatı Tip",
+   "file": "duman_tahliye_fanları_çatı_tip.json",
+   "model_count": 118,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları Hücreli",
+   "file": "duman_tahliye_fanları_hücreli.json",
+   "model_count": 118,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları F400",
+   "file": "duman_tahliye_fanları_f400.json",
+   "model_count": 118,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları Çatı F400",
+   "file": "duman_tahliye_fanları_çatı_f400.json",
+   "model_count": 118,
+   "basinc_count": 121
+  },
+  {
+   "name": "Duman Tahliye Fanları HücreF400",
+   "file": "duman_tahliye_fanları_hücref400.json",
+   "model_count": 118,
+   "basinc_count": 121
+  }
+ ]
+}

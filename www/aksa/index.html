@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>AKSA Motor &amp; Fan - Point HVAC</title>
+  <link rel="icon" type="image/x-icon" href="../assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    .sub-cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .sub-cat-btn {
+      padding: 6px 14px; border: 1px solid var(--gray-200); border-radius: 8px;
+      background: #fff; font-size: .8rem; font-weight: 600; cursor: pointer;
+      font-family: inherit; transition: .2s;
+    }
+    .sub-cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    [data-theme="ozel"] .sub-cat-btn { background: #1a2035; border-color: #2a3348; color: #d0d8e8; }
+    [data-theme="ozel"] .sub-cat-btn.active { background: var(--primary); border-color: var(--primary); }
+    [data-theme="doga"] .sub-cat-btn { background: rgba(27,46,27,.85); border-color: rgba(76,175,80,.25); color: #C8E6C9; }
+    [data-theme="doga"] .sub-cat-btn.active { background: #2E7D32; border-color: #2E7D32; }
+    .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; margin-top: 12px; }
+    .spec-item { display: flex; justify-content: space-between; padding: 4px 0; font-size: .82rem; }
+    .spec-label { color: rgba(255,255,255,.5); }
+    .spec-value { color: #fff; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <a href="../index.html" class="back-btn" onclick="event.preventDefault(); history.back();">&#8592; Ana Sayfa</a>
+
+    <div class="header" style="margin-bottom:20px">
+      <div class="header-left">
+        <div>
+          <h1>&#9889; AKSA Motor &amp; Fan</h1>
+          <div class="subtitle">2026 fiyat listesi ve debi bazli secim</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9684;</span></button>
+      </div>
+    </div>
+
+    <!-- Sayfa (sheet) secimi -->
+    <div class="card" id="sheetCard">
+      <div class="card-title">Urun Grubu</div>
+      <div id="catLoading" style="text-align:center;padding:20px;color:var(--gray-400)"><div class="spinner spinner-dark"></div></div>
+      <div class="tab-group" id="sheetTabs" style="display:none"></div>
+    </div>
+
+    <!-- Alt kategori + form -->
+    <div class="card" id="formCard" style="display:none">
+      <div class="card-title">Alt Kategori</div>
+      <div class="sub-cats" id="subCats"></div>
+
+      <div class="card-title" style="margin-top:12px">Secim Kriterleri</div>
+      <div style="display:grid;gap:14px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label class="form-label">Debi (m&sup3;/h)</label>
+            <input type="number" id="inputDebi" class="form-input" step="1" placeholder="Orn: 2000" inputmode="numeric">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Max Guc (W)</label>
+            <input type="number" id="inputMaxGuc" class="form-input" step="1" placeholder="Opsiyonel" inputmode="numeric">
+          </div>
+        </div>
+        <button class="btn btn-primary btn-block" onclick="doSelect()">AKSA Sec</button>
+      </div>
+    </div>
+
+    <!-- Sonuc -->
+    <div id="resultSection" style="display:none">
+      <div class="result-panel" id="resultPanel"></div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="navModel(-1)">&#9664; Onceki</button>
+        <button class="btn btn-success btn-sm" style="flex:2" onclick="addToDIA()">&#128722; DIA Ekle</button>
+        <button class="btn btn-secondary btn-sm" style="flex:1" onclick="navModel(1)">Sonraki &#9654;</button>
+      </div>
+    </div>
+  </div>
+
+  <a href="../dia/index.html" class="dia-badge" style="display:none">&#128722;<span class="count">0</span></a>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/data-loader.js"></script>
+  <script src="../js/price-calc.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    // Tema
+    function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme');let n;if(!c||c==='light')n='ozel';else if(c==='ozel')n='doga';else n='light';h.setAttribute('data-theme',n);setSetting('theme',n);const b=document.querySelector('.theme-icon');if(b){if(n==='ozel')b.innerHTML='&#127807;';else if(n==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}}
+    (function(){const s=getSetting('theme','light');document.documentElement.setAttribute('data-theme',s);setTimeout(()=>{const b=document.querySelector('.theme-icon');if(b){if(s==='ozel')b.innerHTML='&#127807;';else if(s==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}},30);})();
+
+    let _allData = null;
+    let _activeSheetName = '';
+    let _activeItems = [];  // aktif sheet + kategori'deki urunler
+    let _activeSubCat = '';
+    let _sortedModels = [];
+    let _selectedIndex = -1;
+    let _lastResult = null;
+
+    async function init() {
+      try {
+        _allData = await DataLoader.loadAksa();
+        const sheets = Object.keys(_allData);
+        renderSheets(sheets);
+        App.updateDIABadge();
+      } catch (e) {
+        document.getElementById('catLoading').innerHTML = '<div style="color:var(--danger)">Veri yuklenemedi</div>';
+      }
+    }
+
+    function renderSheets(sheets) {
+      document.getElementById('catLoading').style.display = 'none';
+      const tabs = document.getElementById('sheetTabs');
+      tabs.style.display = '';
+      sheets.forEach((name, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn' + (i === 0 ? ' active' : '');
+        btn.textContent = name;
+        btn.onclick = () => {
+          tabs.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          selectSheet(name);
+        };
+        tabs.appendChild(btn);
+      });
+      if (sheets.length) selectSheet(sheets[0]);
+    }
+
+    function selectSheet(name) {
+      _activeSheetName = name;
+      const sheetData = _allData[name];
+      // Veri duz dizi olarak geliyor (items icinde degil)
+      _activeItems = Array.isArray(sheetData) ? sheetData : (sheetData ? (sheetData.items || []) : []);
+
+      // Alt kategorileri bul
+      const cats = [...new Set(_activeItems.map(i => i.kategori).filter(Boolean))];
+      renderSubCats(cats);
+
+      document.getElementById('formCard').style.display = '';
+      document.getElementById('resultSection').style.display = 'none';
+    }
+
+    function renderSubCats(cats) {
+      const container = document.getElementById('subCats');
+      container.innerHTML = '';
+      if (!cats.length) { container.innerHTML = '<span style="font-size:.82rem;color:var(--gray-400)">Alt kategori yok</span>'; _activeSubCat = ''; return; }
+
+      // "Tumu" butonu
+      const allBtn = document.createElement('button');
+      allBtn.className = 'sub-cat-btn active';
+      allBtn.textContent = 'Tumu';
+      allBtn.onclick = () => { _activeSubCat = ''; container.querySelectorAll('.sub-cat-btn').forEach(b => b.classList.remove('active')); allBtn.classList.add('active'); };
+      container.appendChild(allBtn);
+      _activeSubCat = '';
+
+      for (const cat of cats) {
+        const btn = document.createElement('button');
+        btn.className = 'sub-cat-btn';
+        btn.textContent = cat;
+        btn.onclick = () => { _activeSubCat = cat; container.querySelectorAll('.sub-cat-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); };
+        container.appendChild(btn);
+      }
+    }
+
+    function doSelect() {
+      const debiReq = toFloat(document.getElementById('inputDebi').value);
+      const maxGuc = toFloat(document.getElementById('inputMaxGuc').value);
+      if (!debiReq) { App.showToast('Debi degeri girin', 'error'); return; }
+
+      // Filtrele
+      let items = _activeItems.filter(i => i.debi != null && i.debi > 0);
+      if (_activeSubCat) items = items.filter(i => i.kategori === _activeSubCat);
+      if (maxGuc) items = items.filter(i => i.guc_w == null || i.guc_w <= maxGuc);
+
+      if (!items.length) { App.showToast('Uygun urun bulunamadi', 'error'); return; }
+
+      // Sirala (debi, fiyat)
+      _sortedModels = items.sort((a, b) => (a.debi - b.debi) || ((a.fiyat || 0) - (b.fiyat || 0)));
+
+      // Eslesme
+      let idx = -1;
+      // 1. Tam eslesme
+      const exactIdx = _sortedModels.findIndex(m => Math.abs(m.debi - debiReq) < 1);
+      if (exactIdx !== -1) { idx = exactIdx; }
+      // 2. Ust model
+      if (idx === -1) {
+        idx = _sortedModels.findIndex(m => m.debi >= debiReq);
+      }
+      // 3. En buyuk
+      if (idx === -1) idx = _sortedModels.length - 1;
+
+      _selectedIndex = idx;
+      renderModel();
+      document.getElementById('resultSection').style.display = '';
+      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
+      playSound('click');
+    }
+
+    function navModel(dir) {
+      const newIdx = _selectedIndex + dir;
+      if (newIdx < 0 || newIdx >= _sortedModels.length) { App.showToast('Son urun', ''); return; }
+      _selectedIndex = newIdx;
+      renderModel();
+    }
+
+    function renderModel() {
+      const m = _sortedModels[_selectedIndex];
+      const fiyat = m.fiyat || m.fiyat_ayaksiz || 0;
+
+      _lastResult = {
+        model: m.model || '-', kategori: m.kategori || _activeSubCat,
+        seri: m.seri, tip: m.tip, voltaj: m.voltaj,
+        gucW: m.guc_w, debi: m.debi, devir: m.devir,
+        sesDb: m.ses_db, akimA: m.akim_a, basincPa: m.basinc_pa,
+        koli: m.koli, fiyat, fiyatAyaksiz: m.fiyat_ayaksiz,
+        fiyatAyakli: m.fiyat_ayakli, sheetName: _activeSheetName
+      };
+
+      const p = document.getElementById('resultPanel');
+      let h = '<div class="result-title">' + _activeSheetName + '</div>';
+      h += '<div style="font-size:1.3rem;font-weight:800;color:var(--secondary);margin-bottom:2px">' + (m.model || '-') + '</div>';
+      if (m.kategori) h += '<div style="font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:4px">' + m.kategori + '</div>';
+      h += '<div style="font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:12px">Urun ' + (_selectedIndex + 1) + ' / ' + _sortedModels.length + '</div>';
+
+      // Ozellikler grid
+      h += '<div class="spec-grid">';
+      if (m.seri) h += specItem('Seri', m.seri);
+      if (m.tip) h += specItem('Tip', m.tip);
+      if (m.voltaj) h += specItem('Voltaj', m.voltaj);
+      if (m.guc_w != null) h += specItem('Guc', m.guc_w + ' W');
+      if (m.debi != null) h += specItem('Debi', formatNumber(m.debi) + ' m&sup3;/h');
+      if (m.devir != null) h += specItem('Devir', formatNumber(m.devir) + ' RPM');
+      if (m.ses_db != null) h += specItem('Ses', m.ses_db + ' dB');
+      if (m.akim_a != null) h += specItem('Akim', m.akim_a + ' A');
+      if (m.basinc_pa != null) h += specItem('Basinc', m.basinc_pa + ' Pa');
+      if (m.koli) h += specItem('Koli', m.koli);
+      h += '</div>';
+
+      h += '<div style="height:1px;background:rgba(255,255,255,.1);margin:14px 0"></div>';
+
+      // Fiyat
+      if (m.fiyat != null) {
+        h += '<div class="result-row"><span class="result-label">Fiyat</span><span class="result-value highlight">' + formatCurrency(m.fiyat) + '</span></div>';
+      }
+      if (m.fiyat_ayaksiz != null) {
+        h += '<div class="result-row"><span class="result-label">Fiyat (Ayaksiz)</span><span class="result-value">' + formatCurrency(m.fiyat_ayaksiz) + '</span></div>';
+      }
+      if (m.fiyat_ayakli != null) {
+        h += '<div class="result-row"><span class="result-label">Fiyat (Ayakli)</span><span class="result-value">' + formatCurrency(m.fiyat_ayakli) + '</span></div>';
+      }
+
+      p.innerHTML = h;
+    }
+
+    function specItem(label, value) {
+      return '<div class="spec-item"><span class="spec-label">' + label + '</span><span class="spec-value">' + value + '</span></div>';
+    }
+
+    function addToDIA() {
+      if (!_lastResult) return;
+      App.addToDIA({
+        modul: 'aksa', kategori: _lastResult.sheetName + ' / ' + (_lastResult.kategori || ''),
+        model: _lastResult.model, debi: _lastResult.debi,
+        fiyat: _lastResult.fiyat, gucW: _lastResult.gucW,
+        voltaj: _lastResult.voltaj
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

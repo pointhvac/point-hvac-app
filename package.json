@@ -1,0 +1,22 @@
+{
+  "name": "point-hvac-app",
+  "version": "2.0.0",
+  "description": "Point HVAC - Secim ve Fiyatlandirma Uygulamasi (Android)",
+  "main": "www/index.html",
+  "scripts": {
+    "build:data": "python tools/build_data.py",
+    "serve": "npx http-server www -p 8080 -o",
+    "cap:sync": "npx cap sync android",
+    "cap:open": "npx cap open android",
+    "cap:build": "npx cap sync android && cd android && ./gradlew assembleDebug"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^6.0.0",
+    "http-server": "^14.1.1"
+  }
+}

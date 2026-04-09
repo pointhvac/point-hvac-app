@@ -1,0 +1,1367 @@
+{
+ "(50)IGK+ISI+DX": [
+  {
+   "model": "P-KS-1-2-MO-5-THIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 3657.362522113101
+  },
+  {
+   "model": "P-KS-1-2-MO-6 -THIS-KF-TF-AA-SG",
+   "debi": 4461.0,
+   "fiyat": 4633.807693694356
+  },
+  {
+   "model": "P-KS-1-2-MO-9-THIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 4946.744653739142
+  },
+  {
+   "model": "P-KS-1-2-MO-16-THIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 6124.695520064373
+  },
+  {
+   "model": "P-KS-1-2-MO-23-THIS-KF-TF-AA-SG",
+   "debi": 9671.0,
+   "fiyat": 7736.82255504485
+  },
+  {
+   "model": "P-KS-1-2-MO-31-THIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 8748.47443453308
+  },
+  {
+   "model": "P-KS-1-2-MO-35-THIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 10311.37449103143
+  },
+  {
+   "model": "P-KS-1-2-MO-36-THIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 11033.371220169547
+  },
+  {
+   "model": "P-KS-1-2-MO-38-THIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 12438.093356756306
+  },
+  {
+   "model": "P-KS-1-2-MO-39-THIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 12794.152772207877
+  },
+  {
+   "model": "P-KS-1-2-MO-42-THIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 11731.507835712084
+  },
+  {
+   "model": "P-KS-1-2-MO-44-THIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 15695.626937415283
+  },
+  {
+   "model": "P-KS-1-2-MO-49-THIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 15020.931456599254
+  },
+  {
+   "model": "P-KS-1-2-MO-64-THIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 16516.71949756824
+  },
+  {
+   "model": "P-KS-1-2-MO-60-THIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 18385.22747359571
+  },
+  {
+   "model": "P-KS-1-2-MO-60.A-THIS-KF-TF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 17581.361123669052
+  },
+  {
+   "model": "P-KS-1-2-MO-68-THIS-KF-TF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 18726.82799393363
+  },
+  {
+   "model": "P-KS-1-2-MO-69-THIS-KF-TF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 20364.531098563817
+  },
+  {
+   "model": "P-KS-1-2-MO-82-THIS-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 23680.904999885013
+  },
+  {
+   "model": "P-KS-1-2-MO-91-THIS-KF-TF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 23850.496940654335
+  },
+  {
+   "model": "P-KS-1-2-MO-89-THIS-KF-TF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 25838.26681430934
+  },
+  {
+   "model": "P-KS-1-2-MO-89-THIS-KT-TF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 26734.426529665227
+  },
+  {
+   "model": "P-KS-1-2-MO-102-THIS-KF-TF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 23151.187517116377
+  },
+  {
+   "model": "P-KS-1-2-MO-90-THIS-KF-TF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 28536.990149673362
+  },
+  {
+   "model": "P-KS-1-2-MO-99-THIS-KF-TF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 28708.22927958718
+  },
+  {
+   "model": "P-KS-1-2-MO-109-THIS-KF-TF-AA-SG",
+   "debi": 41513.0,
+   "fiyat": 28786.358689014625
+  },
+  {
+   "model": "P-KS-1-2-MO-102aa-THIS-KF-TF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 28852.620146698646
+  },
+  {
+   "model": "P-KS-1-2-MO-104-THIS-KF-TF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 31963.457039069388
+  },
+  {
+   "model": "P-KS-1-2-MO-110-THIS-KF-TF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 32803.72191148285
+  },
+  {
+   "model": "P-KS-1-2-MO-111-THIS-KF-TF-AA-SG (1)",
+   "debi": 51966.0,
+   "fiyat": 33755.36563625342
+  },
+  {
+   "model": "P-KS-1-2-MO-96-THIS-KF-TF-AA-SG",
+   "debi": 53549.0,
+   "fiyat": 35096.49482973316
+  },
+  {
+   "model": "P-KS-1-2-MO-100-THIS-KF-TF-AA-SG",
+   "debi": 55898.0,
+   "fiyat": 35877.70738844695
+  },
+  {
+   "model": "P-KS-1-2-MO-106-THIS-KF-TF-AA-SG",
+   "debi": 57541.0,
+   "fiyat": 37705.674573150005
+  },
+  {
+   "model": "P-KS-1-2-MO-112-THIS-KF-TF-AA-SG",
+   "debi": 60978.0,
+   "fiyat": 38801.21923672144
+  },
+  {
+   "model": "P-KS-1-2-MO-113-THIS-KF-TF-AA-SG",
+   "debi": 72993.0,
+   "fiyat": 49571.98170760304
+  }
+ ],
+ "(50)IGK+ISI+DX+SUS": [
+  {
+   "model": "P-KS-1-2-MO-5-THIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 4260.109181410235
+  },
+  {
+   "model": "P-KS-1-2-MO-6 -THIS-KF-TF-AA-SG",
+   "debi": 4461.0,
+   "fiyat": 5301.92298175124
+  },
+  {
+   "model": "P-KS-1-2-MO-9-THIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 5662.381453859849
+  },
+  {
+   "model": "P-KS-1-2-MO-16-THIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 6959.832792662438
+  },
+  {
+   "model": "P-KS-1-2-MO-23-THIS-KF-TF-AA-SG",
+   "debi": 9671.0,
+   "fiyat": 8657.08910567503
+  },
+  {
+   "model": "P-KS-1-2-MO-31-THIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 9771.107226250268
+  },
+  {
+   "model": "P-KS-1-2-MO-35-THIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 11421.443123182707
+  },
+  {
+   "model": "P-KS-1-2-MO-36-THIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 12180.59373081372
+  },
+  {
+   "model": "P-KS-1-2-MO-38-THIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 13101.97847937694
+  },
+  {
+   "model": "P-KS-1-2-MO-39-THIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 14006.536171301854
+  },
+  {
+   "model": "P-KS-1-2-MO-42-THIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 12952.20164757258
+  },
+  {
+   "model": "P-KS-1-2-MO-44-THIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 17007.1107718197
+  },
+  {
+   "model": "P-KS-1-2-MO-49-THIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 16347.527920492787
+  },
+  {
+   "model": "P-KS-1-2-MO-64-THIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 17890.026860721835
+  },
+  {
+   "model": "P-KS-1-2-MO-60-THIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 19874.073696783486
+  },
+  {
+   "model": "P-KS-1-2-MO-60.a-THIS-KF-TF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 19053.34001571107
+  },
+  {
+   "model": "P-KS-1-2-MO-68-THIS-KF-TF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 20291.32178801835
+  },
+  {
+   "model": "P-KS-1-2-MO-69-THIS-KF-TF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 21939.674192453072
+  },
+  {
+   "model": "P-KS-1-2-MO-82-THIS-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 25423.11799367005
+  },
+  {
+   "model": "P-KS-1-2-MO-91-THIS-KF-TF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 25644.28289349431
+  },
+  {
+   "model": "P-KS-1-2-MO-89-THIS-KF-TF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 27648.802222337566
+  },
+  {
+   "model": "P-KS-1-2-MO-89-THIS-KT-TF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 28572.028068638196
+  },
+  {
+   "model": "P-KS-1-2-MO-102-THIS-KF-TF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 26165.232487176432
+  },
+  {
+   "model": "P-KS-1-2-MO-90-THIS-KF-TF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 30526.373825905444
+  },
+  {
+   "model": "P-KS-1-2-MO-99-THIS-KF-TF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 30647.210723738855
+  },
+  {
+   "model": "P-KS-1-2-MO-109-THIS-KF-TF-AA-SG",
+   "debi": 41513.0,
+   "fiyat": 30797.980514384642
+  },
+  {
+   "model": "P-KS-1-2-MO-102.a-THIS-KF-TF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 30821.592887853883
+  },
+  {
+   "model": "P-KS-1-2-MO-104-THIS-KF-TF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 34081.821640261325
+  },
+  {
+   "model": "P-KS-1-2-MO-110-THIS-KF-TF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 35007.09545421644
+  },
+  {
+   "model": "P-KS-1-2-MO-111-THIS-KF-TF-AA-SG (1)",
+   "debi": 51966.0,
+   "fiyat": 35991.534642343155
+  },
+  {
+   "model": "P-KS-1-2-MO-96-THIS-KF-TF-AA-SG",
+   "debi": 53549.0,
+   "fiyat": 37345.53259146008
+  },
+  {
+   "model": "P-KS-1-2-MO-100-THIS-KF-TF-AA-SG",
+   "debi": 55898.0,
+   "fiyat": 38153.02773789955
+  },
+  {
+   "model": "P-KS-1-2-MO-106-THIS-KF-TF-AA-SG",
+   "debi": 57541.0,
+   "fiyat": 40012.310627886654
+  },
+  {
+   "model": "P-KS-1-2-MO-112-THIS-KF-TF-AA-SG",
+   "debi": 60978.0,
+   "fiyat": 41344.574316883256
+  },
+  {
+   "model": "P-KS-1-2-MO-113-THIS-KF-TF-AA-SG",
+   "debi": 72993.0,
+   "fiyat": 52799.18635079763
+  }
+ ],
+ "(50)IGK+KH+ISI+DX": [
+  {
+   "model": "P-KS-1-2-MO-5-KHIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 3973.228770399824
+  },
+  {
+   "model": "P-KS-1-2-MO-6 -KHIS-KF-TF-AA-SG",
+   "debi": 4461.0,
+   "fiyat": 4979.6228896968605
+  },
+  {
+   "model": "P-KS-1-2-MO-9-KHIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 5245.7669406735495
+  },
+  {
+   "model": "P-KS-1-2-MO-16-KHIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 6618.588066116624
+  },
+  {
+   "model": "P-KS-1-2-MO-23-KHIS-KF-TF-AA-SG",
+   "debi": 9671.0,
+   "fiyat": 8284.092991429363
+  },
+  {
+   "model": "P-KS-1-2-MO-31-KHIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 9335.284389680695
+  },
+  {
+   "model": "P-KS-1-2-MO-35-KHIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 11074.34531825914
+  },
+  {
+   "model": "P-KS-1-2-MO-36-KHIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 11782.654534888721
+  },
+  {
+   "model": "P-KS-1-2-MO-38-KHIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 13207.67273303457
+  },
+  {
+   "model": "P-KS-1-2-MO-39-KHIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 13577.414542884206
+  },
+  {
+   "model": "P-KS-1-2-MO-42-KHIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 12526.346959055049
+  },
+  {
+   "model": "P-KS-1-2-MO-44-KHIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 16643.27510994681
+  },
+  {
+   "model": "P-KS-1-2-MO-49-KHIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 15981.326992900642
+  },
+  {
+   "model": "P-KS-1-2-MO-64-KHIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 17527.9932726441
+  },
+  {
+   "model": "P-KS-1-2-MO-60-KHIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 19430.400300483765
+  },
+  {
+   "model": "P-KS-1-2-MO-60.a-KHIS-KF-TF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 18639.006190560875
+  },
+  {
+   "model": "P-KS-1-2-MO-68-KHIS-KF-TF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 19794.34761555561
+  },
+  {
+   "model": "P-KS-1-2-MO-69-KHIS-KF-TF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 21459.532879746672
+  },
+  {
+   "model": "P-KS-1-2-MO-82-KHIS-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 24884.45467233702
+  },
+  {
+   "model": "P-KS-1-2-MO-91-KHIS-KF-TF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 24829.177666304437
+  },
+  {
+   "model": "P-KS-1-2-MO-89-KHIS-KF-TF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 27082.769329044397
+  },
+  {
+   "model": "P-KS-1-2-MO-89-KHIS-KT-TF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 28175.00249873118
+  },
+  {
+   "model": "P-KS-1-2-MO-102-KHIS-KF-TF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 25077.91915228816
+  },
+  {
+   "model": "P-KS-1-2-MO-90-KHIS-KF-TF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 30055.39958448019
+  },
+  {
+   "model": "P-KS-1-2-MO-99-KHIS-KF-TF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 30051.09384556578
+  },
+  {
+   "model": "P-KS-1-2-MO-109-KHIS-KF-TF-AA-SG",
+   "debi": 41513.0,
+   "fiyat": 30208.089725732127
+  },
+  {
+   "model": "P-KS-1-2-MO-102.a-KHIS-KF-TF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 30229.633531698724
+  },
+  {
+   "model": "P-KS-1-2-MO-104-KHIS-KF-TF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 33428.11170817641
+  },
+  {
+   "model": "P-KS-1-2-MO-110-KHIS-KF-TF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 34315.37739781658
+  },
+  {
+   "model": "P-KS-1-2-MO-111-KHIS-KF-TF-AA-SG (1)",
+   "debi": 51966.0,
+   "fiyat": 35297.327057718474
+  },
+  {
+   "model": "P-KS-1-2-MO-96-KHIS-KF-TF-AA-SG",
+   "debi": 53549.0,
+   "fiyat": 36765.5732478573
+  },
+  {
+   "model": "P-KS-1-2-MO-100-KHIS-KF-TF-AA-SG",
+   "debi": 55898.0,
+   "fiyat": 37577.05441512882
+  },
+  {
+   "model": "P-KS-1-2-MO-106-KHIS-KF-TF-AA-SG",
+   "debi": 57541.0,
+   "fiyat": 39463.23106123576
+  },
+  {
+   "model": "P-KS-1-2-MO-112-KHIS-KF-TF-AA-SG",
+   "debi": 60978.0,
+   "fiyat": 40896.76886481485
+  },
+  {
+   "model": "P-KS-1-2-MO-113-KHIS-KF-TF-AA-SG",
+   "debi": 72993.0,
+   "fiyat": 52243.0628469621
+  }
+ ],
+ "(50)TH+ISI": [
+  {
+   "model": "P-KS-1-0-MO-5-THI-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 1457.8313551489732
+  },
+  {
+   "model": "P-KS-1-0-MO-6-THI-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 1657.1806629720795
+  },
+  {
+   "model": "P-KS-1-0-MO-9-THI-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 1821.9298808650178
+  },
+  {
+   "model": "P-KS-1-0-MO-16-THI-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 2251.306779970995
+  },
+  {
+   "model": "P-KS-1-0-MO-18-THI-KF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 2511.5678204882156
+  },
+  {
+   "model": "P-KS-1-0-MO-33-THI-KF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 3261.1715175131185
+  },
+  {
+   "model": "P-KS-1-0-MO-35-THI-KF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 3387.0087315466926
+  },
+  {
+   "model": "P-KS-1-0-MO-36-THI-KF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 3554.513104642761
+  },
+  {
+   "model": "P-KS-1-0-MO-38-THI-KF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 4256.486528400008
+  },
+  {
+   "model": "P-KS-1-0-MO-40-THI-KF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 4355.827799779014
+  },
+  {
+   "model": "P-KS-1-0-MO-42-THI-KF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 4474.917903951685
+  },
+  {
+   "model": "P-KS-1-0-MO-44-THI-KF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 4918.107853048219
+  },
+  {
+   "model": "P-KS-1-0-MO-64-THI-KF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 4889.63412228019
+  },
+  {
+   "model": "P-KS-1-0-MO-51-THI-KF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 5350.507918125607
+  },
+  {
+   "model": "P-KS-1-0-MO-58-THI-KF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 5287.671819176646
+  },
+  {
+   "model": "P-KS-1-0-MO-66-THI-KF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 5518.27703918409
+  },
+  {
+   "model": "P-KS-1-0-MO-68-THI-KF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 5796.718745953082
+  },
+  {
+   "model": "P-KS-1-0-MO-81-THI-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 5795.995511183843
+  },
+  {
+   "model": "P-KS-1-0-MO-92-THI-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 6275.028716864854
+  },
+  {
+   "model": "P-KS-1-0-MO-91-THI-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 6237.554426048888
+  },
+  {
+   "model": "P-KS-1-0-MO-87-THI-KF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 6338.828765073178
+  },
+  {
+   "model": "P-KS-1-0-MO-91.a-THI-KF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 6261.002426048888
+  },
+  {
+   "model": "P-KS-1-0-MO-97-THI-KF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 7641.969972816989
+  },
+  {
+   "model": "P-KS-1-0-MO-88-THI-KF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 7717.793188496544
+  },
+  {
+   "model": "P-KS-1-0-MO-93-THI-KF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 7926.420425903788
+  },
+  {
+   "model": "P-KS-1-0-MO-98-THI-KF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 7954.7706541605785
+  },
+  {
+   "model": "P-KS-1-0-MO-102-THI-KF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 8260.783158844479
+  },
+  {
+   "model": "P-KS-1-0-MO-102.a-THI-KF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 8630.1598436225
+  }
+ ],
+ "(50)TH+ISI+DX": [
+  {
+   "model": "P-KS-1-0-MO-5-THIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 2520.9018457360326
+  },
+  {
+   "model": "P-KS-1-0-MO-6-THIS-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 2978.0613611837143
+  },
+  {
+   "model": "P-KS-1-0-MO-9-THIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 3340.1355250397537
+  },
+  {
+   "model": "P-KS-1-0-MO-16-THIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 3997.633188390905
+  },
+  {
+   "model": "P-KS-1-0-MO-18-THIS-KF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 4404.463582911437
+  },
+  {
+   "model": "P-KS-1-0-MO-33-THIS-KF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 6398.287654307275
+  },
+  {
+   "model": "P-KS-1-0-MO-35-THIS-KF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 7076.256396782859
+  },
+  {
+   "model": "P-KS-1-0-MO-36-THIS-KF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 7888.883732630978
+  },
+  {
+   "model": "P-KS-1-0-MO-38-THIS-KF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 8884.02864992779
+  },
+  {
+   "model": "P-KS-1-0-MO-40-THIS-KF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 9581.199615621017
+  },
+  {
+   "model": "P-KS-1-0-MO-42-THIS-KF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 10134.63800572135
+  },
+  {
+   "model": "P-KS-1-0-MO-44-THIS-KF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 11896.183633763614
+  },
+  {
+   "model": "P-KS-1-0-MO-64-THIS-KF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 11507.837877174137
+  },
+  {
+   "model": "P-KS-1-0-MO-51-THIS-KF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 13325.254667093885
+  },
+  {
+   "model": "P-KS-1-0-MO-58-THIS-KF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 13067.765623153477
+  },
+  {
+   "model": "P-KS-1-0-MO-66-THIS-KF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 14789.465758284901
+  },
+  {
+   "model": "P-KS-1-0-MO-68-THIS-KF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 13697.036326127054
+  },
+  {
+   "model": "P-KS-1-0-MO-81-THIS-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 14532.237644729325
+  },
+  {
+   "model": "P-KS-1-0-MO-92-THIS-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 16153.9722448483
+  },
+  {
+   "model": "P-KS-1-0-MO-91-THIS-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 15521.360491265174
+  },
+  {
+   "model": "P-KS-1-0-MO-87-THIS-KF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 17334.8464574303
+  },
+  {
+   "model": "P-KS-1-0-MO-91.a-THIS-KF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 16969.59205952767
+  },
+  {
+   "model": "P-KS-1-0-MO-97-THIS-KF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 17470.561141695438
+  },
+  {
+   "model": "P-KS-1-0-MO-88-THIS-KF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 18710.339902165473
+  },
+  {
+   "model": "P-KS-1-0-MO-93-THIS-KF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 19312.927883438497
+  },
+  {
+   "model": "P-KS-1-0-MO-98-THIS-KF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 20832.642397924297
+  },
+  {
+   "model": "P-KS-1-0-MO-102-THIS-KF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 22297.344393191765
+  },
+  {
+   "model": "P-KS-1-0-MO-102.a-THIS-KF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 22670.2398465612
+  }
+ ],
+ "(50)TH+DX": [
+  {
+   "model": "P-KS-1-0-MO-5-THS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 1992.2129738779445
+  },
+  {
+   "model": "P-KS-1-0-MO-6-THS-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 2366.0971939717974
+  },
+  {
+   "model": "P-KS-1-0-MO-9-THS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 2653.4783194003567
+  },
+  {
+   "model": "P-KS-1-0-MO-16-THS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 3151.832510798737
+  },
+  {
+   "model": "P-KS-1-0-MO-18-THS-KF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 3526.3863100523595
+  },
+  {
+   "model": "P-KS-1-0-MO-33-THS-KF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 5295.264315131459
+  },
+  {
+   "model": "P-KS-1-0-MO-35-THS-KF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 5883.492522173301
+  },
+  {
+   "model": "P-KS-1-0-MO-36-THS-KF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 6581.037725811796
+  },
+  {
+   "model": "P-KS-1-0-MO-38-THS-KF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 7530.590030690325
+  },
+  {
+   "model": "P-KS-1-0-MO-40-THS-KF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 8177.465948604269
+  },
+  {
+   "model": "P-KS-1-0-MO-42-THS-KF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 8623.76546108386
+  },
+  {
+   "model": "P-KS-1-0-MO-44-THS-KF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 10077.338704147045
+  },
+  {
+   "model": "P-KS-1-0-MO-64-THS-KF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 9721.52815398244
+  },
+  {
+   "model": "P-KS-1-0-MO-51-THS-KF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 11331.064450863609
+  },
+  {
+   "model": "P-KS-1-0-MO-58-THS-KF-AA-SG",
+   "debi": 26756.0,
+   "fiyat": 11133.287471045785
+  },
+  {
+   "model": "P-KS-1-0-MO-66-THS-KF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 12800.6625299226
+  },
+  {
+   "model": "P-KS-1-0-MO-68-THS-KF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 11523.330680087438
+  },
+  {
+   "model": "P-KS-1-0-MO-81-THS-KF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 12305.737061519812
+  },
+  {
+   "model": "P-KS-1-0-MO-92-THS-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 13790.573625044106
+  },
+  {
+   "model": "P-KS-1-0-MO-91-THS-KF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 13226.685019365646
+  },
+  {
+   "model": "P-KS-1-0-MO-87-THS-KF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 14940.51062457639
+  },
+  {
+   "model": "P-KS-1-0-MO-91.a-THS-KF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 14674.91658762814
+  },
+  {
+   "model": "P-KS-1-0-MO-97-THS-KF-AA-SG",
+   "debi": 38631.0,
+   "fiyat": 15020.738167427224
+  },
+  {
+   "model": "P-KS-1-0-MO-88-THS-KF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 16199.538678781313
+  },
+  {
+   "model": "P-KS-1-0-MO-93-THS-KF-AA-SG",
+   "debi": 41503.0,
+   "fiyat": 16684.793318146814
+  },
+  {
+   "model": "P-KS-1-0-MO-98-THS-KF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 18146.26087423707
+  },
+  {
+   "model": "P-KS-1-0-MO-102-THS-KF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 19442.434419560344
+  },
+  {
+   "model": "P-KS-1-0-MO-102.a-THS-KF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 19815.329872929786
+  }
+ ],
+ "(50)KH+ISI+DX": [
+  {
+   "model": "P-KS-1-0-MO-6-KHIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 3816.970839244663
+  },
+  {
+   "model": "P-KS-1-0-MO-8-KHIS-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 4104.769059058516
+  },
+  {
+   "model": "P-KS-1-0-MO-13-KHIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 4812.57153848667
+  },
+  {
+   "model": "P-KS-1-0-MO-18-KHIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 5806.8255190594355
+  },
+  {
+   "model": "P-KS-1-0-MO-25-KHIS-KF-TF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 6719.69253064792
+  },
+  {
+   "model": "P-KS-1-0-MO-34-KHIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 7574.47295592564
+  },
+  {
+   "model": "P-KS-1-0-MO-36-KHIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 9268.120197865555
+  },
+  {
+   "model": "P-KS-1-0-MO-38-KHIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 10404.115505420643
+  },
+  {
+   "model": "P-KS-1-0-MO-40-KHIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 11226.063838203514
+  },
+  {
+   "model": "P-KS-1-0-MO-43-KHIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 11794.688544410637
+  },
+  {
+   "model": "P-KS-1-0-MO-48-KHIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 12425.04346804253
+  },
+  {
+   "model": "P-KS-1-0-MO-49-KHIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 12509.73917299812
+  },
+  {
+   "model": "P-KS-1-0-MO-50-KHIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 14028.375791436003
+  },
+  {
+   "model": "P-KS-1-0-MO-74-KHIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 14092.488795852301
+  },
+  {
+   "model": "P-KS-1-0-MO-60-KHIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 16597.225314978175
+  },
+  {
+   "model": "P-KS-1-0-MO-78-KHIS-KF-TF-AA-SG",
+   "debi": 29246.0,
+   "fiyat": 17316.237478179173
+  },
+  {
+   "model": "P-KS-1-0-MO-80-KHIS-KF-TF-AA-SG",
+   "debi": 31937.0,
+   "fiyat": 19831.5998862604
+  },
+  {
+   "model": "P-KS-1-0-MO-87-KHIS-KF-TF-AA-SG",
+   "debi": 32532.0,
+   "fiyat": 19705.070168836588
+  },
+  {
+   "model": "P-KS-1-0-MO-97-KHIS-KF-TF-AA-SG",
+   "debi": 34306.0,
+   "fiyat": 21697.848354664904
+  },
+  {
+   "model": "P-KS-1-0-MO-89-KHIS-KF-TF-AA-SG",
+   "debi": 36272.0,
+   "fiyat": 22148.825627078906
+  },
+  {
+   "model": "P-KS-1-0-MO-93-KHIS-KF-TF-AA-SG",
+   "debi": 38016.0,
+   "fiyat": 23199.972514387984
+  },
+  {
+   "model": "P-KS-1-0-MO-90-KHIS-KF-TF-AA-SG",
+   "debi": 40465.0,
+   "fiyat": 26654.80918623479
+  },
+  {
+   "model": "P-KS-1-0-MO-109-KHIS-KF-TF-AA-SG",
+   "debi": 41513.0,
+   "fiyat": 24002.338844647493
+  },
+  {
+   "model": "P-KS-1-0-MO-102-KHIS-KF-TF-AA-SG",
+   "debi": 42390.0,
+   "fiyat": 24540.48150533574
+  },
+  {
+   "model": "P-KS-1-0-MO-104-KHIS-KF-TF-AA-SG",
+   "debi": 46735.0,
+   "fiyat": 27687.039414598545
+  },
+  {
+   "model": "P-KS-1-0-MO-110-KHIS-KF-TF-AA-SG",
+   "debi": 50223.0,
+   "fiyat": 28571.33028465564
+  },
+  {
+   "model": "P-KS-1-0-MO-111-KHIS-KF-TF-AA-SG",
+   "debi": 51966.0,
+   "fiyat": 29202.694323590174
+  },
+  {
+   "model": "P-KS-1-0-MO-96-KHIS-KF-TF-AA-SG",
+   "debi": 53549.0,
+   "fiyat": 33089.29489155144
+  },
+  {
+   "model": "P-KS-1-0-MO-100-KHIS-KF-TF-AA-SG",
+   "debi": 55898.0,
+   "fiyat": 34135.85754528765
+  },
+  {
+   "model": "P-KS-1-0-MO-106-KHIS-KF-TF-AA-SG",
+   "debi": 57541.0,
+   "fiyat": 31250.637827674793
+  },
+  {
+   "model": "P-KS-1-0-MO-112-KHIS-KF-TF-AA-SH",
+   "debi": 60978.0,
+   "fiyat": 32978.970387449684
+  },
+  {
+   "model": "P-KS-1-0-MO-113-KHIS-KF-TF-AA-SG",
+   "debi": 72993.0,
+   "fiyat": 39692.84812094953
+  }
+ ],
+ "(60)HKS IGK+ISI+DX": [
+  {
+   "model": "P-HKS-2-2-MO-6-THISB-KF-TF-MF-AA-SG",
+   "debi": 3289.0,
+   "fiyat": 7807.485239191412
+  },
+  {
+   "model": "P-HKS-2-2-MO-9-THISB-KF-TF-MF-AA-SG",
+   "debi": 5125.0,
+   "fiyat": 8475.996572492591
+  },
+  {
+   "model": "P-HKS-2-2-MO-8-THISB-KF-TF-MF-AA-SG",
+   "debi": 4162.0,
+   "fiyat": 8145.833780862275
+  },
+  {
+   "model": "P-HKS-2-2-MO-16-THISB-KF-TF-MF-AA-SG",
+   "debi": 6970.0,
+   "fiyat": 10580.872960137582
+  },
+  {
+   "model": "P-HKS-2-2-MO-23-THISB-KF-TF-MF-AA-SG",
+   "debi": 8644.0,
+   "fiyat": 12229.035461200456
+  },
+  {
+   "model": "P-HKS-2-2-MO-31-THISB-KF-TF-MF-AA-SG",
+   "debi": 10408.0,
+   "fiyat": 13470.009773392921
+  },
+  {
+   "model": "P-HKS-2-2-MO-35-THISB-KF-TF-MF-AA-SG-AA",
+   "debi": 12532.0,
+   "fiyat": 16972.169949168645
+  },
+  {
+   "model": "P-HKS-2-2-MO-36-THISB-KF-TF-MF-AA-SG",
+   "debi": 13594.0,
+   "fiyat": 18091.627520947448
+  },
+  {
+   "model": "P-HKS-2-2-MO-38-THISB-KF-TF-MF-AA-SG",
+   "debi": 14746.0,
+   "fiyat": 18910.57048743211
+  },
+  {
+   "model": "P-HKS-2-2-MO-42-THISB-KF-TF-MF-AA-SG",
+   "debi": 15898.0,
+   "fiyat": 18960.257966821377
+  },
+  {
+   "model": "P-HKS-2-2-MO-43-THISB-KF-TF-MF-AA-SG",
+   "debi": 16384.0,
+   "fiyat": 20262.60906276255
+  },
+  {
+   "model": "P-HKS-2-2-MO-44-THISB-KF-TF-MF-AA-SG",
+   "debi": 17716.0,
+   "fiyat": 23012.904171321126
+  },
+  {
+   "model": "P-HKS-2-2-MO-48-THISB-KF-TF-MF-AA-SG",
+   "debi": 19048.0,
+   "fiyat": 21409.04187041377
+  },
+  {
+   "model": "P-HKS-2-2-MO-74-THISB-KF-TF-MF-AA-SG",
+   "debi": 19705.0,
+   "fiyat": 24351.300019429204
+  },
+  {
+   "model": "P-HKS-2-2-MO-60-THISB-KF-TF-MF-AA-SG",
+   "debi": 23179.0,
+   "fiyat": 27153.264798776498
+  },
+  {
+   "model": "P-HKS-2-2-MO-60.a-THISB-KF-TF-AA-SG",
+   "debi": 23890.0,
+   "fiyat": 27127.70296596211
+  },
+  {
+   "model": "P-HKS-2-2-MO-68-THISB-KF-TF-MF-AA-SG",
+   "debi": 26113.0,
+   "fiyat": 28437.857976103856
+  },
+  {
+   "model": "P-HKS-2-2-MO-70-THISB-KF-TF-MF-AA-SG",
+   "debi": 28516.0,
+   "fiyat": 30645.356024014076
+  }
+ ],
+ "(50)TAMBUR+ISI+DX": [
+  {
+   "model": "P-KS-1-3-MO-8-THIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 6143.266636839644
+  },
+  {
+   "model": "P-KS-1-3-MO-16-THIS-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 7275.975186162346
+  },
+  {
+   "model": "P-KS-1-3-MO-21-THIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 7719.615291631197
+  },
+  {
+   "model": "P-KS-1-3-MO-28-THIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 8519.312754543309
+  },
+  {
+   "model": "P-KS-1-3-MO-37-THIS-KF-TF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 11972.057433468692
+  },
+  {
+   "model": "P-KS-1-3-MO-41-THIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 12547.752272578591
+  },
+  {
+   "model": "P-KS-1-3-MO-54-THIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 13234.397692008753
+  },
+  {
+   "model": "P-KS-1-3-MO-61-THIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 14660.046846107662
+  },
+  {
+   "model": "P-KS-1-3-MO-71-THIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 15801.767418405332
+  },
+  {
+   "model": "P-KS-1-3-MO-81-THIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 18820.853658813994
+  },
+  {
+   "model": "P-KS-1-3-MO-84-THIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 18225.572726674705
+  },
+  {
+   "model": "P-KS-1-3-MO-91-THIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 19355.56430160878
+  },
+  {
+   "model": "P-KS-1-3-MO-94-THIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 21437.381115054694
+  },
+  {
+   "model": "P-KS-1-3-MO-97-THIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 21924.50753573814
+  },
+  {
+   "model": "P-KS-1-3-MO-102-THIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 25980.95579904701
+  }
+ ],
+ "(50)TAMBUR+ISI+DX+SUS": [
+  {
+   "model": "P-KS-1-3-MO-8-THIS-KF-TF-AA-SG",
+   "debi": 3683.0,
+   "fiyat": 6713.304926338822
+  },
+  {
+   "model": "P-KS-1-3-MO-16-THIS-KF-TF-AA-SG",
+   "debi": 4661.0,
+   "fiyat": 8047.330738097131
+  },
+  {
+   "model": "P-KS-1-3-MO-21-THIS-KF-TF-AA-SG",
+   "debi": 5740.0,
+   "fiyat": 8528.402695312983
+  },
+  {
+   "model": "P-KS-1-3-MO-28-THIS-KF-TF-AA-SG",
+   "debi": 7806.0,
+   "fiyat": 9350.363831214592
+  },
+  {
+   "model": "P-KS-1-3-MO-37-THIS-KF-TF-AA-SG",
+   "debi": 9681.0,
+   "fiyat": 13393.835852161634
+  },
+  {
+   "model": "P-KS-1-3-MO-41-THIS-KF-TF-AA-SG",
+   "debi": 11657.0,
+   "fiyat": 13615.550310694744
+  },
+  {
+   "model": "P-KS-1-3-MO-54-THIS-KF-TF-AA-SG",
+   "debi": 14035.0,
+   "fiyat": 14344.855422685527
+  },
+  {
+   "model": "P-KS-1-3-MO-61-THIS-KF-TF-AA-SG",
+   "debi": 15225.0,
+   "fiyat": 15792.047926605643
+  },
+  {
+   "model": "P-KS-1-3-MO-71-THIS-KF-TF-AA-SG",
+   "debi": 16515.0,
+   "fiyat": 17321.394251707883
+  },
+  {
+   "model": "P-KS-1-3-MO-81-THIS-KF-TF-AA-SG",
+   "debi": 17805.0,
+   "fiyat": 20145.481280754946
+  },
+  {
+   "model": "P-KS-1-3-MO-84-THIS-KF-TF-AA-SG",
+   "debi": 18350.0,
+   "fiyat": 19524.063640221142
+  },
+  {
+   "model": "P-KS-1-3-MO-91-THIS-KF-TF-AA-SG",
+   "debi": 19841.0,
+   "fiyat": 20761.263571522566
+  },
+  {
+   "model": "P-KS-1-3-MO-94-THIS-KF-TF-AA-SG",
+   "debi": 21333.0,
+   "fiyat": 22951.237684277654
+  },
+  {
+   "model": "P-KS-1-3-MO-97-THIS-KF-TF-AA-SG",
+   "debi": 22069.0,
+   "fiyat": 23604.51000340283
+  },
+  {
+   "model": "P-KS-1-3-MO-102-THIS-KF-TF-AA-SG",
+   "debi": 25960.0,
+   "fiyat": 27812.36719872794
+  }
+ ]
+}

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Fan Secimi - Point HVAC</title>
+  <link rel="icon" type="image/x-icon" href="../assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* Fan modulu ozel stiller */
+    .fan-form { display: grid; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    @media (max-width: 480px) {
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+    }
+
+    /* Filtre toggle */
+    .filter-toggle {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 0; cursor: pointer;
+      font-size: .85rem; font-weight: 600;
+      color: var(--gray-600);
+      border: none; background: none;
+      font-family: inherit;
+    }
+    .filter-toggle .arrow { transition: transform .2s; }
+    .filter-toggle.open .arrow { transform: rotate(90deg); }
+    .filter-section { display: none; }
+    .filter-section.open { display: block; }
+
+    /* Sonuc karti */
+    .fan-result {
+      animation: fadeInUp .4s ease;
+    }
+    .fan-result .model-name {
+      font-size: 1.5rem; font-weight: 800;
+      color: var(--secondary); margin-bottom: 4px;
+    }
+    .fan-result .tolerance-badge {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 6px;
+      font-size: .72rem; font-weight: 700;
+      background: rgba(255,183,3,.2); color: #FFB703;
+    }
+    .fan-result .warning-text {
+      font-size: .82rem; color: #FFB703;
+      margin-top: 8px; font-style: italic;
+    }
+
+    /* Fan gorseli */
+    .fan-image-wrap {
+      text-align: center; margin-bottom: 16px;
+    }
+    .fan-image-wrap img {
+      max-width: 180px; max-height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    /* Aday tablosu */
+    .candidates-section { margin-top: 16px; }
+    .candidate-row.selected-exact { background: rgba(0,102,204,.08); }
+    .candidate-row.selected-tolerance { background: rgba(255,183,3,.08); }
+    .candidate-row .tag {
+      display: inline-block; padding: 1px 8px;
+      border-radius: 4px; font-size: .7rem; font-weight: 700;
+    }
+    .tag-exact { background: rgba(6,214,160,.15); color: #049a73; }
+    .tag-tolerance { background: rgba(255,183,3,.15); color: #e6a300; }
+
+    /* DIA ekleme butonu */
+    .add-dia-btn {
+      display: flex; align-items: center; gap: 6px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Geri butonu -->
+    <a href="../index.html" class="back-btn" onclick="event.preventDefault(); App.goBack();">&#8592; Ana Sayfa</a>
+
+    <!-- Baslik -->
+    <div class="header" style="margin-bottom:20px">
+      <div class="header-left">
+        <div>
+          <h1>&#127744; Fan Secimi</h1>
+          <div class="subtitle">Debi ve basinc ile en uygun fan modeli</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Tema Degistir">
+          <span class="theme-icon">&#9684;</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Kategori Secimi -->
+    <div class="card" id="categoryCard">
+      <div class="card-title">Fan Kategorisi</div>
+      <div id="categoryLoading" style="text-align:center;padding:20px;color:var(--gray-400)">
+        <div class="spinner spinner-dark"></div>
+        <div style="margin-top:8px;font-size:.85rem">Kategoriler yukleniyor...</div>
+      </div>
+      <div class="tab-group" id="categoryTabs" style="display:none"></div>
+    </div>
+
+    <!-- Secim Formu -->
+    <div class="card" id="formCard" style="display:none">
+      <div class="card-title">Secim Kriterleri</div>
+      <div class="fan-form">
+        <!-- Ana parametreler -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Debi (m&sup3;/h)</label>
+            <input type="number" id="inputDebi" class="form-input" step="0.01" placeholder="Orn: 8000" inputmode="decimal">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Basinc (Pa)</label>
+            <input type="number" id="inputBasinc" class="form-input" step="1" placeholder="Orn: 250" inputmode="numeric">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Iskonto (%)</label>
+            <input type="number" id="inputIskonto" class="form-input" value="50" min="0" max="100" inputmode="numeric">
+          </div>
+          <div class="form-group" style="display:flex;align-items:flex-end;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;color:var(--gray-600)">
+              <input type="checkbox" id="inputTolerans" checked style="width:18px;height:18px">
+              %10 Tolerans
+            </label>
+          </div>
+        </div>
+
+        <!-- Gelismis filtreler (gizli) -->
+        <button class="filter-toggle" id="filterToggle" onclick="toggleFilters()">
+          <span class="arrow">&#9654;</span> Gelismis Filtreler
+        </button>
+        <div class="filter-section" id="filterSection">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Motor Gucu Min (kW)</label>
+              <input type="number" id="filterMotorMin" class="form-input" step="0.01" placeholder="Min" inputmode="decimal">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Motor Gucu Max (kW)</label>
+              <input type="number" id="filterMotorMax" class="form-input" step="0.01" placeholder="Max" inputmode="decimal">
+            </div>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group">
+              <label class="form-label">Voltaj</label>
+              <select id="filterVoltaj" class="form-select">
+                <option value="">Tumu</option>
+                <option value="220">220V</option>
+                <option value="380">380V</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ses Min (dB)</label>
+              <input type="number" id="filterSesMin" class="form-input" step="1" placeholder="Min" inputmode="numeric">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Ses Max (dB)</label>
+              <input type="number" id="filterSesMax" class="form-input" step="1" placeholder="Max" inputmode="numeric">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Devir Min (RPM)</label>
+              <input type="number" id="filterDevirMin" class="form-input" step="1" placeholder="Min" inputmode="numeric">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Devir Max (RPM)</label>
+              <input type="number" id="filterDevirMax" class="form-input" step="1" placeholder="Max" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+
+        <!-- Secim butonu -->
+        <button class="btn btn-primary btn-block" id="btnSelect" onclick="doSelectFan()">
+          Fan Sec
+        </button>
+      </div>
+    </div>
+
+    <!-- Sonuc -->
+    <div id="resultSection" style="display:none">
+      <!-- Sonuc Paneli -->
+      <div class="result-panel fan-result" id="resultPanel"></div>
+
+      <!-- DIA'ya ekle -->
+      <div class="add-dia-btn">
+        <button class="btn btn-success btn-block btn-sm" id="btnAddDIA" onclick="addResultToDIA()">
+          &#128722; DIA Listesine Ekle
+        </button>
+      </div>
+
+      <!-- Aday Tablosu -->
+      <div class="candidates-section" id="candidatesSection" style="display:none">
+        <div class="card" style="padding:16px">
+          <div class="card-title" style="font-size:.95rem">Tum Uygun Modeller</div>
+          <div class="table-wrap">
+            <table class="table" id="candidatesTable">
+              <thead>
+                <tr>
+                  <th>Model</th>
+                  <th>Debi</th>
+                  <th>Fiyat</th>
+                  <th>Motor</th>
+                  <th>Durum</th>
+                </tr>
+              </thead>
+              <tbody id="candidatesBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DIA Badge -->
+  <a href="../dia/index.html" class="dia-badge" style="display:none">
+    &#128722;
+    <span class="count">0</span>
+  </a>
+
+  <!-- Scripts -->
+  <script src="../js/utils.js"></script>
+  <script src="../js/data-loader.js"></script>
+  <script src="../js/price-calc.js"></script>
+  <script src="../js/fan-selector.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    // ===== TEMA (tum sayfalarda paylasilan) =====
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      let next;
+      if (!current || current === 'light') next = 'ozel';
+      else if (current === 'ozel') next = 'doga';
+      else next = 'light';
+      html.setAttribute('data-theme', next);
+      setSetting('theme', next);
+      const btn = document.querySelector('.theme-icon');
+      if (btn) {
+        if (next === 'ozel') btn.innerHTML = '&#127807;';
+        else if (next === 'doga') btn.innerHTML = '&#9728;';
+        else btn.innerHTML = '&#9684;';
+      }
+    }
+    (function() {
+      const saved = getSetting('theme', 'light');
+      document.documentElement.setAttribute('data-theme', saved);
+      setTimeout(() => {
+        const btn = document.querySelector('.theme-icon');
+        if (btn) {
+          if (saved === 'ozel') btn.innerHTML = '&#127807;';
+          else if (saved === 'doga') btn.innerHTML = '&#9728;';
+          else btn.innerHTML = '&#9684;';
+        }
+      }, 30);
+    })();
+
+    // ===== DURUM =====
+    let _fanIndex = null;     // Sheet listesi
+    let _activeSheet = null;  // Aktif sheet verisi
+    let _activeSheetName = '';
+    let _activePrices = null; // Aktif fiyat verisi (sheet'e uygun)
+    let _allPrices = null;    // Tum fiyat verileri
+    let _lastResult = null;   // Son secim sonucu
+
+    // ===== SAYFA BASLATMA =====
+    async function init() {
+      try {
+        // Kategorileri yukle
+        _fanIndex = await DataLoader.loadFanIndex();
+        _allPrices = await DataLoader.loadFanPrices();
+
+        renderCategories(_fanIndex.sheets);
+
+        // DIA badge guncelle
+        App.updateDIABadge();
+      } catch (err) {
+        document.getElementById('categoryLoading').innerHTML =
+          '<div style="color:var(--danger)">Veri yuklenemedi: ' + err.message + '</div>';
+      }
+    }
+
+    // ===== KATEGORI RENDER =====
+    function renderCategories(sheets) {
+      const container = document.getElementById('categoryTabs');
+      const loading = document.getElementById('categoryLoading');
+      loading.style.display = 'none';
+      container.style.display = '';
+
+      for (const sheet of sheets) {
+        const btn = document.createElement('button');
+        btn.className = 'tab-btn';
+        btn.textContent = sheet.name;
+        btn.dataset.file = sheet.file;
+        btn.onclick = () => selectCategory(btn, sheet);
+        container.appendChild(btn);
+      }
+
+      // Ilk kategoriyi sec
+      if (sheets.length > 0) {
+        const first = container.querySelector('.tab-btn');
+        selectCategory(first, sheets[0]);
+      }
+    }
+
+    // ===== KATEGORI SEC =====
+    async function selectCategory(btn, sheet) {
+      // Tab aktif yap
+      document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Formu goster, sonucu gizle
+      document.getElementById('formCard').style.display = '';
+      document.getElementById('resultSection').style.display = 'none';
+
+      // Sheet verisini yukle
+      App.setLoading(true);
+      try {
+        _activeSheet = await DataLoader.loadFanSheet(sheet.file);
+        _activeSheetName = sheet.name;
+
+        // Bu sheet'e uygun fiyat verisini bul
+        _activePrices = findMatchingPrices(sheet.name);
+
+      } catch (err) {
+        App.showToast('Kategori yuklenemedi: ' + err.message, 'error');
+      }
+      App.setLoading(false);
+    }
+
+    /**
+     * Fiyat verisini getir.
+     * fan_fiyatlar.json tum modelleri tek "Sayfa1" anahtarinda tutar.
+     * Sheet adina bakmadan tum fiyat listesini dondur.
+     */
+    function findMatchingPrices(sheetName) {
+      if (!_allPrices) return null;
+      // Birebir eslesme dene (sheet adi ile)
+      if (_allPrices[sheetName]) return _allPrices[sheetName];
+      // Tum modeller tek key'de ("Sayfa1") - ilk bulunani don
+      const keys = Object.keys(_allPrices);
+      if (keys.length > 0) return _allPrices[keys[0]];
+      return null;
+    }
+
+    // ===== GELISMIS FILTRE TOGGLE =====
+    function toggleFilters() {
+      const toggle = document.getElementById('filterToggle');
+      const section = document.getElementById('filterSection');
+      toggle.classList.toggle('open');
+      section.classList.toggle('open');
+    }
+
+    // ===== FAN SEC =====
+    function doSelectFan() {
+      const debi = toFloat(document.getElementById('inputDebi').value);
+      const basinc = toFloat(document.getElementById('inputBasinc').value);
+      const iskonto = toFloat(document.getElementById('inputIskonto').value) || 0;
+      const tolerans = document.getElementById('inputTolerans').checked;
+
+      if (!debi || !basinc) {
+        App.showToast('Debi ve basinc degerlerini girin', 'error');
+        return;
+      }
+
+      if (!_activeSheet) {
+        App.showToast('Lutfen bir kategori secin', 'error');
+        return;
+      }
+
+      // Gelismis filtreler
+      const filters = {
+        motorGucuMin: toFloat(document.getElementById('filterMotorMin').value),
+        motorGucuMax: toFloat(document.getElementById('filterMotorMax').value),
+        voltaj: document.getElementById('filterVoltaj').value || null,
+        sesSeviyesiMin: toFloat(document.getElementById('filterSesMin').value),
+        sesSeviyesiMax: toFloat(document.getElementById('filterSesMax').value),
+        devirMin: toFloat(document.getElementById('filterDevirMin').value),
+        devirMax: toFloat(document.getElementById('filterDevirMax').value)
+      };
+
+      const { result, candidates, error } = FanSelector.selectFan({
+        debiReq: debi,
+        basincReq: basinc,
+        sheetData: _activeSheet,
+        priceData: _activePrices,
+        filters,
+        toleransAcik: tolerans,
+        iskonto
+      });
+
+      if (error) {
+        App.showToast(error, 'error');
+        return;
+      }
+
+      _lastResult = result;
+
+      // Sonucu goster
+      renderResult(result);
+      renderCandidates(candidates);
+
+      document.getElementById('resultSection').style.display = '';
+
+      // Sonuca scroll
+      document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      playSound('click');
+    }
+
+    // ===== SONUC RENDER =====
+    function renderResult(r) {
+      const panel = document.getElementById('resultPanel');
+
+      let html = '';
+
+      // Baslik
+      html += '<div class="result-title">Secilen Fan</div>';
+      html += '<div class="model-name">' + r.model + '</div>';
+
+      if (r.toleransli) {
+        html += '<span class="tolerance-badge">%10 Tolerans Icinde</span>';
+      }
+      if (r.uyari) {
+        html += '<div class="warning-text">' + r.uyari + '</div>';
+      }
+
+      // Detaylar
+      html += '<div style="margin-top:16px">';
+      html += resultRow('Girilen Debi', formatNumber(r.girilenDebi) + ' m&sup3;/h');
+      html += resultRow('Girilen Basinc', formatNumber(r.girilenBasinc) + ' Pa');
+      html += resultRow('Karsilanan Debi', formatNumber(r.debi) + ' m&sup3;/h');
+      html += resultRow('Kullanilan Basinc', formatNumber(r.basinc) + ' Pa');
+
+      if (r.motorGucu != null) html += resultRow('Motor Gucu', r.motorGucu + ' kW');
+      if (r.voltaj) html += resultRow('Voltaj', r.voltaj + 'V');
+      if (r.sesSeviyesi != null) html += resultRow('Ses Seviyesi', r.sesSeviyesi + ' dB');
+      if (r.devir != null) html += resultRow('Devir', formatNumber(r.devir) + ' RPM');
+      if (r.kontrolEkipman) html += resultRow('Kontrol Ekipman', r.kontrolEkipman);
+
+      html += '<div style="height:1px;background:rgba(255,255,255,.1);margin:12px 0"></div>';
+
+      html += resultRow('Liste Fiyat', formatCurrency(r.listeFiyat));
+      html += resultRow('Iskonto', '%' + r.iskonto);
+      html += resultRow('Net Fiyat', '<span class="highlight">' + formatCurrency(r.netFiyat) + '</span>', true);
+
+      html += '</div>';
+
+      panel.innerHTML = html;
+    }
+
+    function resultRow(label, value, isHighlight) {
+      return '<div class="result-row">'
+        + '<span class="result-label">' + label + '</span>'
+        + '<span class="result-value' + (isHighlight ? ' highlight' : '') + '">' + value + '</span>'
+        + '</div>';
+    }
+
+    // ===== ADAYLAR RENDER =====
+    function renderCandidates(candidates) {
+      const section = document.getElementById('candidatesSection');
+      const tbody = document.getElementById('candidatesBody');
+
+      if (!candidates || candidates.length === 0) {
+        section.style.display = 'none';
+        return;
+      }
+
+      section.style.display = '';
+      let html = '';
+
+      for (const c of candidates) {
+        const rowClass = c.selected
+          ? (c.toleransli ? 'candidate-row selected-tolerance' : 'candidate-row selected-exact')
+          : 'candidate-row';
+
+        const tag = c.meets
+          ? '<span class="tag tag-exact">Tam</span>'
+          : '<span class="tag tag-tolerance">%10</span>';
+
+        html += '<tr class="' + rowClass + '">'
+          + '<td><strong>' + c.model + '</strong>' + (c.selected ? ' &#10004;' : '') + '</td>'
+          + '<td>' + formatNumber(c.debi) + '</td>'
+          + '<td>' + formatCurrency(c.netFiyat) + '</td>'
+          + '<td>' + (c.motorGucu != null ? c.motorGucu + ' kW' : '-') + '</td>'
+          + '<td>' + tag + '</td>'
+          + '</tr>';
+      }
+
+      tbody.innerHTML = html;
+    }
+
+    // ===== DIA LISTESINE EKLE =====
+    function addResultToDIA() {
+      if (!_lastResult) return;
+      App.addToDIA({
+        modul: 'fan',
+        kategori: _activeSheetName,
+        model: _lastResult.model,
+        debi: _lastResult.debi,
+        basinc: _lastResult.basinc,
+        listeFiyat: _lastResult.listeFiyat,
+        iskonto: _lastResult.iskonto,
+        netFiyat: _lastResult.netFiyat,
+        motorGucu: _lastResult.motorGucu,
+        voltaj: _lastResult.voltaj,
+        toleransli: _lastResult.toleransli
+      });
+    }
+
+    // ===== BASLATMA =====
+    init();
+  </script>
+</body>
+</html>

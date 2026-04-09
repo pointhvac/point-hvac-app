@@ -1,0 +1,10 @@
+node_modules/
+android/
+ios/
+.idea/
+*.iml
+.gradle/
+build/
+.DS_Store
+Thumbs.db
+*.log
