@@ -33,6 +33,32 @@ jobs:
       - name: Add Capacitor Android platform
         run: npx cap add android
 
+      - name: Set app icon
+        run: |
+          # Install ImageMagick for icon resizing
+          sudo apt-get install -y imagemagick > /dev/null 2>&1
+
+          # Android mipmap sizes
+          declare -A SIZES=(
+            ["mdpi"]=48
+            ["hdpi"]=72
+            ["xhdpi"]=96
+            ["xxhdpi"]=144
+            ["xxxhdpi"]=192
+          )
+
+          ICON_SRC="resources/icon.png"
+          for density in "${!SIZES[@]}"; do
+            size=${SIZES[$density]}
+            dir="android/app/src/main/res/mipmap-${density}"
+            mkdir -p "$dir"
+            convert "$ICON_SRC" -resize ${size}x${size} "$dir/ic_launcher.png"
+            convert "$ICON_SRC" -resize ${size}x${size} "$dir/ic_launcher_round.png"
+            convert "$ICON_SRC" -resize ${size}x${size} "$dir/ic_launcher_foreground.png"
+            echo "  ${density}: ${size}x${size}"
+          done
+          echo "App icon set successfully"
+
       - name: Sync web assets to Android
         run: npx cap sync android
 

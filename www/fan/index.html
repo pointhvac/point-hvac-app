@@ -105,7 +105,7 @@
         <div class="spinner spinner-dark"></div>
         <div style="margin-top:8px;font-size:.85rem">Kategoriler yukleniyor...</div>
       </div>
-      <div class="tab-group" id="categoryTabs" style="display:none"></div>
+      <select class="form-select" id="categorySelect" style="display:none" onchange="onCategoryChange()"></select>
     </div>
 
     <!-- Secim Formu -->
@@ -294,47 +294,40 @@
     }
 
     // ===== KATEGORI RENDER =====
+    let _sheetsRef = [];
     function renderCategories(sheets) {
-      const container = document.getElementById('categoryTabs');
+      _sheetsRef = sheets;
+      const select = document.getElementById('categorySelect');
       const loading = document.getElementById('categoryLoading');
       loading.style.display = 'none';
-      container.style.display = '';
+      select.style.display = '';
 
-      for (const sheet of sheets) {
-        const btn = document.createElement('button');
-        btn.className = 'tab-btn';
-        btn.textContent = sheet.name;
-        btn.dataset.file = sheet.file;
-        btn.onclick = () => selectCategory(btn, sheet);
-        container.appendChild(btn);
+      for (let i = 0; i < sheets.length; i++) {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = sheets[i].name;
+        select.appendChild(opt);
       }
 
       // Ilk kategoriyi sec
-      if (sheets.length > 0) {
-        const first = container.querySelector('.tab-btn');
-        selectCategory(first, sheets[0]);
-      }
+      if (sheets.length > 0) loadCategory(sheets[0]);
     }
 
-    // ===== KATEGORI SEC =====
-    async function selectCategory(btn, sheet) {
-      // Tab aktif yap
-      document.querySelectorAll('#categoryTabs .tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    function onCategoryChange() {
+      const idx = document.getElementById('categorySelect').value;
+      loadCategory(_sheetsRef[idx]);
+    }
 
-      // Formu goster, sonucu gizle
+    // ===== KATEGORI YUKLE =====
+    async function loadCategory(sheet) {
       document.getElementById('formCard').style.display = '';
       document.getElementById('resultSection').style.display = 'none';
 
-      // Sheet verisini yukle
       App.setLoading(true);
       try {
         _activeSheet = await DataLoader.loadFanSheet(sheet.file);
         _activeSheetName = sheet.name;
-
-        // Bu sheet'e uygun fiyat verisini bul
         _activePrices = findMatchingPrices(sheet.name);
-
       } catch (err) {
         App.showToast('Kategori yuklenemedi: ' + err.message, 'error');
       }
