@@ -1,0 +1,8 @@
+{
+  "appId": "com.pointhvac.app",
+  "appName": "Point HVAC",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
+}
