@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FEF3C7"/>
+      <stop offset="100%" style="stop-color:#FDE68A"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="url(#bg)"/>
+  <!-- Fan gövdesi (turuncu/sarı - yangın rengi) -->
+  <rect x="70" y="90" width="160" height="110" rx="10" fill="url(#body)" opacity="0.9" stroke="#92400E" stroke-width="2"/>
+  <!-- Flanşlar -->
+  <rect x="50" y="110" width="30" height="70" rx="4" fill="#FCD34D" stroke="#D97706" stroke-width="1.5"/>
+  <rect x="220" y="110" width="30" height="70" rx="4" fill="#FCD34D" stroke="#D97706" stroke-width="1.5"/>
+  <!-- Fan çarkı -->
+  <circle cx="150" cy="145" r="35" fill="#FEF3C7" stroke="#92400E" stroke-width="2"/>
+  <circle cx="150" cy="145" r="8" fill="#92400E"/>
+  <!-- Fan kanatları -->
+  <path d="M150 110 Q165 128 150 137" fill="#F59E0B" stroke="#92400E" stroke-width="1"/>
+  <path d="M185 145 Q167 160 157 145" fill="#F59E0B" stroke="#92400E" stroke-width="1"/>
+  <path d="M150 180 Q135 162 150 153" fill="#F59E0B" stroke="#92400E" stroke-width="1"/>
+  <path d="M115 145 Q133 130 143 145" fill="#F59E0B" stroke="#92400E" stroke-width="1"/>
+  <!-- Duman simgeleri -->
+  <path d="M120 65 Q115 50 120 40 Q125 30 120 20" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M150 55 Q145 40 150 30 Q155 20 150 10" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M180 65 Q175 50 180 40 Q185 30 180 20" fill="none" stroke="#6B7280" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <!-- Yangın/sıcaklık ikonu -->
+  <text x="240" y="90" font-size="24" text-anchor="middle">&#x1F525;</text>
+  <!-- F400 etiketi -->
+  <rect x="195" y="155" width="30" height="16" rx="3" fill="#92400E"/>
+  <text x="210" y="167" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="8" font-weight="700" fill="#FEF3C7">F400</text>
+  <!-- Etiket -->
+  <text x="150" y="240" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#374151">DUMAN TAHLiYE FANI</text>
+  <text x="150" y="260" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#6B7280">Smoke Extract Fan</text>
+</svg>

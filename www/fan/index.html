@@ -75,6 +75,184 @@
       display: flex; align-items: center; gap: 6px;
       margin-top: 12px;
     }
+
+    /* ============ KATEGORI SECIMI (Migros tarzi grid) ============ */
+    .cat-breadcrumb {
+      display: flex; align-items: center; flex-wrap: wrap;
+      gap: 6px; font-size: .82rem; font-weight: 600;
+      color: var(--gray-600); margin-bottom: 14px;
+    }
+    .cat-breadcrumb .crumb {
+      cursor: pointer; padding: 4px 10px;
+      border-radius: 8px; background: rgba(0,102,204,.06);
+      color: var(--primary); transition: all .15s;
+      border: 1px solid transparent;
+    }
+    .cat-breadcrumb .crumb:hover {
+      background: rgba(0,102,204,.12);
+      border-color: rgba(0,102,204,.2);
+    }
+    .cat-breadcrumb .sep { opacity: .5; font-size: .9rem; }
+    .cat-breadcrumb .current {
+      padding: 4px 10px; color: var(--gray-700);
+      font-weight: 700;
+    }
+    [data-theme="ozel"] .cat-breadcrumb { color: #8a96a8; }
+    [data-theme="ozel"] .cat-breadcrumb .crumb {
+      background: rgba(0,180,216,.08); color: var(--secondary);
+    }
+    [data-theme="ozel"] .cat-breadcrumb .current { color: #d8dee9; }
+    [data-theme="doga"] .cat-breadcrumb .crumb {
+      background: rgba(76,175,80,.1); color: #4CAF50;
+    }
+    [data-theme="doga"] .cat-breadcrumb .current { color: #2E7D32; }
+
+    /* Grid ortak */
+    .cat-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (min-width: 600px) { .cat-grid { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+    @media (min-width: 900px) { .cat-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    /* Kart */
+    .cat-card {
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: flex-start;
+      padding: 14px 10px 12px;
+      background: var(--card-bg, #fff);
+      border: 1.5px solid var(--input-border, #E5E7EB);
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      overflow: hidden;
+      min-height: 150px;
+    }
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,102,204,.12);
+      border-color: var(--primary);
+    }
+    .cat-card:active { transform: translateY(-1px) scale(.98); }
+    .cat-card .img-wrap {
+      width: 100%; height: 90px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, rgba(0,102,204,.04), rgba(0,180,216,.06));
+      border-radius: 12px;
+    }
+    .cat-card .img-wrap img {
+      max-width: 95%; max-height: 95%;
+      object-fit: contain;
+    }
+    .cat-card .name {
+      font-size: .78rem; font-weight: 700;
+      color: var(--card-text, #1A1A2E);
+      text-align: center;
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .cat-card .badge-count {
+      position: absolute; top: 8px; right: 8px;
+      background: var(--primary); color: #fff;
+      font-size: .62rem; font-weight: 800;
+      padding: 3px 8px; border-radius: 999px;
+      box-shadow: 0 2px 6px rgba(0,102,204,.3);
+    }
+
+    /* Grup karti varyantlari (renk) - renkli AI gorseller icin yumusak pastel arkaplan */
+    .cat-card.group-card .img-wrap {
+      background: linear-gradient(135deg,
+                    color-mix(in srgb, var(--g-c1, #0066CC) 12%, #fff),
+                    color-mix(in srgb, var(--g-c2, #00B4D8) 18%, #fff));
+      padding: 6px;
+      height: 110px;
+    }
+    .cat-card.group-card .img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .cat-card.group-card[data-group="kanal"]  { --g-c1:#0066CC; --g-c2:#00B4D8; }
+    .cat-card.group-card[data-group="cati"]   { --g-c1:#FF6B35; --g-c2:#FFB703; }
+    .cat-card.group-card[data-group="basinc"] { --g-c1:#EF476F; --g-c2:#FF6B6B; }
+    .cat-card.group-card[data-group="duman"]  { --g-c1:#7B2FF7; --g-c2:#C77DFF; }
+    .cat-card.group-card[data-group="duvar"]  { --g-c1:#06D6A0; --g-c2:#00C853; }
+    .cat-card.group-card {
+      border-color: color-mix(in srgb, var(--g-c1, #0066CC) 25%, #E5E7EB);
+    }
+    .cat-card.group-card:hover {
+      border-color: var(--g-c1, var(--primary));
+      box-shadow: 0 12px 28px color-mix(in srgb, var(--g-c1, #0066CC) 25%, transparent);
+    }
+    .cat-card.group-card .name {
+      color: var(--g-c1, var(--card-text));
+    }
+    .cat-card.group-card .badge-count {
+      background: var(--g-c1);
+      color: #fff;
+      box-shadow: 0 2px 6px color-mix(in srgb, var(--g-c1) 40%, transparent);
+    }
+    [data-theme="ozel"] .cat-card.group-card {
+      background: #1a2035;
+    }
+    [data-theme="ozel"] .cat-card.group-card .img-wrap {
+      background: linear-gradient(135deg,
+                    color-mix(in srgb, var(--g-c1) 18%, #0e1424),
+                    color-mix(in srgb, var(--g-c2) 22%, #0e1424));
+    }
+    [data-theme="ozel"] .cat-card.group-card .name {
+      color: color-mix(in srgb, var(--g-c2) 60%, #ffffff);
+    }
+
+    /* Dark tema uyumlulugu */
+    [data-theme="ozel"] .cat-card {
+      background: #1a2035;
+      border-color: #2d3a50;
+    }
+    [data-theme="ozel"] .cat-card .name { color: #d8dee9; }
+    [data-theme="ozel"] .cat-card .img-wrap {
+      background: linear-gradient(135deg, rgba(0,180,216,.08), rgba(123,47,247,.08));
+    }
+    [data-theme="ozel"] .cat-card:hover {
+      box-shadow: 0 10px 24px rgba(0,180,216,.2);
+      border-color: var(--secondary);
+    }
+
+    [data-theme="doga"] .cat-card {
+      background: #ffffff;
+      border-color: rgba(76,175,80,.25);
+    }
+    [data-theme="doga"] .cat-card .img-wrap {
+      background: linear-gradient(135deg, rgba(76,175,80,.08), rgba(129,199,132,.12));
+    }
+    [data-theme="doga"] .cat-card:hover {
+      box-shadow: 0 10px 24px rgba(76,175,80,.2);
+      border-color: #4CAF50;
+    }
+
+    /* Grup basligi (model listeleme ekraninda) */
+    .cat-stage-title {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 12px;
+    }
+    .cat-stage-title .icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.1rem;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+    .cat-stage-title .txt {
+      font-size: 1rem; font-weight: 800;
+      color: var(--card-text, #1A1A2E);
+    }
+    [data-theme="ozel"] .cat-stage-title .txt { color: #e6ecf5; }
+
+    /* Stage gecisleri */
+    .cat-stage { animation: fadeInUp .3s ease; }
   </style>
 </head>
 <body>
@@ -98,14 +276,36 @@
       </div>
     </div>
 
-    <!-- Kategori Secimi -->
+    <!-- Kategori Secimi (3 asamali: Grup -> Model -> Form) -->
     <div class="card" id="categoryCard">
       <div class="card-title">Fan Kategorisi</div>
+
+      <!-- Yukleniyor -->
       <div id="categoryLoading" style="text-align:center;padding:20px;color:var(--gray-400)">
         <div class="spinner spinner-dark"></div>
         <div style="margin-top:8px;font-size:.85rem">Kategoriler yukleniyor...</div>
       </div>
-      <select class="form-select" id="categorySelect" style="display:none" onchange="onCategoryChange()"></select>
+
+      <!-- Breadcrumb -->
+      <div class="cat-breadcrumb" id="catBreadcrumb" style="display:none"></div>
+
+      <!-- ASAMA 1: 5 Ana Grup -->
+      <div class="cat-stage" id="stageGroups" style="display:none">
+        <div class="cat-grid" id="groupGrid"></div>
+      </div>
+
+      <!-- ASAMA 2: Secilen Grubun Modelleri -->
+      <div class="cat-stage" id="stageModels" style="display:none">
+        <div class="cat-grid" id="modelGrid"></div>
+      </div>
+
+      <!-- ASAMA 3: Secilen Model (kompakt gosterim) -->
+      <div class="cat-stage" id="stageSelected" style="display:none">
+        <div class="cat-stage-title">
+          <div class="icon">&#9989;</div>
+          <div class="txt" id="selectedModelName">-</div>
+        </div>
+      </div>
     </div>
 
     <!-- Secim Formu -->
@@ -276,16 +476,92 @@
     let _allPrices = null;    // Tum fiyat verileri
     let _lastResult = null;   // Son secim sonucu
 
+    // ===== GRUP TANIMLARI (referans projeden) =====
+    const SHEET_GROUPS = {
+      "Kanal Tipi Fanlar": [
+        "Kanal Tipi Yuvarlak Fanlar",
+        "Kanal Tipi Dikdörtgen Fanlar",
+        "Harici Motorlu Dikdörtgen Fan M",
+        "Harici Motorlu Dikdörtgen Fan T",
+        "Harici Motorlu Ex-Proof Fanlar",
+        "Kanal Tipi Dikdörtgen EC Fanlar"
+      ],
+      "Çatı Tipi Fanlar": [
+        "Rad.Yat. Çatı Tipi Fan",
+        "Rad.Yat. Dıştan Çatı Tipi Fan M",
+        "Rad.Yat. Dıştan Çatı Tipi Fan T",
+        "Rad. Ex. Dıştan Çatı Tipi Fan T",
+        "Rad.Dik. Çatı Tipi Fan",
+        "Rad.Dik. Dıştan Çatı Tipi Fan M",
+        "Rad.Dik. Dıştan Çatı Tipi Fan T",
+        "Rad.Yat. Çatı Tipi Fan EC",
+        "Rad.Dik. Çatı Tipi Fan EC",
+        " Aksiyel Çatı Tipi Fan"
+      ],
+      "Basınçlandırma Fanları": [
+        "Basınçlandırma Fanları",
+        "Basınçlandırma Fanları Çatı Tip",
+        "Basınçlandırma Fanları Hücreli",
+        "Basınçlandırma Fanları EX",
+        "Basınçlandırma Fanları EX Çatı",
+        "Basınçlandırma Fanları EX Hücre"
+      ],
+      "Duman Tahliye Fanları": [
+        "Duman Tahliye Fanları",
+        "Duman Tahliye Fanları Çatı Tip",
+        "Duman Tahliye Fanları Hücreli",
+        "Duman Tahliye Fanları F400",
+        "Duman Tahliye Fanları Çatı F400",
+        "Duman Tahliye Fanları HücreF400"
+      ],
+      "Duvar Tipi Fanlar": [
+        "Duvar Tipi Aksiyal Fan",
+        "Duvar Tipi Aksiyel Fan EX"
+      ]
+    };
+    const SHEET_GROUP_ORDER = [
+      "Kanal Tipi Fanlar",
+      "Çatı Tipi Fanlar",
+      "Basınçlandırma Fanları",
+      "Duman Tahliye Fanları",
+      "Duvar Tipi Fanlar"
+    ];
+    const GROUP_META = {
+      "Kanal Tipi Fanlar":      { key: "kanal",  img: "kanal_tipi_fanlar.png" },
+      "Çatı Tipi Fanlar":       { key: "cati",   img: "cati_tipi_fanlar.png" },
+      "Basınçlandırma Fanları": { key: "basinc", img: "basinclandirma_fanlari.png" },
+      "Duman Tahliye Fanları":  { key: "duman",  img: "duman_tahliye_fanlari.png" },
+      "Duvar Tipi Fanlar":      { key: "duvar",  img: "duvar_tipi_fanlar.png" }
+    };
+
+    // Sheet adi -> dosya adi (Python _sheet_to_filename portu)
+    function sheetToFilename(sheetName) {
+      const trMap = { 'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u',
+                      'Ç':'C','Ğ':'G','İ':'I','Ö':'O','Ş':'S','Ü':'U',' ':'_' };
+      let name = sheetName.trim().split('').map(c => trMap[c] !== undefined ? trMap[c] : c).join('').toLowerCase();
+      // sadece harf/rakam/_ birak
+      name = name.split('').filter(c => /[a-z0-9_]/.test(c)).join('');
+      // coklu _ teke dusur
+      while (name.indexOf('__') !== -1) name = name.replace(/__/g, '_');
+      return name.replace(/^_+|_+$/g, '');
+    }
+
+    // Sheet -> gorsel dosya adi (uzantilarla dene)
+    const FAN_IMG_EXT = ['png', 'jpg', 'jpeg', 'webp', 'svg'];
+    function getFanImageUrl(sheetName) {
+      const base = sheetToFilename(sheetName);
+      // Hangi uzantilar mevcut, bilmedigimiz icin <img onerror> ile fallback yapacagiz.
+      // Varsayilan olarak .png dene; yoksa default.svg.
+      return '../assets/fans/' + base + '.png';
+    }
+
     // ===== SAYFA BASLATMA =====
     async function init() {
       try {
-        // Kategorileri yukle
         _fanIndex = await DataLoader.loadFanIndex();
         _allPrices = await DataLoader.loadFanPrices();
 
-        renderCategories(_fanIndex.sheets);
-
-        // DIA badge guncelle
+        renderGroupStage();
         App.updateDIABadge();
       } catch (err) {
         document.getElementById('categoryLoading').innerHTML =
@@ -293,33 +569,108 @@
       }
     }
 
-    // ===== KATEGORI RENDER =====
-    let _sheetsRef = [];
-    function renderCategories(sheets) {
-      _sheetsRef = sheets;
-      const select = document.getElementById('categorySelect');
-      const loading = document.getElementById('categoryLoading');
-      loading.style.display = 'none';
-      select.style.display = '';
+    // Sheet adina gore _fanIndex.sheets icinden bul
+    function findSheetByName(name) {
+      if (!_fanIndex || !_fanIndex.sheets) return null;
+      return _fanIndex.sheets.find(s => s.name === name) || null;
+    }
 
-      for (let i = 0; i < sheets.length; i++) {
-        const opt = document.createElement('option');
-        opt.value = i;
-        opt.textContent = sheets[i].name;
-        select.appendChild(opt);
+    // ===== ASAMA 1: GRUP GRID =====
+    function renderGroupStage() {
+      document.getElementById('categoryLoading').style.display = 'none';
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('resultSection').style.display = 'none';
+      document.getElementById('stageModels').style.display = 'none';
+      document.getElementById('stageSelected').style.display = 'none';
+      document.getElementById('stageGroups').style.display = '';
+
+      // Breadcrumb
+      const bc = document.getElementById('catBreadcrumb');
+      bc.style.display = '';
+      bc.innerHTML = '<span class="current">&#128193; Tum Kategoriler</span>';
+
+      const grid = document.getElementById('groupGrid');
+      let html = '';
+      for (const groupName of SHEET_GROUP_ORDER) {
+        const meta = GROUP_META[groupName];
+        const validSheets = (SHEET_GROUPS[groupName] || []).filter(n => findSheetByName(n));
+        if (validSheets.length === 0) continue;
+
+        html += '<div class="cat-card group-card" data-group="' + meta.key + '" '
+              + 'onclick="openGroup(\'' + groupName.replace(/'/g, "\\'") + '\')">'
+              + '<div class="badge-count">' + validSheets.length + '</div>'
+              + '<div class="img-wrap">'
+              + '<img src="../assets/fans/' + meta.img + '" alt="' + groupName + '" '
+              + 'onerror="this.style.display=\'none\'">'
+              + '</div>'
+              + '<div class="name">' + groupName + '</div>'
+              + '</div>';
+      }
+      grid.innerHTML = html;
+    }
+
+    // ===== ASAMA 2: MODEL GRID =====
+    let _activeGroup = null;
+    function openGroup(groupName) {
+      _activeGroup = groupName;
+      document.getElementById('stageGroups').style.display = 'none';
+      document.getElementById('stageSelected').style.display = 'none';
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('resultSection').style.display = 'none';
+      document.getElementById('stageModels').style.display = '';
+
+      // Breadcrumb
+      const bc = document.getElementById('catBreadcrumb');
+      bc.innerHTML = '<span class="crumb" onclick="renderGroupStage()">&#128193; Tum Kategoriler</span>'
+                   + '<span class="sep">&rsaquo;</span>'
+                   + '<span class="current">' + groupName + '</span>';
+
+      const grid = document.getElementById('modelGrid');
+      const sheetNames = SHEET_GROUPS[groupName] || [];
+      let html = '';
+      for (const sn of sheetNames) {
+        const sheet = findSheetByName(sn);
+        if (!sheet) continue;
+        const imgUrl = getFanImageUrl(sn);
+        const safeName = sn.replace(/'/g, "\\'");
+        html += '<div class="cat-card" onclick="selectModel(\'' + safeName + '\')">'
+              + '<div class="badge-count">' + (sheet.model_count || 0) + '</div>'
+              + '<div class="img-wrap">'
+              + '<img src="' + imgUrl + '" alt="' + sn + '" '
+              + 'onerror="this.onerror=null;this.src=\'../assets/fans/default.svg\'">'
+              + '</div>'
+              + '<div class="name">' + sn.trim() + '</div>'
+              + '</div>';
+      }
+      grid.innerHTML = html;
+
+      // Yukari kaydir
+      document.getElementById('categoryCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // ===== ASAMA 3: MODEL SECILDI -> FORM =====
+    async function selectModel(sheetName) {
+      const sheet = findSheetByName(sheetName);
+      if (!sheet) {
+        App.showToast('Model bulunamadi', 'error');
+        return;
       }
 
-      // Ilk kategoriyi sec
-      if (sheets.length > 0) loadCategory(sheets[0]);
-    }
+      document.getElementById('stageGroups').style.display = 'none';
+      document.getElementById('stageModels').style.display = 'none';
+      document.getElementById('stageSelected').style.display = '';
+      document.getElementById('selectedModelName').textContent = sheetName.trim();
 
-    function onCategoryChange() {
-      const idx = document.getElementById('categorySelect').value;
-      loadCategory(_sheetsRef[idx]);
-    }
+      // Breadcrumb
+      const bc = document.getElementById('catBreadcrumb');
+      bc.innerHTML = '<span class="crumb" onclick="renderGroupStage()">&#128193; Tum Kategoriler</span>'
+                   + '<span class="sep">&rsaquo;</span>'
+                   + '<span class="crumb" onclick="openGroup(\'' + (_activeGroup || '').replace(/'/g, "\\'") + '\')">'
+                   + (_activeGroup || '') + '</span>'
+                   + '<span class="sep">&rsaquo;</span>'
+                   + '<span class="current">' + sheetName.trim() + '</span>';
 
-    // ===== KATEGORI YUKLE =====
-    async function loadCategory(sheet) {
+      // Veriyi yukle
       document.getElementById('formCard').style.display = '';
       document.getElementById('resultSection').style.display = 'none';
 
@@ -328,6 +679,11 @@
         _activeSheet = await DataLoader.loadFanSheet(sheet.file);
         _activeSheetName = sheet.name;
         _activePrices = findMatchingPrices(sheet.name);
+
+        // Forma scroll
+        setTimeout(() => {
+          document.getElementById('formCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
       } catch (err) {
         App.showToast('Kategori yuklenemedi: ' + err.message, 'error');
       }

@@ -3,7 +3,7 @@
 Point HVAC App - Yerel Test Sunucusu
 www/ klasorunu tarayicida test etmek icin.
 Kullanim: python test_local.py
-Tarayicide: http://localhost:8080
+Tarayicide: http://localhost:8082
 """
 
 import http.server
@@ -11,7 +11,7 @@ import os
 import webbrowser
 import threading
 
-PORT = 8080
+PORT = 8082
 DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'www')
 
 

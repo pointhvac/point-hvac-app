@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f4fd"/>
+      <stop offset="100%" style="stop-color:#d1ecf9"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DC2626"/>
+      <stop offset="100%" style="stop-color:#B91C1C"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="url(#bg)"/>
+  <!-- Fan gövdesi (dikdörtgen, kırmızı - basınçlandırma rengi) -->
+  <rect x="70" y="80" width="160" height="130" rx="10" fill="url(#body)" opacity="0.85" stroke="#991B1B" stroke-width="2"/>
+  <!-- Giriş ağzı -->
+  <rect x="50" y="110" width="30" height="70" rx="4" fill="#FCA5A5" stroke="#DC2626" stroke-width="1.5"/>
+  <!-- Çıkış ağzı (üst) -->
+  <rect x="130" y="55" width="70" height="30" rx="4" fill="#FCA5A5" stroke="#DC2626" stroke-width="1.5"/>
+  <!-- Fan çarkı -->
+  <circle cx="150" cy="145" r="40" fill="#FEE2E2" stroke="#991B1B" stroke-width="2"/>
+  <circle cx="150" cy="145" r="10" fill="#991B1B"/>
+  <!-- Fan kanatları -->
+  <path d="M150 105 Q168 125 150 135" fill="#EF4444" stroke="#991B1B" stroke-width="1"/>
+  <path d="M190 145 Q170 163 160 145" fill="#EF4444" stroke="#991B1B" stroke-width="1"/>
+  <path d="M150 185 Q132 165 150 155" fill="#EF4444" stroke="#991B1B" stroke-width="1"/>
+  <path d="M110 145 Q130 127 140 145" fill="#EF4444" stroke="#991B1B" stroke-width="1"/>
+  <!-- Basınç göstergesi -->
+  <circle cx="230" cy="95" r="18" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="230" y="99" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="9" font-weight="700" fill="#DC2626">Pa+</text>
+  <!-- Hava akış okları (güçlü basınç) -->
+  <path d="M65 135 L80 145 L65 155" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M155 75 L165 60 L175 75" fill="none" stroke="#DC2626" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <!-- Etiket -->
+  <text x="150" y="245" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="13" font-weight="700" fill="#374151">BASINCLANDIRMA FANI</text>
+  <text x="150" y="265" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="11" fill="#6B7280">Pressurization Fan</text>
+</svg>
