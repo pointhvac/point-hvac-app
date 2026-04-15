@@ -2,6 +2,9 @@
   "permissions": {
     "additionalDirectories": [
       "c:\\Users\\hytpo\\Desktop\\OĞUZHAN\\08_PROJELER\\02_YENİ PROJELERİM\\12_MAVİ SİTE ANDROİD UYUMLU APP\\point_hvac_app\\static\\fans"
+    ],
+    "allow": [
+      "Bash(git -C \"/c/Users/hytpo/Desktop/OĞUZHAN/08_PROJELER/02_YENİ PROJELERİM/12_MAVİ SİTE ANDROİD UYUMLU APP/point_hvac_app - 1.1\" log --oneline)"
     ]
   }
 }

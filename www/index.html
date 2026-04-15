@@ -7,6 +7,21 @@
   <link rel="icon" type="image/x-icon" href="assets/logos/yeni_icon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/common.css">
+  <style>
+    .currency-widget {
+      display: flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: .68rem; color: rgba(255,255,255,.55);
+      font-variant-numeric: tabular-nums;
+    }
+    .cw-rate { white-space: nowrap; }
+    .cw-sep { opacity: .3; }
+    @media (max-width: 600px) {
+      .currency-widget { margin-bottom: 8px; order: -1; width: 100%; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
 
@@ -67,6 +82,11 @@
         </div>
       </div>
       <div class="header-right">
+        <div class="currency-widget" id="currencyWidget">
+          <span class="cw-rate" id="cwEurTry">EUR/TL --</span>
+          <span class="cw-sep">|</span>
+          <span class="cw-rate" id="cwEurUsd">EUR/USD --</span>
+        </div>
         <button class="theme-toggle" onclick="toggleTheme()" title="Tema Degistir">
           <span class="theme-icon">&#9684;</span>
         </button>
@@ -157,6 +177,7 @@
 
   <!-- ==================== SCRIPTS ==================== -->
   <script src="js/utils.js"></script>
+  <script src="js/currency.js"></script>
   <script>
     // ===== TEMA =====
     function toggleTheme() {
@@ -216,6 +237,24 @@
         + '<span class="greeting-date">' + tarih + '</span>';
     }
     setupGreeting();
+
+    // ===== DOVIZ KURU WIDGET =====
+    CurrencyManager.init();
+    CurrencyManager.onChange(updateCurrencyWidget);
+    function updateCurrencyWidget() {
+      var rates = CurrencyManager.getRates();
+      var tryEl = document.getElementById('cwEurTry');
+      var usdEl = document.getElementById('cwEurUsd');
+      if (!tryEl || !usdEl) return;
+      if (CurrencyManager.hasRates()) {
+        tryEl.textContent = '\u20AC1 = ' + rates.TRY.toFixed(2) + ' TL';
+        usdEl.textContent = '\u20AC1 = ' + rates.USD.toFixed(4) + ' $';
+      } else {
+        tryEl.textContent = 'EUR/TL --';
+        usdEl.textContent = 'EUR/USD --';
+      }
+    }
+    updateCurrencyWidget();
 
     // ===== SPLASH SCREEN =====
     (function() {

@@ -74,7 +74,37 @@
     [data-theme="doga"] .summary-count { color: #A5D6A7; }
     [data-theme="doga"] .summary-total { color: #8BC34A; }
 
-    .action-bar { display: flex; gap: 8px; margin-bottom: 16px; }
+    .action-bar { display: flex; gap: 8px; margin-bottom: 12px; }
+
+    /* Doviz secim bari */
+    .currency-bar {
+      display: flex; align-items: center; gap: 4px;
+      margin-bottom: 12px; padding: 4px;
+      background: var(--gray-100); border-radius: var(--radius-sm);
+    }
+    .currency-btn {
+      padding: 6px 14px; border: none; border-radius: 8px;
+      background: transparent; color: var(--gray-600);
+      font-size: .82rem; font-weight: 700; font-family: inherit;
+      cursor: pointer; transition: .2s;
+    }
+    .currency-btn.active {
+      background: #fff; color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .currency-rate {
+      margin-left: auto; font-size: .72rem;
+      color: var(--gray-400); font-weight: 500;
+      white-space: nowrap;
+    }
+    [data-theme="ozel"] .currency-bar { background: #141a2a; }
+    [data-theme="ozel"] .currency-btn { color: #7a8599; }
+    [data-theme="ozel"] .currency-btn.active { background: #1a2035; color: #7eb8da; }
+    [data-theme="ozel"] .currency-rate { color: #5a6678; }
+    [data-theme="doga"] .currency-bar { background: rgba(15,31,15,.5); }
+    [data-theme="doga"] .currency-btn { color: #81C784; }
+    [data-theme="doga"] .currency-btn.active { background: rgba(27,46,27,.85); color: #8BC34A; }
+    [data-theme="doga"] .currency-rate { color: rgba(165,214,167,.4); }
   </style>
 </head>
 <body>
@@ -102,9 +132,18 @@
 
     <!-- Aksiyon butonlari -->
     <div class="action-bar">
-      <button class="btn btn-primary btn-sm" style="flex:1" onclick="doExport()">&#128196; Excel Export</button>
+      <button class="btn btn-success btn-sm" style="flex:1" onclick="doPdfExport()">&#128196; PDF Teklif</button>
+      <button class="btn btn-primary btn-sm" style="flex:1" onclick="doExport()">&#128202; Excel</button>
       <button class="btn btn-secondary btn-sm" style="flex:1" onclick="doClipboard()">&#128203; Kopyala</button>
-      <button class="btn btn-danger btn-sm" onclick="doClearAll()">&#128465; Temizle</button>
+      <button class="btn btn-danger btn-sm" onclick="doClearAll()">&#128465;</button>
+    </div>
+
+    <!-- Doviz secimi -->
+    <div class="currency-bar" id="currencyBar">
+      <button class="currency-btn active" data-cur="EUR" onclick="setCurrency('EUR')">EUR (&euro;)</button>
+      <button class="currency-btn" data-cur="TRY" onclick="setCurrency('TRY')">TL (&#8378;)</button>
+      <button class="currency-btn" data-cur="USD" onclick="setCurrency('USD')">USD ($)</button>
+      <span class="currency-rate" id="currencyRate">Kur yukleniyor...</span>
     </div>
 
     <!-- Liste -->
@@ -120,6 +159,8 @@
   <script src="../js/utils.js"></script>
   <script src="../js/app.js"></script>
   <script src="../js/export.js"></script>
+  <script src="../js/currency.js"></script>
+  <script src="../js/pdf-export.js"></script>
   <script>
     // Tema
     function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme');let n;if(!c||c==='light')n='ozel';else if(c==='ozel')n='doga';else n='light';h.setAttribute('data-theme',n);setSetting('theme',n);const b=document.querySelector('.theme-icon');if(b){if(n==='ozel')b.innerHTML='&#127807;';else if(n==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}}
@@ -216,6 +257,46 @@
       });
     }
 
+    // ===== DOVIZ KURU =====
+    CurrencyManager.init();
+    CurrencyManager.onChange(function() {
+      renderList();
+      updateCurrencyUI();
+    });
+
+    function setCurrency(cur) {
+      CurrencyManager.setActiveCurrency(cur);
+      document.querySelectorAll('.currency-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.cur === cur);
+      });
+      renderList();
+      updateCurrencyUI();
+    }
+
+    function updateCurrencyUI() {
+      var rates = CurrencyManager.getRates();
+      var el = document.getElementById('currencyRate');
+      if (!el) return;
+      if (CurrencyManager.hasRates()) {
+        el.textContent = '1\u20AC = ' + rates.TRY.toFixed(2) + ' TL | ' + rates.USD.toFixed(4) + ' $';
+      } else {
+        el.textContent = 'Kur bilgisi alinamadi';
+      }
+      // Aktif butonu isaretle
+      var cur = CurrencyManager.getActiveCurrency();
+      document.querySelectorAll('.currency-btn').forEach(function(b) {
+        b.classList.toggle('active', b.dataset.cur === cur);
+      });
+    }
+
+    // ===== PDF EXPORT =====
+    async function doPdfExport() {
+      var list = App.getDIAList();
+      await PdfExport.exportDIA(list);
+    }
+
+    // Baslat
+    updateCurrencyUI();
     renderList();
   </script>
 </body>

@@ -14,13 +14,19 @@ function toFloat(x) {
   return isNaN(n) ? null : n;
 }
 
-/** Para birimi formatlama (EUR). */
-function formatCurrency(val, decimals = 2) {
+/** Para birimi formatlama. currency verilmezse CurrencyManager aktif birimi kullanir. */
+function formatCurrency(val, decimals = 2, currency) {
   if (val == null) return '-';
-  return val.toLocaleString('tr-TR', {
+  var cur = currency || (typeof CurrencyManager !== 'undefined' ? CurrencyManager.getActiveCurrency() : 'EUR');
+  var displayVal = val;
+  if (cur !== 'EUR' && typeof CurrencyManager !== 'undefined') {
+    displayVal = CurrencyManager.convert(val, cur);
+  }
+  var symbol = (typeof CurrencyManager !== 'undefined') ? CurrencyManager.getSymbol(cur) : 'EUR';
+  return displayVal.toLocaleString('tr-TR', {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals
-  }) + ' EUR';
+  }) + ' ' + symbol;
 }
 
 /** Sayi formatlama (Turkce). */
