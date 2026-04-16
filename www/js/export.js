@@ -5,19 +5,11 @@
 
 const ExcelExport = (() => {
 
-  /** SheetJS kutuphanesini lazy-load et. */
-  let _xlsxLoaded = false;
-  async function ensureXLSX() {
-    if (_xlsxLoaded) return;
-    // SheetJS CDN'den yukle
-    return new Promise((resolve, reject) => {
-      if (typeof XLSX !== 'undefined') { _xlsxLoaded = true; resolve(); return; }
-      const script = document.createElement('script');
-      script.src = 'https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js';
-      script.onload = () => { _xlsxLoaded = true; resolve(); };
-      script.onerror = () => reject(new Error('SheetJS yuklenemedi'));
-      document.head.appendChild(script);
-    });
+  /** SheetJS kutuphanesinin yuklu oldugunu kontrol et. */
+  function _checkXLSX() {
+    if (typeof XLSX === 'undefined') {
+      throw new Error('SheetJS yuklu degil');
+    }
   }
 
   /**
@@ -32,7 +24,7 @@ const ExcelExport = (() => {
     }
 
     try {
-      await ensureXLSX();
+      _checkXLSX();
     } catch (e) {
       App.showToast('Excel kutuphanesi yuklenemedi', 'error');
       return;

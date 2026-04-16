@@ -7,7 +7,12 @@ const CurrencyManager = (() => {
 
   const CACHE_KEY = 'currency_rates';
   const CACHE_DURATION = 10 * 60 * 1000; // 10 dakika
-  const API_URL = 'https://api.frankfurter.app/latest?from=EUR&to=TRY,USD';
+  // Birincil ve yedek API'ler (Android WebView icin daha guvenilir)
+  const API_URLS = [
+    'https://open.er-api.com/v6/latest/EUR',
+    'https://api.frankfurter.app/latest?from=EUR&to=TRY,USD',
+    'https://api.exchangerate-api.com/v4/latest/EUR'
+  ];
 
   const SYMBOLS = { EUR: 'EUR', TRY: 'TL', USD: 'USD' };
 
@@ -27,7 +32,18 @@ const CurrencyManager = (() => {
     fetchRates();
   }
 
-  /** API'den kurlari cek ve cache'le. */
+  /** Tek bir API'yi dene. */
+  async function _tryFetch(url) {
+    var resp = await fetch(url, { cache: 'no-store' });
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    var data = await resp.json();
+    if (!data || !data.rates) throw new Error('Gecersiz yanit');
+    var rates = data.rates;
+    if (rates.TRY == null || rates.USD == null) throw new Error('TRY/USD eksik');
+    return { TRY: rates.TRY, USD: rates.USD };
+  }
+
+  /** API'den kurlari cek (sirayla yedek API'leri dener) ve cache'le. */
   async function fetchRates() {
     if (_loading) return;
     // Cache hala gecerliyse tekrar cekme
@@ -40,21 +56,21 @@ const CurrencyManager = (() => {
       return;
     }
     _loading = true;
-    try {
-      const resp = await fetch(API_URL);
-      if (!resp.ok) throw new Error('API error ' + resp.status);
-      const data = await resp.json();
-      _rates = { EUR: 1, TRY: data.rates.TRY, USD: data.rates.USD };
-      setSetting(CACHE_KEY, {
-        rates: { TRY: data.rates.TRY, USD: data.rates.USD },
-        timestamp: Date.now()
-      });
-      _notify();
-    } catch (e) {
-      console.warn('Doviz kuru alinamadi:', e.message);
-    } finally {
-      _loading = false;
+    var success = false;
+    for (var i = 0; i < API_URLS.length; i++) {
+      try {
+        var r = await _tryFetch(API_URLS[i]);
+        _rates = { EUR: 1, TRY: r.TRY, USD: r.USD };
+        setSetting(CACHE_KEY, { rates: r, timestamp: Date.now() });
+        _notify();
+        success = true;
+        break;
+      } catch (e) {
+        console.warn('Kur API hatasi (' + API_URLS[i] + '):', e.message);
+      }
     }
+    if (!success) console.warn('Tum kur API\'leri basarisiz oldu');
+    _loading = false;
   }
 
   /** EUR tutarini aktif veya belirtilen para birimine cevir. */

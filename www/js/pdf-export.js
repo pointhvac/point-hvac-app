@@ -4,28 +4,11 @@
  */
 const PdfExport = (() => {
 
-  let _loaded = false;
-
-  /** Kutuphaneleri CDN'den lazy-load et. */
-  async function ensureLibs() {
-    if (_loaded) return;
-    if (typeof jspdf === 'undefined') {
-      await _loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js');
+  /** Kutuphanelerin yuklu olup olmadigini kontrol et. */
+  function _checkLibs() {
+    if (typeof jspdf === 'undefined' || typeof jspdf.jsPDF === 'undefined') {
+      throw new Error('jsPDF yuklu degil');
     }
-    if (typeof jspdf !== 'undefined' && !jspdf.jsPDF.prototype.autoTable) {
-      await _loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js');
-    }
-    _loaded = true;
-  }
-
-  function _loadScript(src) {
-    return new Promise((resolve, reject) => {
-      var s = document.createElement('script');
-      s.src = src;
-      s.onload = resolve;
-      s.onerror = function() { reject(new Error('Kutuphane yuklenemedi')); };
-      document.head.appendChild(s);
-    });
   }
 
   /** Teklif numarasi olustur: TKL-YYYYMMDD-XXXX */
@@ -68,7 +51,7 @@ const PdfExport = (() => {
     }
 
     try {
-      await ensureLibs();
+      _checkLibs();
     } catch (e) {
       App.showToast('PDF kutuphanesi yuklenemedi', 'error');
       return;
