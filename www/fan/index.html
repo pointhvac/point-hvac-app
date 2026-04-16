@@ -61,8 +61,15 @@
 
     /* Aday tablosu */
     .candidates-section { margin-top: 16px; }
+    .candidate-row { cursor: pointer; transition: background .15s ease; }
+    .candidate-row:hover { background: rgba(0,102,204,.06); }
+    .candidate-row:active { background: rgba(0,102,204,.14); }
     .candidate-row.selected-exact { background: rgba(0,102,204,.08); }
     .candidate-row.selected-tolerance { background: rgba(255,183,3,.08); }
+    .candidate-row.selected-exact:hover { background: rgba(0,102,204,.14); }
+    .candidate-row.selected-tolerance:hover { background: rgba(255,183,3,.14); }
+    [data-theme="ozel"] .candidate-row:hover { background: rgba(0,180,216,.10); }
+    [data-theme="doga"] .candidate-row:hover { background: rgba(76,175,80,.10); }
     .candidate-row .tag {
       display: inline-block; padding: 1px 8px;
       border-radius: 4px; font-size: .7rem; font-weight: 700;
@@ -437,6 +444,7 @@
   <script src="../js/price-calc.js"></script>
   <script src="../js/fan-selector.js"></script>
   <script src="../js/app.js"></script>
+  <script src="../js/back-button.js"></script>
   <script>
     // ===== TEMA (tum sayfalarda paylasilan) =====
     function toggleTheme() {
@@ -475,6 +483,7 @@
     let _activePrices = null; // Aktif fiyat verisi (sheet'e uygun)
     let _allPrices = null;    // Tum fiyat verileri
     let _lastResult = null;   // Son secim sonucu
+    let _lastCandidates = []; // Son aday listesi
 
     // ===== GRUP TANIMLARI (referans projeden) =====
     const SHEET_GROUPS = {
@@ -757,10 +766,11 @@
       }
 
       _lastResult = result;
+      _lastCandidates = candidates || [];
 
       // Sonucu goster
       renderResult(result);
-      renderCandidates(candidates);
+      renderCandidates(_lastCandidates);
 
       document.getElementById('resultSection').style.display = '';
 
@@ -840,7 +850,8 @@
           ? '<span class="tag tag-exact">Tam</span>'
           : '<span class="tag tag-tolerance">%10</span>';
 
-        html += '<tr class="' + rowClass + '">'
+        const safeModel = String(c.model).replace(/'/g, "\\'");
+        html += '<tr class="' + rowClass + '" onclick="selectCandidate(\'' + safeModel + '\')" title="Bu modeli sec">'
           + '<td><strong>' + c.model + '</strong>' + (c.selected ? ' &#10004;' : '') + '</td>'
           + '<td>' + formatNumber(c.debi) + '</td>'
           + '<td>' + formatCurrency(c.netFiyat) + '</td>'
@@ -850,6 +861,48 @@
       }
 
       tbody.innerHTML = html;
+    }
+
+    // ===== ADAY MODELE GECIS =====
+    // Tablodaki bir satira tiklayinca, o modeli secili sonuc olarak goster.
+    // Girilen debi/basinc ve iskonto degisimez; sadece secilen model degisir.
+    function selectCandidate(modelName) {
+      if (!_lastResult || !_lastCandidates || !_lastCandidates.length) return;
+      const c = _lastCandidates.find(x => x.model === modelName);
+      if (!c) return;
+      if (c.selected) return; // Zaten secili
+
+      // Yeni sonuc objesi (girilen degerleri koru)
+      const newResult = {
+        model: c.model,
+        debi: c.debi,
+        basinc: _lastResult.basinc,
+        girilenDebi: _lastResult.girilenDebi,
+        girilenBasinc: _lastResult.girilenBasinc,
+        listeFiyat: c.fiyat,
+        iskonto: _lastResult.iskonto,
+        netFiyat: c.netFiyat,
+        motorGucu: c.motorGucu,
+        kontrolEkipman: c.kontrolEkipman,
+        voltaj: c.voltaj,
+        sesSeviyesi: c.sesSeviyesi,
+        devir: c.devir,
+        toleransli: !!c.toleransli,
+        uyari: null
+      };
+
+      // Adaylar icindeki "selected" bayragini guncelle
+      _lastCandidates = _lastCandidates.map(x => Object.assign({}, x, {
+        selected: x.model === c.model
+      }));
+
+      _lastResult = newResult;
+      renderResult(newResult);
+      renderCandidates(_lastCandidates);
+
+      // Secilen sonuc paneline kaydir
+      document.getElementById('resultPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      playSound('click');
     }
 
     // ===== DIA LISTESINE EKLE =====

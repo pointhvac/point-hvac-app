@@ -85,8 +85,29 @@ const ExcelExport = (() => {
     XLSX.utils.book_append_sheet(wb, ws, 'DIA Listesi');
 
     const fn = fileName || ('Point_HVAC_DIA_' + formatDate() + '.xlsx');
-    XLSX.writeFile(wb, fn);
-    App.showToast('Excel dosyasi indirildi', 'success');
+
+    if (typeof ShareHelper !== 'undefined' && ShareHelper.isNative()) {
+      // Android: native paylasim dialogu
+      try {
+        var base64 = XLSX.write(wb, { bookType: 'xlsx', type: 'base64' });
+        await ShareHelper.shareFile({
+          fileName: fn,
+          data: base64,
+          mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          dialogTitle: 'Excel Listesini Paylas',
+          text: 'Point HVAC - DIA Listesi'
+        });
+        App.showToast('Excel paylasildi', 'success');
+      } catch (se) {
+        console.error('Paylasim hatasi:', se);
+        XLSX.writeFile(wb, fn);
+        App.showToast('Excel kaydedildi', 'success');
+      }
+    } else {
+      // Web: normal download
+      XLSX.writeFile(wb, fn);
+      App.showToast('Excel dosyasi indirildi', 'success');
+    }
   }
 
   function modulLabel(modul) {

@@ -202,10 +202,36 @@ const PdfExport = (() => {
         doc.text('Sayfa ' + i + ' / ' + totalPages, pageW / 2, footerY, { align: 'center' });
       }
 
-      // ===== KAYDET =====
+      // ===== KAYDET / PAYLAS =====
       var fileName = 'Point_HVAC_Teklif_' + _formatDateFile(now) + '.pdf';
-      doc.save(fileName);
-      App.showToast('PDF teklif indirildi', 'success');
+
+      if (typeof ShareHelper !== 'undefined' && ShareHelper.isNative()) {
+        // Android: native paylasim dialogu (WhatsApp, Dosyalar vs.)
+        try {
+          // jsPDF'den base64 datauri al
+          var dataUri = doc.output('datauristring');
+          var commaIdx = dataUri.indexOf(',');
+          var base64 = commaIdx >= 0 ? dataUri.substring(commaIdx + 1) : dataUri;
+
+          await ShareHelper.shareFile({
+            fileName: fileName,
+            data: base64,
+            mimeType: 'application/pdf',
+            dialogTitle: 'Teklifi Paylas',
+            text: 'Point HVAC - Teklif No: ' + teklifNo
+          });
+          App.showToast('PDF paylasildi', 'success');
+        } catch (se) {
+          console.error('Paylasim hatasi:', se);
+          // Fallback: normal kaydet
+          doc.save(fileName);
+          App.showToast('PDF kaydedildi', 'success');
+        }
+      } else {
+        // Web: normal download
+        doc.save(fileName);
+        App.showToast('PDF teklif indirildi', 'success');
+      }
 
     } catch (e) {
       console.error('PDF olusturma hatasi:', e);
