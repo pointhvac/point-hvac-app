@@ -9,6 +9,30 @@ echo.
 
 cd /d "%~dp0"
 
+:: PDF teklif dosyalari kontrol (fontlar + logo)
+echo [0/5] PDF teklif varliklari kontrol ediliyor...
+set "MISSING="
+if not exist "www\fonts\tahoma.ttf"                     set "MISSING=%MISSING% www\fonts\tahoma.ttf"
+if not exist "www\fonts\tahomabd.ttf"                   set "MISSING=%MISSING% www\fonts\tahomabd.ttf"
+if not exist "www\assets\logos\logo_siyah.png"          set "MISSING=%MISSING% www\assets\logos\logo_siyah.png"
+if not exist "www\js\pdf-export.js"                     set "MISSING=%MISSING% www\js\pdf-export.js"
+if defined MISSING (
+    echo.
+    echo UYARI: Asagidaki PDF teklif varliklari eksik:
+    for %%f in (%MISSING%) do echo   - %%f
+    echo PDF olusturmada sorun yasanabilir.
+    echo.
+    set /p CONT="Yine de devam edilsin mi? (E/H): "
+    if /i not "%CONT%"=="E" (
+        echo Iptal edildi.
+        pause
+        exit /b 1
+    )
+) else (
+    echo   OK: Tahoma fontlari + logo_siyah.png + pdf-export.js mevcut.
+)
+echo.
+
 :: Git durumu kontrol
 echo [1/5] Degisiklikler kontrol ediliyor...
 git status --short

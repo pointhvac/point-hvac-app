@@ -8,3 +8,10 @@ build/
 .DS_Store
 Thumbs.db
 *.log
+
+# Claude / yerel ayarlar
+.claude/
+
+# PDF onizleme (gelistirme)
+_preview_pdf.py
+ÖRNEK PDF*.pdf
