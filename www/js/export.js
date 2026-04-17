@@ -30,24 +30,97 @@ const ExcelExport = (() => {
       return;
     }
 
-    // Veri tablosu olustur
-    const rows = items.map((item, idx) => ({
-      'No': idx + 1,
-      'Modul': modulLabel(item.modul),
-      'Kategori': item.kategori || '-',
-      'Model': item.model || '-',
-      'Debi (m3/h)': item.debi || '-',
-      'Basinc (Pa)': item.basinc || '-',
-      'Liste Fiyat (EUR)': item.listeFiyat || item.fiyat || '-',
-      'Iskonto (%)': item.iskonto || '-',
-      'Net Fiyat (EUR)': item.netFiyat || '-',
-      'Motor (kW)': item.motorGucu || item.gucW || '-',
-      'Voltaj': item.voltaj || '-',
-      'Not': item.not || '-'
-    }));
+    /** USD bazli degeri EUR'ya cevir */
+    function _usdToEur(val) {
+      if (typeof CurrencyManager !== 'undefined' && CurrencyManager.hasRates()) {
+        var rates = CurrencyManager.getRates();
+        if (rates.USD) return val / rates.USD;
+      }
+      return val;
+    }
 
-    // Toplam satiri
-    const totalNet = items.reduce((sum, i) => sum + (i.netFiyat || i.fiyat || 0), 0);
+    // Veri tablosu olustur
+    const rows = [];
+    let rowNum = 1;
+    items.forEach((item) => {
+      const rawNet = item.netFiyat || 0;
+      const rawList = item.listeFiyat || item.fiyat || 0;
+      const birimTag = item.birim === 'USD' ? ' (USD)' : '';
+      rows.push({
+        'No': rowNum++,
+        'Modul': modulLabel(item.modul),
+        'Kategori': formatKategori(item.kategori),
+        'Model': (item.model || '-') + birimTag,
+        'Debi (m3/h)': item.debi || '-',
+        'Basinc (Pa)': item.basinc || '-',
+        'Liste Fiyat (EUR)': item.birim === 'USD' ? _usdToEur(rawList) : (rawList || '-'),
+        'Iskonto (%)': item.iskonto || '-',
+        'Net Fiyat (EUR)': item.birim === 'USD' ? _usdToEur(rawNet) : (rawNet || '-'),
+        'Motor (kW)': item.motorGucu || item.gucW || '-',
+        'Voltaj': item.voltaj || '-',
+        'Not': item.not || '-'
+      });
+      // Santral otomasyon (MCC+DCC) alt kalemi
+      if (item.modul === 'santral' && item.otomasyonTotal) {
+        rows.push({
+          'No': rowNum++,
+          'Modul': 'Santral',
+          'Kategori': formatKategori(item.kategori),
+          'Model': 'Otomasyon (MCC+DCC)',
+          'Debi (m3/h)': '-',
+          'Basinc (Pa)': '-',
+          'Liste Fiyat (EUR)': '-',
+          'Iskonto (%)': '-',
+          'Net Fiyat (EUR)': item.otomasyonTotal,
+          'Motor (kW)': '-',
+          'Voltaj': '-',
+          'Not': '-'
+        });
+      }
+      // Hucreli G2/G4 filtre alt kalemleri
+      if (item.modul === 'hucreli' && item.g2 && item.g2NetFiyat) {
+        rows.push({
+          'No': rowNum++,
+          'Modul': 'Hucreli',
+          'Kategori': formatKategori(item.kategori),
+          'Model': 'G2 Filtre',
+          'Debi (m3/h)': '-',
+          'Basinc (Pa)': '-',
+          'Liste Fiyat (EUR)': '-',
+          'Iskonto (%)': '-',
+          'Net Fiyat (EUR)': item.g2NetFiyat,
+          'Motor (kW)': '-',
+          'Voltaj': '-',
+          'Not': '-'
+        });
+      }
+      if (item.modul === 'hucreli' && item.g4 && item.g4NetFiyat) {
+        rows.push({
+          'No': rowNum++,
+          'Modul': 'Hucreli',
+          'Kategori': formatKategori(item.kategori),
+          'Model': 'G4 Filtre',
+          'Debi (m3/h)': '-',
+          'Basinc (Pa)': '-',
+          'Liste Fiyat (EUR)': '-',
+          'Iskonto (%)': '-',
+          'Net Fiyat (EUR)': item.g4NetFiyat,
+          'Motor (kW)': '-',
+          'Voltaj': '-',
+          'Not': '-'
+        });
+      }
+    });
+
+    // Toplam satiri (USD itemleri EUR'ya cevir)
+    const totalNet = items.reduce((sum, i) => {
+      let raw = i.netFiyat || i.fiyat || 0;
+      if (i.birim === 'USD') raw = _usdToEur(raw);
+      let t = sum + raw;
+      if (i.modul === 'santral' && i.otomasyonTotal) t += i.otomasyonTotal;
+      if (i.modul === 'hucreli') { t += (i.g2NetFiyat || 0) + (i.g4NetFiyat || 0); }
+      return t;
+    }, 0);
     rows.push({
       'No': '',
       'Modul': '',
@@ -84,7 +157,7 @@ const ExcelExport = (() => {
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'DIA Listesi');
 
-    const fn = fileName || ('Point_HVAC_DIA_' + formatDate() + '.xlsx');
+    const fn = fileName || (_generateTeklifNo() + '.xlsx');
 
     if (typeof ShareHelper !== 'undefined' && ShareHelper.isNative()) {
       // Android: native paylasim dialogu
@@ -118,11 +191,14 @@ const ExcelExport = (() => {
     return labels[modul] || modul || '-';
   }
 
-  function formatDate() {
-    const d = new Date();
-    return d.getFullYear() + '-'
-      + String(d.getMonth() + 1).padStart(2, '0') + '-'
-      + String(d.getDate()).padStart(2, '0');
+  function _generateTeklifNo() {
+    const d   = new Date();
+    const yyyy = String(d.getFullYear());
+    const gg  = String(d.getDate()).padStart(2, '0');
+    const aa  = String(d.getMonth() + 1).padStart(2, '0');
+    const ss  = String(d.getHours()).padStart(2, '0');
+    const dd  = String(d.getMinutes()).padStart(2, '0');
+    return 'OZY-' + yyyy + '-' + gg + aa + '-' + ss + dd;
   }
 
   return { exportDIA };

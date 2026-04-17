@@ -21,7 +21,7 @@
   /** Alt sayfalardan ana sayfaya goreceli yol uret. */
   function getHomeUrl() {
     var path = (window.location.pathname || '').toLowerCase();
-    var subDirs = ['/dia/', '/fan/', '/santral/', '/hucreli/', '/cihaz/', '/aksa/'];
+    var subDirs = ['/dia/', '/fan/', '/santral/', '/hucreli/', '/cihaz/', '/aksa/', '/teklifler/'];
     for (var i = 0; i < subDirs.length; i++) {
       if (path.indexOf(subDirs[i]) >= 0) return '../index.html';
     }

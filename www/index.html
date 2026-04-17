@@ -18,6 +18,17 @@
     }
     .cw-rate { white-space: nowrap; }
     .cw-sep { opacity: .3; }
+    .cw-refresh {
+      width: 22px; height: 22px; border: none; border-radius: 50%;
+      background: rgba(255,255,255,.1); color: rgba(255,255,255,.55);
+      font-size: .72rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; transition: .25s;
+      padding: 0; margin-left: 2px; flex-shrink: 0;
+    }
+    .cw-refresh:hover { background: rgba(255,255,255,.18); color: #fff; }
+    .cw-refresh:active { transform: scale(.9); }
+    .cw-refresh.spinning { animation: cwSpin .8s linear infinite; pointer-events: none; opacity: .6; }
+    @keyframes cwSpin { to { transform: rotate(360deg); } }
     @media (max-width: 600px) {
       .currency-widget { margin-bottom: 8px; order: -1; width: 100%; justify-content: center; }
     }
@@ -86,10 +97,16 @@
           <span class="cw-rate" id="cwEurTry">EUR/TL --</span>
           <span class="cw-sep">|</span>
           <span class="cw-rate" id="cwEurUsd">EUR/USD --</span>
+          <button class="cw-refresh" id="cwRefresh" onclick="refreshCurrency()" title="Kurlari Yenile">&#8635;</button>
         </div>
+        <div class="cw-update" id="cwUpdate" style="font-size:.58rem;color:rgba(255,255,255,.35);text-align:right;margin-top:2px"></div>
         <button class="theme-toggle" onclick="toggleTheme()" title="Tema Degistir">
           <span class="theme-icon">&#9684;</span>
         </button>
+        <button class="theme-toggle" onclick="AuthGuard.logout()" title="Cikis Yap" style="font-size:.85rem;margin-left:4px">
+          &#x23FB;
+        </button>
+        <div id="userEmail" style="font-size:.6rem;color:rgba(255,255,255,.35);text-align:right;margin-top:2px;width:100%"></div>
       </div>
     </div>
 
@@ -166,6 +183,20 @@
         <div class="module-btn">AKSA Secimine Git</div>
       </a>
 
+      <!-- 6. Teklif Kutuphanesi -->
+      <a href="teklifler/index.html" class="module-card">
+        <span class="module-icon">&#128218;</span>
+        <div class="module-title">Teklif Kutuphanesi</div>
+        <div class="module-desc">Gecmis tekliflerinizi goruntuluyin, indirin veya paylasin.</div>
+        <ul class="module-features">
+          <li>Tum gecmis teklifler</li>
+          <li>Arama ve filtreleme</li>
+          <li>Tekrar indirme / paylasma</li>
+          <li>Bulut yedekleme</li>
+        </ul>
+        <div class="module-btn">Kutuphaneye Git</div>
+      </a>
+
     </div>
 
     <!-- Footer -->
@@ -176,7 +207,10 @@
   </div>
 
   <!-- ==================== SCRIPTS ==================== -->
+  <script src="js/lib/supabase.min.js"></script>
   <script src="js/utils.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth-guard.js"></script>
   <script src="js/currency.js"></script>
   <script src="js/back-button.js"></script>
   <script>
@@ -239,13 +273,30 @@
     }
     setupGreeting();
 
+    // ===== KULLANICI BILGISI =====
+    (function() {
+      var user = typeof AuthGuard !== 'undefined' ? AuthGuard.getCurrentUser() : null;
+      var el = document.getElementById('userEmail');
+      if (user && user.email && el) el.textContent = user.email;
+    })();
+
     // ===== DOVIZ KURU WIDGET =====
     CurrencyManager.init();
     CurrencyManager.onChange(updateCurrencyWidget);
+
+    async function refreshCurrency() {
+      var btn = document.getElementById('cwRefresh');
+      if (btn) btn.classList.add('spinning');
+      var ok = await CurrencyManager.forceRefresh();
+      if (btn) btn.classList.remove('spinning');
+      updateCurrencyWidget();
+    }
+
     function updateCurrencyWidget() {
       var rates = CurrencyManager.getRates();
       var tryEl = document.getElementById('cwEurTry');
       var usdEl = document.getElementById('cwEurUsd');
+      var updEl = document.getElementById('cwUpdate');
       if (!tryEl || !usdEl) return;
       if (CurrencyManager.hasRates()) {
         tryEl.textContent = '\u20AC1 = ' + rates.TRY.toFixed(2) + ' TL';
@@ -253,6 +304,12 @@
       } else {
         tryEl.textContent = 'EUR/TL --';
         usdEl.textContent = 'EUR/USD --';
+      }
+      if (updEl) {
+        var src = CurrencyManager.getSource();
+        var upd = CurrencyManager.getLastUpdateText();
+        var srcLabel = src === 'TCMB' ? 'TCMB' : (src ? 'API' : '');
+        updEl.textContent = (upd ? 'Son guncelleme: ' + upd : '') + (srcLabel ? ' (' + srcLabel + ')' : '');
       }
     }
     updateCurrencyWidget();

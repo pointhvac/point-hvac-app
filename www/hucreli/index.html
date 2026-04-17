@@ -74,7 +74,10 @@
 
   <a href="../dia/index.html" class="dia-badge" style="display:none">&#128722;<span class="count">0</span></a>
 
+  <script src="../js/lib/supabase.min.js"></script>
   <script src="../js/utils.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/auth-guard.js"></script>
   <script src="../js/data-loader.js"></script>
   <script src="../js/price-calc.js"></script>
   <script src="../js/app.js"></script>
@@ -233,12 +236,19 @@
 
     function addToDIA() {
       if (!_lastResult) return;
+      const r = _lastResult;
+      const baseNet = PriceCalc.applyDiscount(r.baseFiyat, r.iskonto);
+      const g2Net = r.g2 ? PriceCalc.applyDiscount(r.g2Fiyat, r.iskonto) : 0;
+      const g4Net = r.g4 ? PriceCalc.applyDiscount(r.g4Fiyat, r.iskonto) : 0;
       App.addToDIA({
-        modul: 'hucreli', kategori: _lastResult.sheetName,
-        model: _lastResult.model, debi: _lastResult.debiKarsilanan,
-        basinc: _lastResult.basincKullanilan, listeFiyat: _lastResult.toplamListe,
-        iskonto: _lastResult.iskonto, netFiyat: _lastResult.netFiyat,
-        g2: _lastResult.g2, g4: _lastResult.g4
+        modul: 'hucreli', kategori: r.sheetName,
+        model: r.model, debi: r.debiKarsilanan,
+        basinc: r.basincKullanilan, listeFiyat: r.baseFiyat,
+        iskonto: r.iskonto, netFiyat: baseNet,
+        motorGucu: r.motor,
+        voltaj: '380V',
+        g2: r.g2, g4: r.g4,
+        g2NetFiyat: g2Net, g4NetFiyat: g4Net
       });
     }
 

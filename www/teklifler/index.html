@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Teklif Kutuphanesi - Point HVAC</title>
+  <link rel="icon" type="image/x-icon" href="../assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* ===== TEKLIF KUTUPHANESI STILLERI ===== */
+    .stats-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.97);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 12px;
+      font-size: .85rem;
+      font-weight: 600;
+    }
+    .stats-count { color: var(--dark); }
+    .stats-total { color: var(--primary); font-weight: 800; }
+
+    .search-bar { margin-bottom: 12px; }
+    .search-bar input {
+      width: 100%; padding: 11px 14px;
+      border: 2px solid var(--gray-200);
+      border-radius: var(--radius-sm);
+      font-size: .92rem; font-family: inherit;
+      background: #fff; color: var(--dark);
+      outline: none; transition: border-color .25s;
+      box-sizing: border-box;
+    }
+    .search-bar input:focus {
+      border-color: var(--primary);
+    }
+
+    .proposal-card {
+      background: rgba(255,255,255,.97);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      position: relative;
+      box-shadow: var(--shadow);
+      animation: fadeInUp .3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .proposal-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, #C8002A, #a30022);
+      color: #fff; display: flex; align-items: center;
+      justify-content: center; font-size: 1.1rem;
+      font-weight: 800; flex-shrink: 0;
+    }
+    .proposal-icon.visual {
+      background: linear-gradient(135deg, #0066CC, #004999);
+    }
+
+    .proposal-body { flex: 1; min-width: 0; }
+    .proposal-no {
+      font-size: .92rem; font-weight: 800; color: var(--dark);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .proposal-meta {
+      font-size: .75rem; color: var(--gray-400); margin-top: 2px;
+    }
+    .proposal-customer {
+      font-size: .75rem; color: var(--gray-600); margin-top: 2px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .proposal-price {
+      font-size: .95rem; font-weight: 800; color: var(--primary);
+      text-align: right; white-space: nowrap; flex-shrink: 0;
+      min-width: 70px;
+    }
+
+    .proposal-actions {
+      display: flex; gap: 6px; flex-shrink: 0;
+    }
+    .proposal-actions button {
+      width: 34px; height: 34px; border-radius: 50%; border: none;
+      background: var(--gray-100); color: var(--gray-600);
+      font-size: .95rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .proposal-actions button:active { transform: scale(.88); }
+    .proposal-actions .btn-download:active { background: var(--primary); color: #fff; }
+    .proposal-actions .btn-delete:active { background: var(--danger); color: #fff; }
+
+    .loading-state {
+      text-align: center; padding: 60px 20px; color: var(--gray-400);
+    }
+    .loading-state .spinner-dark {
+      width: 32px; height: 32px; border: 3px solid var(--gray-200);
+      border-top-color: var(--primary); border-radius: 50%;
+      animation: cwSpin .8s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    .error-state {
+      text-align: center; padding: 40px 20px; color: var(--danger);
+    }
+    .error-state button {
+      margin-top: 12px; padding: 8px 20px;
+      background: var(--primary); color: #fff; border: none;
+      border-radius: var(--radius-sm); cursor: pointer;
+      font-family: inherit; font-weight: 600;
+    }
+
+    .empty-icon { font-size: 3rem; margin-bottom: 12px; opacity: .4; }
+    .empty-text { font-size: .9rem; color: var(--gray-400); line-height: 1.5; }
+
+    /* ===== OZEL TEMA ===== */
+    [data-theme="ozel"] .stats-bar { background: #1a2035; border: 1px solid #2a3348; }
+    [data-theme="ozel"] .stats-count { color: #e8ecf4; }
+    [data-theme="ozel"] .proposal-card { background: #1a2035; border: 1px solid #2a3348; }
+    [data-theme="ozel"] .proposal-no { color: #e8ecf4; }
+    [data-theme="ozel"] .proposal-meta { color: #7a8599; }
+    [data-theme="ozel"] .proposal-customer { color: #8892a8; }
+    [data-theme="ozel"] .proposal-actions button { background: #1e2538; color: #7a8599; }
+    [data-theme="ozel"] .search-bar input {
+      background: #141a2a; border-color: #2a3348; color: #e8ecf4;
+    }
+    [data-theme="ozel"] .search-bar input::placeholder { color: rgba(255,255,255,.25); }
+
+    /* ===== DOGA TEMA ===== */
+    [data-theme="doga"] .stats-bar { background: rgba(27,46,27,.85); border: 1px solid rgba(76,175,80,.25); }
+    [data-theme="doga"] .stats-count { color: #E8F5E9; }
+    [data-theme="doga"] .stats-total { color: #8BC34A; }
+    [data-theme="doga"] .proposal-card { background: rgba(27,46,27,.85); border: 1px solid rgba(76,175,80,.25); }
+    [data-theme="doga"] .proposal-no { color: #E8F5E9; }
+    [data-theme="doga"] .proposal-meta { color: #81C784; }
+    [data-theme="doga"] .proposal-customer { color: #A5D6A7; }
+    [data-theme="doga"] .proposal-price { color: #8BC34A; }
+    [data-theme="doga"] .proposal-actions button { background: rgba(15,31,15,.7); color: #81C784; }
+    [data-theme="doga"] .search-bar input {
+      background: rgba(15,31,15,.7); border-color: rgba(76,175,80,.3); color: #E8F5E9;
+    }
+    [data-theme="doga"] .search-bar input::placeholder { color: rgba(255,255,255,.2); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes cwSpin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="../index.html" class="back-btn" onclick="event.preventDefault(); history.back();">&#8592; Ana Sayfa</a>
+
+    <div class="header" style="margin-bottom:20px">
+      <div class="header-left">
+        <div>
+          <h1>Teklif Kutuphanesi</h1>
+          <div class="subtitle">Gecmis teklifleriniz</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9684;</span></button>
+      </div>
+    </div>
+
+    <!-- Istatistik -->
+    <div class="stats-bar">
+      <span class="stats-count" id="statsCount">Yukleniyor...</span>
+      <span class="stats-total" id="statsTotal"></span>
+    </div>
+
+    <!-- Arama -->
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Teklif no veya firma adi ile ara..."
+             oninput="filterProposals()">
+    </div>
+
+    <!-- Liste -->
+    <div id="proposalList">
+      <div class="loading-state">
+        <div class="spinner-dark"></div>
+        Teklifler yukleniyor...
+      </div>
+    </div>
+
+    <!-- Bos durum -->
+    <div id="emptyState" style="display:none;text-align:center;padding:60px 20px;">
+      <div class="empty-icon">&#128196;</div>
+      <div class="empty-text">Henuz teklif olusturmadiniz.<br>DIA listesinden PDF teklif olusturun.</div>
+    </div>
+
+    <!-- Hata durumu -->
+    <div id="errorState" class="error-state" style="display:none">
+      <div>Teklifler yuklenemedi.</div>
+      <button onclick="loadProposals()">Tekrar Dene</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/lib/supabase.min.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/auth-guard.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/back-button.js"></script>
+  <script src="../js/share-helper.js"></script>
+  <script src="../js/proposal-storage.js"></script>
+  <script>
+    // ===== TEMA =====
+    function toggleTheme() {
+      var h = document.documentElement;
+      var c = h.getAttribute('data-theme');
+      var n;
+      if (!c || c === 'light') n = 'ozel';
+      else if (c === 'ozel') n = 'doga';
+      else n = 'light';
+      h.setAttribute('data-theme', n);
+      setSetting('theme', n);
+      var b = document.querySelector('.theme-icon');
+      if (b) {
+        if (n === 'ozel') b.innerHTML = '&#127807;';
+        else if (n === 'doga') b.innerHTML = '&#9728;';
+        else b.innerHTML = '&#9684;';
+      }
+    }
+    (function() {
+      var s = getSetting('theme', 'light');
+      document.documentElement.setAttribute('data-theme', s);
+      setTimeout(function() {
+        var b = document.querySelector('.theme-icon');
+        if (b) {
+          if (s === 'ozel') b.innerHTML = '&#127807;';
+          else if (s === 'doga') b.innerHTML = '&#9728;';
+          else b.innerHTML = '&#9684;';
+        }
+      }, 30);
+    })();
+
+    // ===== TEKLIF LISTESI =====
+    var _allProposals = [];
+
+    async function loadProposals() {
+      var listEl = document.getElementById('proposalList');
+      var emptyEl = document.getElementById('emptyState');
+      var errorEl = document.getElementById('errorState');
+
+      listEl.innerHTML = '<div class="loading-state"><div class="spinner-dark"></div>Teklifler yukleniyor...</div>';
+      emptyEl.style.display = 'none';
+      errorEl.style.display = 'none';
+
+      try {
+        _allProposals = await ProposalStorage.listProposals();
+        renderProposals(_allProposals);
+      } catch (e) {
+        listEl.innerHTML = '';
+        errorEl.style.display = '';
+      }
+    }
+
+    function renderProposals(list) {
+      var container = document.getElementById('proposalList');
+      var emptyEl = document.getElementById('emptyState');
+      var countEl = document.getElementById('statsCount');
+      var totalEl = document.getElementById('statsTotal');
+
+      if (!list || !list.length) {
+        container.innerHTML = '';
+        emptyEl.style.display = '';
+        countEl.textContent = '0 teklif';
+        totalEl.textContent = '';
+        return;
+      }
+
+      emptyEl.style.display = 'none';
+      countEl.textContent = list.length + ' teklif';
+
+      var html = '';
+      for (var i = 0; i < list.length; i++) {
+        var p = list[i];
+        var ci = p.customer_info || {};
+        var isVisual = p.pdf_type === 'visual';
+        var d = new Date(p.created_at);
+        var dateStr = d.toLocaleDateString('tr-TR') + ' '
+                    + d.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit' });
+
+        var priceStr = '';
+        if (p.total_amount && Number(p.total_amount) > 0) {
+          priceStr = Number(p.total_amount).toLocaleString('tr-TR', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+          }) + ' ' + (p.currency || 'EUR');
+        }
+
+        html += '<div class="proposal-card">';
+        html += '<div class="proposal-icon' + (isVisual ? ' visual' : '') + '">'
+              + (isVisual ? 'G' : 'T') + '</div>';
+        html += '<div class="proposal-body">';
+        html += '<div class="proposal-no">' + _esc(p.proposal_no || '-') + '</div>';
+        html += '<div class="proposal-meta">' + _esc(dateStr) + ' | ' + (p.item_count || 0) + ' urun | ' + _esc(p.currency || 'EUR') + '</div>';
+        if (ci.firma) {
+          html += '<div class="proposal-customer">' + _esc(ci.firma) + '</div>';
+        }
+        html += '</div>';
+        if (priceStr) {
+          html += '<div class="proposal-price">' + priceStr + '</div>';
+        }
+        html += '<div class="proposal-actions">';
+        html += '<button class="btn-download" onclick="downloadProposal(' + i + ')" title="Indir / Paylas">&#11015;</button>';
+        html += '<button class="btn-delete" onclick="deleteProposal(' + i + ')" title="Sil">&times;</button>';
+        html += '</div>';
+        html += '</div>';
+      }
+      container.innerHTML = html;
+    }
+
+    function filterProposals() {
+      var q = document.getElementById('searchInput').value.trim().toLowerCase();
+      if (!q) { renderProposals(_allProposals); return; }
+      var filtered = _allProposals.filter(function(p) {
+        var ci = p.customer_info || {};
+        return (p.proposal_no || '').toLowerCase().indexOf(q) >= 0
+            || (ci.firma || '').toLowerCase().indexOf(q) >= 0
+            || (ci.kisi || '').toLowerCase().indexOf(q) >= 0
+            || (ci.proje || '').toLowerCase().indexOf(q) >= 0;
+      });
+      renderProposals(filtered);
+    }
+
+    async function downloadProposal(index) {
+      var p = _allProposals[index];
+      if (!p) return;
+      App.showToast('Indiriliyor...', '');
+      await ProposalStorage.downloadAndShare(p);
+    }
+
+    async function deleteProposal(index) {
+      var p = _allProposals[index];
+      if (!p) return;
+      if (!confirm('Bu teklifi silmek istediginize emin misiniz?\n' + p.proposal_no)) return;
+
+      App.showToast('Siliniyor...', '');
+      var ok = await ProposalStorage.deleteProposal(p);
+      if (ok) {
+        App.showToast('Teklif silindi', 'success');
+        _allProposals.splice(index, 1);
+        renderProposals(_allProposals);
+      } else {
+        App.showToast('Silme basarisiz', 'error');
+      }
+    }
+
+    /** HTML escape */
+    function _esc(s) {
+      if (!s) return '';
+      var d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
+    // Baslat
+    loadProposals();
+  </script>
+</body>
+</html>

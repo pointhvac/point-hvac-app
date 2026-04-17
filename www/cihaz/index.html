@@ -7,6 +7,114 @@
   <link rel="icon" type="image/x-icon" href="../assets/logos/yeni_icon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/common.css">
+  <style>
+    /* Model kartlari (liste modu) */
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      max-height: 60vh;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding: 2px;
+    }
+    .model-card {
+      background: rgba(255,255,255,.06);
+      border: 2px solid rgba(255,255,255,.1);
+      border-radius: 14px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: all .2s;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+    }
+    .model-card:active { transform: scale(.98); }
+    .model-card.selected {
+      border-color: var(--secondary);
+      background: rgba(0,180,216,.12);
+    }
+    .model-card .mc-name {
+      font-weight: 700;
+      font-size: .95rem;
+      color: #fff;
+    }
+    .model-card .mc-specs {
+      font-size: .75rem;
+      color: rgba(255,255,255,.5);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+    .model-card .mc-price {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--secondary);
+      text-align: right;
+      white-space: nowrap;
+    }
+    .model-card .mc-price-label {
+      font-size: .65rem;
+      color: rgba(255,255,255,.35);
+      text-align: right;
+    }
+
+    /* Jet fan ozel: 2 kolon desktop */
+    @media (min-width: 600px) {
+      .model-grid.jet-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Iskonto bandi */
+    .discount-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 12px;
+      padding: 12px 16px;
+      background: rgba(0,0,0,.15);
+      border-radius: 12px;
+    }
+    .discount-bar label {
+      color: rgba(255,255,255,.6);
+      font-size: .82rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .discount-bar input {
+      width: 80px;
+      padding: 8px 10px;
+      border: 2px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      font-family: inherit;
+      text-align: center;
+    }
+    .discount-bar input:focus {
+      outline: none;
+      border-color: var(--secondary);
+    }
+
+    /* Buton grubu (DIA ekle icin) */
+    .action-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* Bilgi etiketi */
+    .info-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+    .info-tag.eur { background: rgba(0,102,204,.2); color: #7eb8da; }
+    .info-tag.usd { background: rgba(6,214,160,.15); color: #06D6A0; }
+  </style>
 </head>
 <body>
 
@@ -16,8 +124,8 @@
     <div class="header" style="margin-bottom:20px">
       <div class="header-left">
         <div>
-          <h1>&#128295; Diger Cihazlar</h1>
-          <div class="subtitle">IGK, siginak, jet fan secimi</div>
+          <h1>Diger Cihazlar</h1>
+          <div class="subtitle">IGK, Siginak, Jet Fan, Isitici</div>
         </div>
       </div>
       <div class="header-right">
@@ -32,15 +140,21 @@
       <select class="form-select" id="categorySelect" style="display:none" onchange="onCategoryChange()"></select>
     </div>
 
-    <!-- Form -->
+    <!-- Form (egri ve aralik modlari icin) -->
     <div class="card" id="formCard" style="display:none">
       <div class="card-title">Secim Kriterleri</div>
       <div style="display:grid;gap:14px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div class="form-group">
+          <div class="form-group" id="debiGroup">
             <label class="form-label">Debi (m&sup3;/h)</label>
             <input type="number" id="inputDebi" class="form-input" step="1" placeholder="Orn: 3000" inputmode="numeric">
           </div>
+          <div class="form-group" id="basincGroup">
+            <label class="form-label">Basinc (Pa)</label>
+            <input type="number" id="inputBasinc" class="form-input" step="1" placeholder="Orn: 300" inputmode="numeric">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:12px">
           <div class="form-group">
             <label class="form-label">Iskonto (%)</label>
             <input type="number" id="inputIskonto" class="form-input" value="50" min="0" max="100" inputmode="numeric">
@@ -50,12 +164,27 @@
       </div>
     </div>
 
-    <!-- Sonuc -->
+    <!-- Liste Modu Paneli (jet fan, isitici) -->
+    <div id="listSection" style="display:none">
+      <div class="result-panel">
+        <div class="result-title" id="listTitle"></div>
+        <div class="model-grid" id="modelGrid"></div>
+        <div class="discount-bar">
+          <label>Iskonto (%):</label>
+          <input type="number" id="listIskonto" value="50" min="0" max="100" inputmode="numeric" onchange="onListIskontoChange()">
+        </div>
+        <div class="action-bar">
+          <button class="btn btn-success btn-block" onclick="addListToDIA()" id="listDiaBtn" style="display:none">DIA Ekle</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sonuc (egri ve aralik modlari) -->
     <div id="resultSection" style="display:none">
       <div class="result-panel" id="resultPanel"></div>
       <div style="display:flex;gap:8px;margin-top:12px">
         <button class="btn btn-secondary btn-sm" style="flex:1" onclick="navModel(-1)">&#9664; Onceki</button>
-        <button class="btn btn-success btn-sm" style="flex:2" onclick="addToDIA()">&#128722; DIA Ekle</button>
+        <button class="btn btn-success btn-sm" style="flex:2" onclick="addToDIA()">DIA Ekle</button>
         <button class="btn btn-secondary btn-sm" style="flex:1" onclick="navModel(1)">Sonraki &#9654;</button>
       </div>
     </div>
@@ -63,7 +192,10 @@
 
   <a href="../dia/index.html" class="dia-badge" style="display:none">&#128722;<span class="count">0</span></a>
 
+  <script src="../js/lib/supabase.min.js"></script>
   <script src="../js/utils.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/auth-guard.js"></script>
   <script src="../js/data-loader.js"></script>
   <script src="../js/price-calc.js"></script>
   <script src="../js/app.js"></script>
@@ -74,66 +206,179 @@
     (function(){const s=getSetting('theme','light');document.documentElement.setAttribute('data-theme',s);setTimeout(()=>{const b=document.querySelector('.theme-icon');if(b){if(s==='ozel')b.innerHTML='&#127807;';else if(s==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}},30);})();
 
     let _allData = null;
-    let _activeSheet = null;
-    let _activeSheetName = '';
+    let _activeCat = null;    // { tip, birim, modeller }
+    let _activeCatKey = '';
     let _sortedModels = [];
     let _selectedIndex = -1;
     let _lastResult = null;
+    let _listSelectedModel = null;
+
+    // Kategori gorunen isimleri
+    const CAT_LABELS = {
+      'ECO': 'ECO (Isi Geri Kazanim)',
+      'ECO EC': 'ECO EC (Isi Geri Kazanim)',
+      'Cift Cidarli': 'Cift Cidarli (Isi Geri Kazanim)',
+      'IP IGK': 'IP IGK (Endirekt)',
+      'Kanal Tipi Paket Siginak': 'Kanal Tipi Paket Siginak (MDF)',
+      'Kanal Tipi Paket Siginak W': 'Kanal Tipi Paket Siginak (WM)',
+      'Isitici': 'Elektrikli Isitici',
+      'Hucreli Tip Paket Siginak': 'Hucreli Tip Paket Siginak',
+      'Aksiyel Jet Fan': 'Aksiyel Jet Fan',
+      'Radyal Jet Fan': 'Radyal Jet Fan'
+    };
 
     async function init() {
       try {
         _allData = await DataLoader.loadIsiGeriKazanim();
-        const sheets = Object.keys(_allData);
-        renderCategories(sheets);
+        const keys = Object.keys(_allData);
+        renderCategories(keys);
         App.updateDIABadge();
       } catch (e) {
         document.getElementById('catLoading').innerHTML = '<div style="color:var(--danger)">Veri yuklenemedi</div>';
       }
     }
 
-    let _sheetKeys = [];
-    function renderCategories(sheets) {
-      _sheetKeys = sheets;
+    let _catKeys = [];
+    function renderCategories(keys) {
+      _catKeys = keys;
       document.getElementById('catLoading').style.display = 'none';
       const select = document.getElementById('categorySelect');
       select.style.display = '';
-      sheets.forEach((name, i) => {
+      keys.forEach((key, i) => {
         const opt = document.createElement('option');
         opt.value = i;
-        opt.textContent = name;
+        opt.textContent = CAT_LABELS[key] || key;
         select.appendChild(opt);
       });
-      if (sheets.length) {
-        _activeSheetName = sheets[0];
-        _activeSheet = _allData[sheets[0]];
-        document.getElementById('formCard').style.display = '';
+      if (keys.length) {
+        switchCategory(keys[0]);
       }
     }
 
     function onCategoryChange() {
-      const name = _sheetKeys[document.getElementById('categorySelect').value];
-      _activeSheetName = name;
-      _activeSheet = _allData[name];
-      document.getElementById('formCard').style.display = '';
-      document.getElementById('resultSection').style.display = 'none';
+      const key = _catKeys[document.getElementById('categorySelect').value];
+      switchCategory(key);
     }
 
+    function switchCategory(key) {
+      _activeCatKey = key;
+      _activeCat = _allData[key];
+      _selectedIndex = -1;
+      _lastResult = null;
+      _listSelectedModel = null;
+
+      // UI gizle
+      document.getElementById('formCard').style.display = 'none';
+      document.getElementById('listSection').style.display = 'none';
+      document.getElementById('resultSection').style.display = 'none';
+
+      const tip = _activeCat.tip;
+
+      if (tip === 'liste') {
+        // Liste modu: model kartlarini goster
+        renderListMode();
+      } else {
+        // Egri veya aralik modu: form goster
+        document.getElementById('formCard').style.display = '';
+        // Aralik modunda basinc opsiyonel
+        if (tip === 'aralik') {
+          document.getElementById('basincGroup').querySelector('.form-label').textContent = 'Basinc (Pa) - opsiyonel';
+        } else {
+          document.getElementById('basincGroup').querySelector('.form-label').textContent = 'Basinc (Pa)';
+        }
+      }
+    }
+
+    // ======================== EGRI MODU ========================
+    // Bir modelin egrisinden verilen basincta debi degerini interpolasyonla bul
+    function getDebiAtPressure(egri, basinc) {
+      if (!egri || !egri.length) return 0;
+      // Eger basinc ilk noktadan kucukse ilk debiyi dondur
+      if (basinc <= egri[0][0]) return egri[0][1];
+      // Eger basinc son noktadan buyukse son debiyi dondur
+      if (basinc >= egri[egri.length - 1][0]) return egri[egri.length - 1][1];
+
+      for (let i = 0; i < egri.length - 1; i++) {
+        const [p1, d1] = egri[i];
+        const [p2, d2] = egri[i + 1];
+        if (basinc >= p1 && basinc <= p2) {
+          if (p2 === p1) return d1;
+          const ratio = (basinc - p1) / (p2 - p1);
+          return d1 + (d2 - d1) * ratio;
+        }
+      }
+      return 0;
+    }
+
+    // ======================== ARALIK MODU ========================
+    function findByRange(modeller, debi) {
+      // Debi araligina uyan modeli bul
+      for (const m of modeller) {
+        if (debi >= m.debiMin && debi <= m.debiMax) return m;
+      }
+      // Tam uyusmadi, en yakin araliga bak
+      let best = null, bestDist = Infinity;
+      for (const m of modeller) {
+        const dist = debi < m.debiMin ? (m.debiMin - debi) : (debi - m.debiMax);
+        if (dist < bestDist) { bestDist = dist; best = m; }
+      }
+      return best;
+    }
+
+    // ======================== SECIM ========================
     function doSelect() {
+      const tip = _activeCat.tip;
+      const modeller = _activeCat.modeller;
       const debiReq = toFloat(document.getElementById('inputDebi').value);
+      const basincReq = toFloat(document.getElementById('inputBasinc').value) || 0;
       const iskonto = toFloat(document.getElementById('inputIskonto').value) || 0;
-      if (!debiReq) { App.showToast('Debi degeri girin', 'error'); return; }
-      if (!_activeSheet || !_activeSheet.length) { App.showToast('Bu kategoride veri yok', 'error'); return; }
 
-      // Debi ve fiyata gore sirala
-      _sortedModels = [..._activeSheet].filter(m => m.debi != null).sort((a, b) => (a.debi - b.debi) || ((a.fiyat || 0) - (b.fiyat || 0)));
-      if (!_sortedModels.length) { App.showToast('Gecerli model bulunamadi', 'error'); return; }
+      if (!modeller || !modeller.length) {
+        App.showToast('Bu kategoride veri yok', 'error');
+        return;
+      }
 
-      // En kucuk debi >= istenen
-      let idx = _sortedModels.findIndex(m => m.debi >= debiReq);
-      if (idx === -1) idx = _sortedModels.length - 1;
+      if (tip === 'egri') {
+        // Debi ve basinc zorunlu
+        if (!debiReq) { App.showToast('Debi degeri girin', 'error'); return; }
+        if (!basincReq && basincReq !== 0) { App.showToast('Basinc degeri girin', 'error'); return; }
 
-      _selectedIndex = idx;
-      renderModel(iskonto);
+        // Her model icin verilen basincta max debiyi hesapla
+        const candidates = [];
+        for (const m of modeller) {
+          const maxDebi = getDebiAtPressure(m.egri, basincReq);
+          if (maxDebi >= debiReq) {
+            candidates.push({ ...m, hesaplananDebi: Math.round(maxDebi) });
+          }
+        }
+
+        if (!candidates.length) {
+          App.showToast('Bu debi/basinc degerlerine uygun cihaz bulunamadi', 'error');
+          return;
+        }
+
+        // Fiyata gore sirala
+        _sortedModels = candidates.sort((a, b) => (a.fiyat || 0) - (b.fiyat || 0));
+        _selectedIndex = 0;
+        renderCurveResult(iskonto, debiReq, basincReq);
+
+      } else if (tip === 'aralik') {
+        // Debi zorunlu, basinc opsiyonel
+        if (!debiReq) { App.showToast('Debi degeri girin', 'error'); return; }
+
+        const match = findByRange(modeller, debiReq);
+        if (!match) {
+          App.showToast('Uygun model bulunamadi', 'error');
+          return;
+        }
+
+        // Tum modelleri sirala, eslesen modeli bul
+        _sortedModels = [...modeller].sort((a, b) => (a.fiyat || 0) - (b.fiyat || 0));
+        _selectedIndex = _sortedModels.findIndex(m => m.model === match.model);
+        if (_selectedIndex === -1) _selectedIndex = 0;
+        renderRangeResult(iskonto, debiReq, basincReq);
+      }
+
       document.getElementById('resultSection').style.display = '';
       document.getElementById('resultSection').scrollIntoView({ behavior: 'smooth' });
       playSound('click');
@@ -141,44 +386,214 @@
 
     function navModel(dir) {
       const newIdx = _selectedIndex + dir;
-      if (newIdx < 0 || newIdx >= _sortedModels.length) { App.showToast('Son model', ''); return; }
+      if (newIdx < 0 || newIdx >= _sortedModels.length) {
+        App.showToast('Son model', '');
+        return;
+      }
       _selectedIndex = newIdx;
-      renderModel(toFloat(document.getElementById('inputIskonto').value) || 0);
+      const iskonto = toFloat(document.getElementById('inputIskonto').value) || 0;
+      const debiReq = toFloat(document.getElementById('inputDebi').value) || 0;
+      const basincReq = toFloat(document.getElementById('inputBasinc').value) || 0;
+
+      if (_activeCat.tip === 'egri') {
+        renderCurveResult(iskonto, debiReq, basincReq);
+      } else {
+        renderRangeResult(iskonto, debiReq, basincReq);
+      }
     }
 
-    function renderModel(iskonto) {
+    // ======================== RENDER: EGRI SONUC ========================
+    function renderCurveResult(iskonto, debiReq, basincReq) {
       const m = _sortedModels[_selectedIndex];
       const liste = m.fiyat || 0;
       const net = PriceCalc.applyDiscount(liste, iskonto);
+      const birim = _activeCat.birim;
+      const symbol = birim === 'USD' ? '$' : 'EUR';
 
       _lastResult = {
-        model: m.model, debi: m.debi, listeFiyat: liste,
-        iskonto, netFiyat: net, sheetName: _activeSheetName
+        model: m.model, debi: debiReq, basinc: basincReq,
+        hesaplananDebi: m.hesaplananDebi,
+        listeFiyat: liste, iskonto, netFiyat: net,
+        motorGucu: m.motor_gucu || null,
+        voltaj: m.voltaj ? (m.voltaj + 'V') : null,
+        birim: birim, sheetName: _activeCatKey
       };
 
       const p = document.getElementById('resultPanel');
-      let h = '<div class="result-title">' + _activeSheetName + '</div>';
+      let h = '<div class="result-title">' + (CAT_LABELS[_activeCatKey] || _activeCatKey) +
+              ' <span class="info-tag ' + birim.toLowerCase() + '">' + birim + '</span></div>';
       h += '<div style="font-size:1.4rem;font-weight:800;color:var(--secondary);margin-bottom:4px">' + m.model + '</div>';
       h += '<div style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:12px">Model ' + (_selectedIndex + 1) + ' / ' + _sortedModels.length + '</div>';
 
-      h += '<div class="result-row"><span class="result-label">Debi</span><span class="result-value">' + formatNumber(m.debi) + ' m&sup3;/h</span></div>';
-      if (m.basinc != null) h += '<div class="result-row"><span class="result-label">Basinc</span><span class="result-value">' + formatNumber(m.basinc) + ' Pa</span></div>';
+      h += '<div class="result-row"><span class="result-label">Istenen Debi</span><span class="result-value">' + formatNumber(debiReq) + ' m&sup3;/h</span></div>';
+      h += '<div class="result-row"><span class="result-label">Basinc</span><span class="result-value">' + formatNumber(basincReq) + ' Pa</span></div>';
+      h += '<div class="result-row"><span class="result-label">Cihaz Max Debi (bu basincta)</span><span class="result-value" style="color:var(--success)">' + formatNumber(m.hesaplananDebi) + ' m&sup3;/h</span></div>';
+
+      if (m.motor_gucu) h += '<div class="result-row"><span class="result-label">Motor Gucu</span><span class="result-value">' + m.motor_gucu + ' kW</span></div>';
+      if (m.voltaj) h += '<div class="result-row"><span class="result-label">Voltaj</span><span class="result-value">' + m.voltaj + ' V</span></div>';
 
       h += '<div style="height:1px;background:rgba(255,255,255,.1);margin:12px 0"></div>';
-      h += '<div class="result-row"><span class="result-label">Liste Fiyat</span><span class="result-value">' + formatCurrency(liste) + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Liste Fiyat (' + symbol + ')</span><span class="result-value">' + formatNumber(liste, 2) + ' ' + symbol + '</span></div>';
       h += '<div class="result-row"><span class="result-label">Iskonto</span><span class="result-value">%' + iskonto + '</span></div>';
-      h += '<div class="result-row"><span class="result-label">Net Fiyat</span><span class="result-value highlight">' + formatCurrency(net) + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Net Fiyat (' + symbol + ')</span><span class="result-value highlight">' + formatNumber(net, 2) + ' ' + symbol + '</span></div>';
 
       p.innerHTML = h;
     }
 
+    // ======================== RENDER: ARALIK SONUC ========================
+    function renderRangeResult(iskonto, debiReq, basincReq) {
+      const m = _sortedModels[_selectedIndex];
+      const liste = m.fiyat || 0;
+      const net = PriceCalc.applyDiscount(liste, iskonto);
+      const birim = _activeCat.birim;
+      const symbol = birim === 'USD' ? '$' : 'EUR';
+
+      _lastResult = {
+        model: m.model, debi: debiReq, basinc: basincReq,
+        listeFiyat: liste, iskonto, netFiyat: net,
+        motorGucu: m.motor_gucu || null,
+        voltaj: m.voltaj ? (m.voltaj + 'V') : null,
+        birim: birim, sheetName: _activeCatKey,
+        debiMin: m.debiMin, debiMax: m.debiMax
+      };
+
+      const p = document.getElementById('resultPanel');
+      let h = '<div class="result-title">' + (CAT_LABELS[_activeCatKey] || _activeCatKey) +
+              ' <span class="info-tag ' + birim.toLowerCase() + '">' + birim + '</span></div>';
+      h += '<div style="font-size:1.4rem;font-weight:800;color:var(--secondary);margin-bottom:4px">' + m.model + '</div>';
+      h += '<div style="font-size:.75rem;color:rgba(255,255,255,.4);margin-bottom:12px">Model ' + (_selectedIndex + 1) + ' / ' + _sortedModels.length + '</div>';
+
+      h += '<div class="result-row"><span class="result-label">Debi Araligi</span><span class="result-value">' + formatNumber(m.debiMin) + ' - ' + formatNumber(m.debiMax) + ' m&sup3;/h</span></div>';
+      if (debiReq) h += '<div class="result-row"><span class="result-label">Girilen Debi</span><span class="result-value">' + formatNumber(debiReq) + ' m&sup3;/h</span></div>';
+      if (basincReq) h += '<div class="result-row"><span class="result-label">Basinc</span><span class="result-value">' + formatNumber(basincReq) + ' Pa</span></div>';
+
+      if (m.motor_gucu) h += '<div class="result-row"><span class="result-label">Motor Gucu</span><span class="result-value">' + m.motor_gucu + ' kW</span></div>';
+      if (m.voltaj) h += '<div class="result-row"><span class="result-label">Voltaj</span><span class="result-value">' + m.voltaj + ' V</span></div>';
+
+      h += '<div style="height:1px;background:rgba(255,255,255,.1);margin:12px 0"></div>';
+      h += '<div class="result-row"><span class="result-label">Liste Fiyat (' + symbol + ')</span><span class="result-value">' + formatNumber(liste, 2) + ' ' + symbol + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Iskonto</span><span class="result-value">%' + iskonto + '</span></div>';
+      h += '<div class="result-row"><span class="result-label">Net Fiyat (' + symbol + ')</span><span class="result-value highlight">' + formatNumber(net, 2) + ' ' + symbol + '</span></div>';
+
+      p.innerHTML = h;
+    }
+
+    // ======================== LISTE MODU ========================
+    function renderListMode() {
+      const modeller = _activeCat.modeller;
+      const birim = _activeCat.birim;
+      const symbol = birim === 'USD' ? '$' : 'EUR';
+      const isJet = _activeCatKey.includes('Jet Fan');
+
+      document.getElementById('listSection').style.display = '';
+      document.getElementById('listTitle').innerHTML = (CAT_LABELS[_activeCatKey] || _activeCatKey) +
+        ' <span class="info-tag ' + birim.toLowerCase() + '">' + birim + '</span>' +
+        '<div style="font-size:.75rem;color:rgba(255,255,255,.4);margin-top:4px">' + modeller.length + ' model - tiklayarak secin</div>';
+
+      const grid = document.getElementById('modelGrid');
+      grid.className = 'model-grid' + (isJet ? ' jet-grid' : '');
+      grid.innerHTML = '';
+      _listSelectedModel = null;
+      document.getElementById('listDiaBtn').style.display = 'none';
+
+      modeller.forEach((m, i) => {
+        const card = document.createElement('div');
+        card.className = 'model-card';
+        card.dataset.index = i;
+        card.onclick = () => selectListModel(i);
+
+        let specs = '';
+        if (m.debiMin != null && m.debiMax != null) {
+          specs += 'Debi: ' + formatNumber(m.debiMin) + '-' + formatNumber(m.debiMax) + ' m\u00B3/h';
+        }
+        if (m.itkiMin != null && m.itkiMax != null) {
+          if (specs) specs += ' | ';
+          specs += 'Itki: ' + m.itkiMin + '-' + m.itkiMax + ' N';
+        }
+        if (m.motor_gucu) {
+          if (specs) specs += ' | ';
+          specs += 'Motor: ' + m.motor_gucu + ' kW';
+        }
+        if (m.voltaj) {
+          if (specs) specs += ' | ';
+          specs += m.voltaj + 'V';
+        }
+
+        card.innerHTML =
+          '<div>' +
+            '<div class="mc-name">' + m.model + '</div>' +
+            (specs ? '<div class="mc-specs">' + specs + '</div>' : '') +
+          '</div>' +
+          '<div>' +
+            '<div class="mc-price">' + formatNumber(m.fiyat, 0) + ' ' + symbol + '</div>' +
+            '<div class="mc-price-label">Liste Fiyat</div>' +
+          '</div>';
+
+        grid.appendChild(card);
+      });
+    }
+
+    function selectListModel(index) {
+      // Onceki secimi kaldir
+      document.querySelectorAll('.model-card.selected').forEach(c => c.classList.remove('selected'));
+      // Yeni secim
+      const card = document.querySelector('.model-card[data-index="' + index + '"]');
+      if (card) card.classList.add('selected');
+
+      _listSelectedModel = _activeCat.modeller[index];
+      document.getElementById('listDiaBtn').style.display = '';
+
+      // Karta scroll
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function onListIskontoChange() {
+      // Iskonto degisti ama secim degismedi, sadece buton goster
+    }
+
+    function addListToDIA() {
+      if (!_listSelectedModel) {
+        App.showToast('Once bir model secin', 'error');
+        return;
+      }
+      const m = _listSelectedModel;
+      const iskonto = toFloat(document.getElementById('listIskonto').value) || 0;
+      const liste = m.fiyat || 0;
+      const net = PriceCalc.applyDiscount(liste, iskonto);
+      const birim = _activeCat.birim;
+
+      App.addToDIA({
+        modul: 'cihaz',
+        kategori: _activeCatKey,
+        model: m.model,
+        debi: m.debiMin && m.debiMax ? (m.debiMin + '-' + m.debiMax) : null,
+        basinc: null,
+        listeFiyat: liste,
+        iskonto: iskonto,
+        netFiyat: net,
+        motorGucu: m.motor_gucu || null,
+        voltaj: m.voltaj ? (m.voltaj + 'V') : null,
+        birim: birim,
+        itkiMin: m.itkiMin || null,
+        itkiMax: m.itkiMax || null
+      });
+    }
+
+    // ======================== DIA EKLE (EGRI / ARALIK) ========================
     function addToDIA() {
       if (!_lastResult) return;
       App.addToDIA({
-        modul: 'cihaz', kategori: _lastResult.sheetName,
-        model: _lastResult.model, debi: _lastResult.debi,
-        listeFiyat: _lastResult.listeFiyat, iskonto: _lastResult.iskonto,
-        netFiyat: _lastResult.netFiyat
+        modul: 'cihaz',
+        kategori: _lastResult.sheetName,
+        model: _lastResult.model,
+        debi: _lastResult.debi,
+        basinc: _lastResult.basinc,
+        listeFiyat: _lastResult.listeFiyat,
+        iskonto: _lastResult.iskonto,
+        netFiyat: _lastResult.netFiyat,
+        motorGucu: _lastResult.motorGucu,
+        voltaj: _lastResult.voltaj,
+        birim: _lastResult.birim
       });
     }
 

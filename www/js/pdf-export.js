@@ -10,7 +10,7 @@ const PdfExport = (() => {
   const DARK_GRAY  = [61, 61, 61];     // #3D3D3D
   const MID_GRAY   = [107, 107, 107];  // #6B6B6B
   const LIGHT_GRAY = [245, 245, 245];  // #F5F5F5
-  const BLUE       = [0, 85, 170];     // #0055AA
+  const BLUE       = [128, 0, 32];     // #800020 bordo
   const WHITE      = [255, 255, 255];
   const BORDER     = [220, 220, 220];
 
@@ -168,29 +168,43 @@ const PdfExport = (() => {
       doc.text('TEKLİF', ML + 3, y + 5.2);
       y += 7.5;
 
-      // Meta satırı (3 kolon)
+      // Meta satırları (4 alan, 2 satır)
       y += 6;
       const col1X = ML + 2;
-      const col2X = ML + contentW / 3;
-      const col3X = ML + (2 * contentW) / 3;
+      const col2X = ML + contentW / 2;
       doc.setFont(fontName, 'normal');
       doc.setFontSize(9);
       doc.setTextColor.apply(doc, DARK_GRAY);
       doc.text('Teklif No:',   col1X, y);
       doc.text('Tarih:',       col2X, y);
-      doc.text('Para Birimi:', col3X, y);
       doc.setFont(fontName, 'bold');
       doc.text(teklifNo,       col1X + 20, y);
       doc.text(_fmtDateTR(now), col2X + 13, y);
-      doc.text(currency,       col3X + 22, y);
+      y += 5;
+      doc.setFont(fontName, 'normal');
+      doc.text('Para Birimi:', col1X, y);
+      doc.text('Hazirlayan:',  col2X, y);
+      doc.setFont(fontName, 'bold');
+      doc.text(currency,       col1X + 22, y);
+      var _preparedBy = (typeof getSetting === 'function' && getSetting('current_user', null) && getSetting('current_user', null).fullName) || '';
+      doc.text(_preparedBy,    col2X + 21, y);
       y += 7;
 
       // ========== ÜRÜN TABLOSU ==========
-      function fmtPrice(val) {
+      /** USD bazli degeri EUR'ya cevir */
+      function _usdToEur(val) {
+        if (typeof CurrencyManager !== 'undefined' && CurrencyManager.hasRates()) {
+          var rates = CurrencyManager.getRates();
+          if (rates.USD) return val / rates.USD;
+        }
+        return val;
+      }
+      function fmtPrice(val, birim) {
         if (val == null || val === 0) return '-';
-        let conv = val;
+        let eurVal = (birim === 'USD') ? _usdToEur(val) : val;
+        let conv = eurVal;
         if (currency !== 'EUR' && typeof CurrencyManager !== 'undefined') {
-          conv = CurrencyManager.convert(val, currency);
+          conv = CurrencyManager.convert(eurVal, currency);
         }
         return conv.toLocaleString('tr-TR', {
           minimumFractionDigits: 2, maximumFractionDigits: 2
@@ -201,17 +215,63 @@ const PdfExport = (() => {
         return val.toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
       }
 
-      const rows = items.map((it, i) => [
-        i + 1,
-        MODUL_LABELS[it.modul] || it.modul || '-',
-        it.kategori || '-',
-        it.model || '-',
-        it.debi   ? fmtNum(it.debi)   : '-',
-        it.basinc ? fmtNum(it.basinc) : '-',
-        fmtPrice(it.netFiyat || it.fiyat),
-        it.motorGucu || it.gucW || '-',
-        it.voltaj || '-'
-      ]);
+      const rows = [];
+      let rowNum = 1;
+      const fmtKat = (k) => formatKategori(k);
+      items.forEach((it) => {
+        rows.push([
+          rowNum++,
+          MODUL_LABELS[it.modul] || it.modul || '-',
+          fmtKat(it.kategori),
+          it.model || '-',
+          it.debi   ? (typeof it.debi === 'string' ? it.debi : fmtNum(it.debi)) : '-',
+          it.basinc ? fmtNum(it.basinc) : '-',
+          fmtPrice(it.netFiyat || it.fiyat, it.birim),
+          it.motorGucu || it.gucW || '-',
+          it.voltaj || '-'
+        ]);
+        // Santral otomasyon (MCC+DCC) alt kalemi
+        if (it.modul === 'santral' && it.otomasyonTotal) {
+          rows.push([
+            rowNum++,
+            'Santral',
+            fmtKat(it.kategori),
+            'Otomasyon (MCC+DCC)',
+            '-',
+            '-',
+            fmtPrice(it.otomasyonTotal),
+            '-',
+            '-'
+          ]);
+        }
+        // Hücreli G2/G4 filtre alt kalemleri
+        if (it.modul === 'hucreli' && it.g2 && it.g2NetFiyat) {
+          rows.push([
+            rowNum++,
+            'Hücreli',
+            fmtKat(it.kategori),
+            'G2 Filtre',
+            '-',
+            '-',
+            fmtPrice(it.g2NetFiyat),
+            '-',
+            '-'
+          ]);
+        }
+        if (it.modul === 'hucreli' && it.g4 && it.g4NetFiyat) {
+          rows.push([
+            rowNum++,
+            'Hücreli',
+            fmtKat(it.kategori),
+            'G4 Filtre',
+            '-',
+            '-',
+            fmtPrice(it.g4NetFiyat),
+            '-',
+            '-'
+          ]);
+        }
+      });
 
       doc.autoTable({
         startY: y,
@@ -249,7 +309,14 @@ const PdfExport = (() => {
       y = doc.lastAutoTable.finalY + 5;
 
       // ========== FİYAT ÖZETİ (sağa hizalı) ==========
-      const araToplam      = items.reduce((s, i) => s + (i.netFiyat || i.fiyat || 0), 0);
+      const araToplam      = items.reduce((s, i) => {
+        let raw = i.netFiyat || i.fiyat || 0;
+        if (i.birim === 'USD') raw = _usdToEur(raw);
+        let t = s + raw;
+        if (i.modul === 'santral' && i.otomasyonTotal) t += i.otomasyonTotal;
+        if (i.modul === 'hucreli') { t += (i.g2NetFiyat || 0) + (i.g4NetFiyat || 0); }
+        return t;
+      }, 0);
       const kdvIc          = araToplam * 0.20;
       const genelToplamIc  = araToplam + kdvIc;
       const kdvDis         = 0;
@@ -351,7 +418,7 @@ const PdfExport = (() => {
       }
 
       // ========== KAYDET / PAYLAŞ ==========
-      const fileName = 'Point_HVAC_Teklif_' + _fmtDateFile(now) + '.pdf';
+      const fileName = teklifNo + '.pdf';
 
       if (typeof ShareHelper !== 'undefined' && ShareHelper.isNative()) {
         try {
@@ -374,6 +441,29 @@ const PdfExport = (() => {
       } else {
         doc.save(fileName);
         App.showToast('PDF teklif indirildi', 'success');
+      }
+
+      // ========== SUPABASE UPLOAD (arka planda) ==========
+      if (typeof ProposalStorage !== 'undefined') {
+        try {
+          var pdfDataUri = doc.output('datauristring');
+          var commaPos = pdfDataUri.indexOf(',');
+          var cleanBase64 = commaPos >= 0 ? pdfDataUri.substring(commaPos + 1) : pdfDataUri;
+          ProposalStorage.uploadProposal({
+            pdfBase64: cleanBase64,
+            teklifNo: teklifNo,
+            currency: currency,
+            totalAmount: araToplam,
+            itemCount: items.length,
+            customerInfo: typeof getSetting === 'function' ? getSetting('customerInfo', {}) : {},
+            pdfType: 'standard'
+          }).then(function(r) {
+            if (r.success) console.log('[PdfExport] Teklif Supabase\'e yuklendi');
+            else console.warn('[PdfExport] Teklif yukleme hatasi:', r.error || r.warning);
+          });
+        } catch (uploadErr) {
+          console.warn('[PdfExport] Supabase upload hatasi:', uploadErr);
+        }
       }
 
     } catch (e) {

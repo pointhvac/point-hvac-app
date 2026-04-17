@@ -97,6 +97,18 @@
       color: var(--gray-400); font-weight: 500;
       white-space: nowrap;
     }
+    .currency-refresh {
+      width: 26px; height: 26px; border: none; border-radius: 50%;
+      background: var(--gray-100); color: var(--gray-500);
+      font-size: .82rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; transition: .25s;
+      padding: 0; flex-shrink: 0;
+    }
+    .currency-refresh:active { transform: scale(.9); background: var(--primary); color: #fff; }
+    .currency-refresh.spinning { animation: crSpin .8s linear infinite; pointer-events: none; opacity: .5; }
+    @keyframes crSpin { to { transform: rotate(360deg); } }
+    [data-theme="ozel"] .currency-refresh { background: #1e2538; color: #7a8599; }
+    [data-theme="doga"] .currency-refresh { background: rgba(15,31,15,.7); color: #81C784; }
     [data-theme="ozel"] .currency-bar { background: #141a2a; }
     [data-theme="ozel"] .currency-btn { color: #7a8599; }
     [data-theme="ozel"] .currency-btn.active { background: #1a2035; color: #7eb8da; }
@@ -105,6 +117,52 @@
     [data-theme="doga"] .currency-btn { color: #81C784; }
     [data-theme="doga"] .currency-btn.active { background: rgba(27,46,27,.85); color: #8BC34A; }
     [data-theme="doga"] .currency-rate { color: rgba(165,214,167,.4); }
+
+    /* Musteri bilgi butonu */
+    .info-toggle {
+      width: 36px; height: 36px; border-radius: 50%; border: none;
+      background: var(--gray-100); color: var(--gray-600);
+      font-size: 1.1rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; transition: .2s;
+      margin-right: 6px;
+    }
+    .info-toggle:active { background: var(--primary); color: #fff; }
+    .info-toggle.has-data { background: var(--primary); color: #fff; }
+    [data-theme="ozel"] .info-toggle { background: #1e2538; color: #7a8599; }
+    [data-theme="ozel"] .info-toggle.has-data { background: var(--primary); color: #fff; }
+    [data-theme="doga"] .info-toggle { background: rgba(15,31,15,.7); color: #81C784; }
+    [data-theme="doga"] .info-toggle.has-data { background: #4CAF50; color: #fff; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.5); align-items: center; justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: #fff; border-radius: 16px; padding: 24px;
+      width: 90%; max-width: 380px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    }
+    .modal-box h3 { margin: 0 0 16px; font-size: 1.05rem; font-weight: 700; color: var(--dark); }
+    .modal-box label { display: block; font-size: .78rem; font-weight: 600; color: var(--gray-600); margin-bottom: 4px; }
+    .modal-box input {
+      width: 100%; padding: 10px 12px; border: 1.5px solid var(--gray-200);
+      border-radius: 10px; font-size: .92rem; font-family: inherit;
+      margin-bottom: 12px; box-sizing: border-box; transition: .2s;
+    }
+    .modal-box input:focus { outline: none; border-color: var(--primary); }
+    .modal-actions { display: flex; gap: 8px; margin-top: 4px; }
+    .modal-actions button { flex: 1; padding: 10px; border: none; border-radius: 10px; font-size: .88rem; font-weight: 700; font-family: inherit; cursor: pointer; }
+    .modal-actions .btn-save { background: var(--primary); color: #fff; }
+    .modal-actions .btn-cancel { background: var(--gray-100); color: var(--gray-600); }
+    [data-theme="ozel"] .modal-box { background: #1a2035; }
+    [data-theme="ozel"] .modal-box h3 { color: #e8ecf4; }
+    [data-theme="ozel"] .modal-box label { color: #8892a8; }
+    [data-theme="ozel"] .modal-box input { background: #141a2a; border-color: #2a3348; color: #e8ecf4; }
+    [data-theme="doga"] .modal-box { background: rgba(27,46,27,.95); }
+    [data-theme="doga"] .modal-box h3 { color: #E8F5E9; }
+    [data-theme="doga"] .modal-box label { color: #A5D6A7; }
+    [data-theme="doga"] .modal-box input { background: rgba(15,31,15,.7); border-color: rgba(76,175,80,.3); color: #E8F5E9; }
   </style>
 </head>
 <body>
@@ -120,6 +178,7 @@
         </div>
       </div>
       <div class="header-right">
+        <button class="info-toggle" id="infoToggle" onclick="openCustomerInfo()" title="Musteri Bilgileri">&#9998;</button>
         <button class="theme-toggle" onclick="toggleTheme()"><span class="theme-icon">&#9684;</span></button>
       </div>
     </div>
@@ -132,7 +191,7 @@
 
     <!-- Aksiyon butonlari -->
     <div class="action-bar">
-      <button class="btn btn-success btn-sm" style="flex:1" onclick="doPdfExport()">&#128196; PDF Teklif</button>
+      <button class="btn btn-success btn-sm" style="flex:1" onclick="doPdfExportVisual()">&#128196; PDF Teklif</button>
       <button class="btn btn-primary btn-sm" style="flex:1" onclick="doExport()">&#128202; Excel</button>
       <button class="btn btn-secondary btn-sm" style="flex:1" onclick="doClipboard()">&#128203; Kopyala</button>
       <button class="btn btn-danger btn-sm" onclick="doClearAll()">&#128465;</button>
@@ -144,6 +203,7 @@
       <button class="currency-btn" data-cur="TRY" onclick="setCurrency('TRY')">TL (&#8378;)</button>
       <button class="currency-btn" data-cur="USD" onclick="setCurrency('USD')">USD ($)</button>
       <span class="currency-rate" id="currencyRate">Kur yukleniyor...</span>
+      <button class="currency-refresh" id="currencyRefresh" onclick="refreshCurrency()" title="Kurlari Yenile">&#8635;</button>
     </div>
 
     <!-- Liste -->
@@ -156,22 +216,58 @@
     </div>
   </div>
 
+  <!-- Musteri Bilgi Modal -->
+  <div class="modal-overlay" id="customerModal">
+    <div class="modal-box">
+      <h3>Musteri / Proje Bilgileri</h3>
+      <label>Firma Adi</label>
+      <input type="text" id="ciFirema" placeholder="Ornek: ABC Insaat A.S.">
+      <label>Ilgili Kisi</label>
+      <input type="text" id="ciKisi" placeholder="Ornek: Ahmet Yilmaz">
+      <label>Proje Adi</label>
+      <input type="text" id="ciProje" placeholder="Ornek: Ankara AVM Projesi">
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeCustomerInfo()">Iptal</button>
+        <button class="btn-save" onclick="saveCustomerInfo()">Kaydet</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/lib/supabase.min.js"></script>
   <script src="../js/lib/xlsx.full.min.js"></script>
   <script src="../js/lib/jspdf.umd.min.js"></script>
   <script src="../js/lib/jspdf.plugin.autotable.min.js"></script>
   <script src="../js/utils.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/auth-guard.js"></script>
   <script src="../js/app.js"></script>
   <script src="../js/back-button.js"></script>
   <script src="../js/share-helper.js"></script>
   <script src="../js/export.js"></script>
   <script src="../js/currency.js"></script>
-  <script src="../js/pdf-export.js"></script>
+  <script src="../js/pdf-export-visual.js"></script>
+  <script src="../js/proposal-storage.js"></script>
   <script>
     // Tema
     function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme');let n;if(!c||c==='light')n='ozel';else if(c==='ozel')n='doga';else n='light';h.setAttribute('data-theme',n);setSetting('theme',n);const b=document.querySelector('.theme-icon');if(b){if(n==='ozel')b.innerHTML='&#127807;';else if(n==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}}
     (function(){const s=getSetting('theme','light');document.documentElement.setAttribute('data-theme',s);setTimeout(()=>{const b=document.querySelector('.theme-icon');if(b){if(s==='ozel')b.innerHTML='&#127807;';else if(s==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}},30);})();
 
     const MODUL_LABELS = { fan:'Fan', santral:'Santral', hucreli:'Hucreli', cihaz:'Cihaz', aksa:'AKSA' };
+
+    /** USD bazli fiyati EUR'ya cevir. birim yoksa veya EUR ise aynen dondurur. */
+    function toEurPrice(rawPrice, birim) {
+      if (!rawPrice) return 0;
+      if (birim === 'USD' && typeof CurrencyManager !== 'undefined' && CurrencyManager.hasRates()) {
+        var rates = CurrencyManager.getRates();
+        if (rates.USD) return rawPrice / rates.USD;
+      }
+      return rawPrice;
+    }
+
+    function getItemNetEur(item) {
+      var raw = item.netFiyat || item.fiyat || 0;
+      return toEurPrice(raw, item.birim);
+    }
 
     function renderList() {
       const list = App.getDIAList();
@@ -192,16 +288,16 @@
         html += '<button class="dia-delete" onclick="deleteItem(\'' + item.id + '\')" title="Sil">&times;</button>';
         html += '<div class="dia-modul">' + (MODUL_LABELS[item.modul] || item.modul || '-') + '</div>';
         html += '<div class="dia-model">' + (item.model || '-') + '</div>';
-        html += '<div class="dia-kategori">' + (item.kategori || '') + '</div>';
+        html += '<div class="dia-kategori">' + formatKategori(item.kategori) + '</div>';
         html += '<div class="dia-specs">';
-        if (item.debi) html += '<span>Debi: ' + formatNumber(item.debi) + '</span>';
+        if (item.debi) html += '<span>Debi: ' + (typeof item.debi === 'string' ? item.debi : formatNumber(item.debi)) + ' m3/h</span>';
         if (item.basinc) html += '<span>Basinc: ' + formatNumber(item.basinc) + ' Pa</span>';
         if (item.motorGucu) html += '<span>Motor: ' + item.motorGucu + ' kW</span>';
         if (item.voltaj) html += '<span>Voltaj: ' + item.voltaj + '</span>';
         if (item.iskonto) html += '<span>Isk: %' + item.iskonto + '</span>';
         html += '</div>';
-        const price = item.netFiyat || item.fiyat || 0;
-        if (price) html += '<div class="dia-price">' + formatCurrency(price) + '</div>';
+        const priceEur = getItemNetEur(item);
+        if (priceEur) html += '<div class="dia-price">' + formatCurrency(priceEur) + (item.birim === 'USD' ? ' <span style="font-size:.65rem;opacity:.5">(USD bazli)</span>' : '') + '</div>';
         html += '</div>';
       }
       container.innerHTML = html;
@@ -210,7 +306,12 @@
 
     function updateSummary(list) {
       const count = list.length;
-      const total = list.reduce((sum, i) => sum + (i.netFiyat || i.fiyat || 0), 0);
+      const total = list.reduce((sum, i) => {
+        let t = sum + getItemNetEur(i);
+        if (i.modul === 'santral' && i.otomasyonTotal) t += i.otomasyonTotal;
+        if (i.modul === 'hucreli') { t += (i.g2NetFiyat || 0) + (i.g4NetFiyat || 0); }
+        return t;
+      }, 0);
       document.getElementById('summaryCount').textContent = count + ' urun';
       document.getElementById('summaryTotal').textContent = formatCurrency(total);
     }
@@ -230,6 +331,7 @@
     async function doExport() {
       const list = App.getDIAList();
       await ExcelExport.exportDIA(list);
+      resetCustomerInfo();
     }
 
     function doClipboard() {
@@ -241,7 +343,7 @@
 
       let total = 0;
       list.forEach((item, i) => {
-        const price = item.netFiyat || item.fiyat || 0;
+        const price = getItemNetEur(item);
         total += price;
         text += (i + 1) + '. ' + (MODUL_LABELS[item.modul] || '') + ' - ' + (item.model || '-');
         if (item.kategori) text += ' (' + item.kategori + ')';
@@ -269,6 +371,20 @@
       updateCurrencyUI();
     });
 
+    async function refreshCurrency() {
+      var btn = document.getElementById('currencyRefresh');
+      if (btn) btn.classList.add('spinning');
+      var ok = await CurrencyManager.forceRefresh();
+      if (btn) btn.classList.remove('spinning');
+      if (ok) {
+        App.showToast('Kurlar guncellendi', 'success');
+      } else {
+        App.showToast('Kur guncellenemedi', 'error');
+      }
+      updateCurrencyUI();
+      renderList();
+    }
+
     function setCurrency(cur) {
       CurrencyManager.setActiveCurrency(cur);
       document.querySelectorAll('.currency-btn').forEach(function(b) {
@@ -294,10 +410,53 @@
       });
     }
 
+    // ===== MUSTERI BILGILERI =====
+    function getCustomerInfo() {
+      return getSetting('customerInfo', { firma: '', kisi: '', proje: '' });
+    }
+    function openCustomerInfo() {
+      var info = getCustomerInfo();
+      document.getElementById('ciFirema').value = info.firma || '';
+      document.getElementById('ciKisi').value = info.kisi || '';
+      document.getElementById('ciProje').value = info.proje || '';
+      document.getElementById('customerModal').classList.add('active');
+    }
+    function closeCustomerInfo() {
+      document.getElementById('customerModal').classList.remove('active');
+    }
+    function saveCustomerInfo() {
+      var info = {
+        firma: document.getElementById('ciFirema').value.trim(),
+        kisi: document.getElementById('ciKisi').value.trim(),
+        proje: document.getElementById('ciProje').value.trim()
+      };
+      setSetting('customerInfo', info);
+      closeCustomerInfo();
+      updateInfoToggle();
+      App.showToast('Bilgiler kaydedildi', 'success');
+    }
+    function updateInfoToggle() {
+      var info = getCustomerInfo();
+      var btn = document.getElementById('infoToggle');
+      if (btn) {
+        var hasData = !!(info.firma || info.kisi || info.proje);
+        btn.classList.toggle('has-data', hasData);
+      }
+    }
+    updateInfoToggle();
+
     // ===== PDF EXPORT =====
-    async function doPdfExport() {
+    async function doPdfExportVisual() {
       var list = App.getDIAList();
-      await PdfExport.exportDIA(list);
+      var info = getCustomerInfo();
+      await PdfExportVisual.exportDIA(list, { customerInfo: info });
+      resetCustomerInfo();
+    }
+
+    // Musteri bilgilerini sifirla
+    function resetCustomerInfo() {
+      setSetting('customerInfo', { firma: '', kisi: '', proje: '' });
+      updateInfoToggle();
     }
 
     // Baslat

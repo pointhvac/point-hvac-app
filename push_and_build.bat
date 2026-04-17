@@ -9,13 +9,27 @@ echo.
 
 cd /d "%~dp0"
 
+:: Versiyon guncelleme
+for /f "tokens=2 delims=:, " %%a in ('findstr /c:"\"version\"" package.json') do set "CURRENT_VER=%%~a"
+echo   Mevcut versiyon: %CURRENT_VER%
+echo.
+set /p NEW_VER="Yeni versiyon girin (Enter = degistirme): "
+if not "%NEW_VER%"=="" (
+    echo   Versiyon %CURRENT_VER% -^> %NEW_VER% olarak guncelleniyor...
+    powershell -Command "(Get-Content 'package.json') -replace '\"version\": \"%CURRENT_VER%\"', '\"version\": \"%NEW_VER%\"' | Set-Content 'package.json'"
+    echo   Versiyon guncellendi!
+) else (
+    echo   Versiyon degistirilmedi: %CURRENT_VER%
+)
+echo.
+
 :: PDF teklif dosyalari kontrol (fontlar + logo)
 echo [0/5] PDF teklif varliklari kontrol ediliyor...
 set "MISSING="
 if not exist "www\fonts\tahoma.ttf"                     set "MISSING=%MISSING% www\fonts\tahoma.ttf"
 if not exist "www\fonts\tahomabd.ttf"                   set "MISSING=%MISSING% www\fonts\tahomabd.ttf"
 if not exist "www\assets\logos\logo_siyah.png"          set "MISSING=%MISSING% www\assets\logos\logo_siyah.png"
-if not exist "www\js\pdf-export.js"                     set "MISSING=%MISSING% www\js\pdf-export.js"
+if not exist "www\js\pdf-export-visual.js"              set "MISSING=%MISSING% www\js\pdf-export-visual.js"
 if defined MISSING (
     echo.
     echo UYARI: Asagidaki PDF teklif varliklari eksik:
@@ -29,7 +43,7 @@ if defined MISSING (
         exit /b 1
     )
 ) else (
-    echo   OK: Tahoma fontlari + logo_siyah.png + pdf-export.js mevcut.
+    echo   OK: Tahoma fontlari + logo_siyah.png + pdf-export-visual.js mevcut.
 )
 echo.
 

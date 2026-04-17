@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <title>Giris - Point HVAC</title>
+  <link rel="icon" type="image/x-icon" href="assets/logos/yeni_icon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ===== LOGIN PAGE STYLES ===== */
+    body.login-body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0A0F1E 0%, #1a1f2e 50%, #0D1526 100%);
+      overflow: hidden;
+    }
+    body.login-body::before { display: none; }
+
+    .login-container {
+      width: 100%;
+      max-width: 400px;
+      padding: 16px;
+    }
+
+    .login-card {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 20px;
+      padding: 40px 28px 32px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 50px rgba(0,0,0,.3);
+    }
+
+    .login-logo { margin-bottom: 20px; }
+    .login-logo img {
+      height: 56px;
+      filter: brightness(0) invert(1);
+      opacity: .9;
+    }
+
+    .login-title {
+      color: #e8ecf4;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0 0 4px;
+      letter-spacing: -.02em;
+    }
+    .login-subtitle {
+      color: #7a8599;
+      font-size: .82rem;
+      margin: 0 0 32px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .login-form .form-group {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    .login-form .form-label {
+      display: block;
+      color: #8892a8;
+      font-size: .8rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .login-form .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.05);
+      border: 2px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      color: #e8ecf4;
+      font-size: .95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .25s, box-shadow .25s;
+      box-sizing: border-box;
+    }
+    .login-form .form-input:focus {
+      border-color: #C8002A;
+      box-shadow: 0 0 0 3px rgba(200,0,42,.2);
+    }
+    .login-form .form-input::placeholder {
+      color: rgba(255,255,255,.25);
+    }
+
+    .login-error {
+      background: rgba(239,71,111,.1);
+      border: 1px solid rgba(239,71,111,.3);
+      color: #EF476F;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: .85rem;
+      margin-bottom: 16px;
+      text-align: left;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #C8002A, #a30022);
+      border: none;
+      border-radius: 12px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform .15s, opacity .15s;
+      letter-spacing: .01em;
+    }
+    .login-btn:hover { opacity: .9; }
+    .login-btn:active { transform: scale(.97); }
+    .login-btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .login-footer {
+      margin-top: 24px;
+      color: rgba(255,255,255,.2);
+      font-size: .72rem;
+      line-height: 1.5;
+    }
+
+    /* Doga tema */
+    [data-theme="doga"] body.login-body,
+    [data-theme="doga"].login-body {
+      background: linear-gradient(135deg, #0A1A0A 0%, #1B2E1B 50%, #0D260D 100%);
+    }
+    [data-theme="doga"] .login-card {
+      border-color: rgba(76,175,80,.15);
+    }
+    [data-theme="doga"] .login-form .form-input:focus {
+      border-color: #4CAF50;
+      box-shadow: 0 0 0 3px rgba(76,175,80,.2);
+    }
+    [data-theme="doga"] .login-btn {
+      background: linear-gradient(135deg, #2E7D32, #1B5E20);
+    }
+
+    /* Light tema */
+    [data-theme="light"] body.login-body,
+    [data-theme="light"].login-body {
+      background: linear-gradient(135deg, #f0f2f5 0%, #e8eaed 50%, #dfe1e5 100%);
+    }
+    [data-theme="light"] .login-card {
+      background: rgba(255,255,255,.95);
+      border-color: rgba(0,0,0,.08);
+      box-shadow: 0 25px 50px rgba(0,0,0,.08);
+    }
+    [data-theme="light"] .login-title { color: #1a1a2e; }
+    [data-theme="light"] .login-subtitle { color: #6b7280; }
+    [data-theme="light"] .login-form .form-label { color: #4b5563; }
+    [data-theme="light"] .login-form .form-input {
+      background: #fff;
+      border-color: #d1d5db;
+      color: #1a1a2e;
+    }
+    [data-theme="light"] .login-form .form-input::placeholder { color: #9ca3af; }
+    [data-theme="light"] .login-form .form-input:focus {
+      border-color: #C8002A;
+      box-shadow: 0 0 0 3px rgba(200,0,42,.1);
+    }
+    [data-theme="light"] .login-footer { color: rgba(0,0,0,.3); }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      .login-card { padding: 32px 20px 24px; }
+      .login-logo img { height: 44px; }
+      .login-title { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body class="login-body" data-page="login">
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/logos/point_logo_yeni_1.png" alt="Point HVAC"
+             onerror="this.style.display='none'">
+      </div>
+      <h1 class="login-title">Point HVAC</h1>
+      <p class="login-subtitle">HVAC Secim ve Fiyatlandirma</p>
+
+      <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">E-posta</label>
+          <input type="email" id="loginEmail" class="form-input"
+                 placeholder="ornek@firma.com" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Sifre</label>
+          <input type="password" id="loginPassword" class="form-input"
+                 placeholder="Sifrenizi girin" required autocomplete="current-password">
+        </div>
+        <div id="loginError" class="login-error" style="display:none"></div>
+        <button type="submit" class="login-btn" id="loginBtn">
+          Giris Yap
+        </button>
+      </form>
+
+      <div class="login-footer">
+        Point HVAC v2.0.0<br>
+        Hesap olusturmak icin yoneticiyle iletisime gecin.
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/lib/supabase.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // Tema uygula
+    (function() {
+      var saved = localStorage.getItem('phvac_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', saved);
+    })();
+  </script>
+</body>
+</html>

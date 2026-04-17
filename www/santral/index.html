@@ -53,6 +53,12 @@
             <input type="number" id="inputDebi" class="form-input" step="1" placeholder="Orn: 15000" inputmode="numeric">
           </div>
           <div class="form-group">
+            <label class="form-label">Basinc (Pa)</label>
+            <input type="number" id="inputBasinc" class="form-input" step="1" placeholder="Orn: 500" inputmode="numeric">
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr;gap:12px">
+          <div class="form-group">
             <label class="form-label">Iskonto (%)</label>
             <input type="number" id="inputIskonto" class="form-input" value="50" min="0" max="100" inputmode="numeric">
           </div>
@@ -74,7 +80,10 @@
 
   <a href="../dia/index.html" class="dia-badge" style="display:none">&#128722;<span class="count">0</span></a>
 
+  <script src="../js/lib/supabase.min.js"></script>
   <script src="../js/utils.js"></script>
+  <script src="../js/supabase-config.js"></script>
+  <script src="../js/auth-guard.js"></script>
   <script src="../js/data-loader.js"></script>
   <script src="../js/price-calc.js"></script>
   <script src="../js/app.js"></script>
@@ -147,6 +156,7 @@
 
     function doSelect() {
       const debiReq = toFloat(document.getElementById('inputDebi').value);
+      const basincVal = toFloat(document.getElementById('inputBasinc').value) || 0;
       const iskonto = toFloat(document.getElementById('inputIskonto').value) || 0;
       const tolerans = document.getElementById('inputTolerans').checked;
       if (!debiReq) { App.showToast('Debi degeri girin', 'error'); return; }
@@ -204,6 +214,7 @@
       _lastResult = {
         model: selected.model,
         debi: selected.debi,
+        basinc: basincVal,
         girilenDebi: debiReq,
         listeFiyat, iskonto, netFiyat,
         matchType, motorDetails, invertorTotal, otomasyonTotal,
@@ -235,6 +246,7 @@
 
       h += '<div class="result-row"><span class="result-label">Girilen Debi</span><span class="result-value">' + formatNumber(r.girilenDebi) + ' m&sup3;/h</span></div>';
       h += '<div class="result-row"><span class="result-label">Karsilanan Debi</span><span class="result-value">' + formatNumber(r.debi) + ' m&sup3;/h</span></div>';
+      if (r.basinc) h += '<div class="result-row"><span class="result-label">Basinc</span><span class="result-value">' + formatNumber(r.basinc) + ' Pa</span></div>';
       h += '<div class="result-row"><span class="result-label">Liste Fiyat</span><span class="result-value">' + formatCurrency(r.listeFiyat) + '</span></div>';
       h += '<div class="result-row"><span class="result-label">Iskonto</span><span class="result-value">%' + r.iskonto + '</span></div>';
       h += '<div class="result-row"><span class="result-label">Net Fiyat</span><span class="result-value highlight">' + formatCurrency(r.netFiyat) + '</span></div>';
@@ -256,12 +268,23 @@
 
     function addToDIA() {
       if (!_lastResult) return;
+      // Motor bilgisi: birden fazla motor olabilir, "Van: 2.2 kW x1, Asp: 1.5 kW x1" formatinda
+      let motorGucu = null;
+      if (_lastResult.motorDetails && _lastResult.motorDetails.length) {
+        motorGucu = _lastResult.motorDetails.map(m => {
+          const lbl = (m.islev || 'Motor').substring(0, 3);
+          return lbl + ': ' + (m.guc || '-') + ' kW x' + (m.adet || 1);
+        }).join(', ');
+      }
       App.addToDIA({
         modul: 'santral', kategori: _lastResult.sheetName,
         model: _lastResult.model, debi: _lastResult.debi,
+        basinc: _lastResult.basinc,
         listeFiyat: _lastResult.listeFiyat, iskonto: _lastResult.iskonto,
         netFiyat: _lastResult.netFiyat, invertorTotal: _lastResult.invertorTotal,
-        otomasyonTotal: _lastResult.otomasyonTotal
+        otomasyonTotal: _lastResult.otomasyonTotal,
+        motorGucu: motorGucu,
+        voltaj: '380V'
       });
     }
 

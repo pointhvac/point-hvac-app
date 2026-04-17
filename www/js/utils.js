@@ -70,6 +70,42 @@ function playSound(name) {
   } catch { /* ses calmadi */ }
 }
 
+/** Kategori etiket haritasi - ozel isimler */
+var KATEGORI_LABELS = {
+  '(50)IGK+ISI+DX':         'Isı Geri Kazanım Santrali',
+  '(50)IGK+ISI+DX+SUS':     'Susturuculu Isı Geri Kazanım Santrali',
+  '(50)IGK+KH+ISI+DX':      'Karışım Havalı Isı Geri Kazanım',
+  '(50)TH+ISI':              'Taze Havalı Santral (Sulu Batarya)',
+  '(50)TH+ISI+DX':           'Taze Havalı Santral (Sulu+DX Batarya)',
+  '(50)TH+DX':               'Taze Havalı Santral (DX Batarya)',
+  '(50)KH+ISI+DX':           'Karışım Havalı Santral',
+  '(60)HKS IGK+ISI+DX':      'Hijyenik Klima Santrali',
+  '(50)TAMBUR+ISI+DX':       'Rotorlu Klima Santrali',
+  '(50)TAMBUR+ISI+DX+SUS':   'Susturuculu Rotorlu Klima Santrali'
+};
+
+/** Kategori adini formatla: once haritaya bak, yoksa titleCase uygula. */
+function formatKategori(key) {
+  if (!key) return '-';
+  return KATEGORI_LABELS[key] || titleCaseTR(key);
+}
+
+/** Turkce Title Case: her kelimenin ilk harfi buyuk, gerisi kucuk. */
+function titleCaseTR(str) {
+  if (!str) return str;
+  return str.split(' ').map(function(word) {
+    return word.split('+').map(function(part) {
+      if (!part) return part;
+      // Parantezli on ek: (50)TAMBUR -> (50)Tambur
+      var m = part.match(/^(\([^)]*\))(.+)$/);
+      if (m) {
+        return m[1] + m[2].charAt(0).toLocaleUpperCase('tr-TR') + m[2].slice(1).toLocaleLowerCase('tr-TR');
+      }
+      return part.charAt(0).toLocaleUpperCase('tr-TR') + part.slice(1).toLocaleLowerCase('tr-TR');
+    }).join('+');
+  }).join(' ');
+}
+
 /** Debounce. */
 function debounce(fn, ms = 300) {
   let timer;
