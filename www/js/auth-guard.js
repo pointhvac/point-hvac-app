@@ -3,6 +3,9 @@
  * Her sayfada oturum ve cihaz dogrulamasi yapar.
  * Oturum yoksa veya cihaz eslesmiyorsa login sayfasina yonlendirir.
  */
+// Admin e-postalari - cihaz kontrolu uygulanmaz
+var ADMIN_EMAILS_GUARD = ['admin@pointhvac.com'];
+
 const AuthGuard = (() => {
 
   /** www root'a gore relatif yolu hesapla */
@@ -73,32 +76,39 @@ const AuthGuard = (() => {
         return;
       }
 
-      // Oturum var - cihaz dogrulamasi yap
-      var deviceId = await getDeviceId();
-      var userId = session.user.id;
+      // Admin kontrolu - admin ise cihaz dogrulamasi atlanir
+      var userEmail = session.user.email ? session.user.email.toLowerCase() : '';
+      var isAdmin = ADMIN_EMAILS_GUARD.indexOf(userEmail) >= 0;
 
-      var devResult = await client
-        .from('user_devices')
-        .select('device_id')
-        .eq('user_id', userId)
-        .single();
+      if (!isAdmin) {
+        // Oturum var - cihaz dogrulamasi yap
+        var deviceId = await getDeviceId();
+        var userId = session.user.id;
 
-      if (devResult.error && devResult.error.code === 'PGRST116') {
-        // Hic cihaz kaydi yok - ilk giris login sayfasindan yapilmali
-        await client.auth.signOut();
-        _clearLocalUser();
-        window.location.href = _getBasePath() + 'login.html';
-        return;
+        var devResult = await client
+          .from('user_devices')
+          .select('device_id')
+          .eq('user_id', userId)
+          .single();
+
+        if (devResult.error && devResult.error.code === 'PGRST116') {
+          // Hic cihaz kaydi yok - ilk giris login sayfasindan yapilmali
+          await client.auth.signOut();
+          _clearLocalUser();
+          window.location.href = _getBasePath() + 'login.html';
+          return;
+        }
+
+        if (devResult.data && devResult.data.device_id !== deviceId) {
+          // FARKLI CIHAZ - oturumu kapat ve engelle
+          await client.auth.signOut();
+          _clearLocalUser();
+          alert('Bu hesap baska bir cihaza kayitlidir.\nGiris yapabilmek icin yoneticiyle iletisime gecin.');
+          window.location.href = _getBasePath() + 'login.html';
+          return;
+        }
       }
-
-      if (devResult.data && devResult.data.device_id !== deviceId) {
-        // FARKLI CIHAZ - oturumu kapat ve engelle
-        await client.auth.signOut();
-        _clearLocalUser();
-        alert('Bu hesap baska bir cihaza kayitlidir.\nGiris yapabilmek icin yoneticiyle iletisime gecin.');
-        window.location.href = _getBasePath() + 'login.html';
-        return;
-      }
+      // Admin kullanici: cihaz kontrolu atlanir
 
       // Her sey tamam - profil bilgisini cek ve kaydet
       var fullName = '';

@@ -4,7 +4,7 @@
  */
 const PdfExportVisual = (() => {
 
-  // ===== RENK PALETİ =====
+  // ===== RENK PALET\u0130 =====
   const PRIMARY    = [200, 0, 42];
   const DARK_GRAY  = [61, 61, 61];
   const MID_GRAY   = [107, 107, 107];
@@ -13,15 +13,10 @@ const PdfExportVisual = (() => {
   const WHITE      = [255, 255, 255];
   const BORDER     = [220, 220, 220];
 
-  const MODUL_LABELS = {
-    fan: 'Fan', santral: 'Santral', hucreli: 'Hucreli',
-    cihaz: 'Cihaz', aksa: 'AKSA'
-  };
-
   // ===== YARDIMCI =====
   function _checkLibs() {
     if (typeof jspdf === 'undefined' || typeof jspdf.jsPDF === 'undefined') {
-      throw new Error('jsPDF yuklu degil');
+      throw new Error('jsPDF y\u00FCkl\u00FC de\u011Fil');
     }
   }
 
@@ -72,33 +67,42 @@ const PdfExportVisual = (() => {
     } catch (_) { return null; }
   }
 
-  function _generateTeklifNo() {
-    const d   = new Date();
-    const yyyy = String(d.getFullYear());
-    const gg  = String(d.getDate()).padStart(2, '0');
-    const aa  = String(d.getMonth() + 1).padStart(2, '0');
-    const ss  = String(d.getHours()).padStart(2, '0');
-    const dd  = String(d.getMinutes()).padStart(2, '0');
-    return 'OZY-' + yyyy + '-' + gg + aa + '-' + ss + dd;
+  async function _loadCompressedImage(url, maxPx) {
+    maxPx = maxPx || 200;
+    try {
+      var dataUrl = await _loadImageDataURL(url);
+      if (!dataUrl) return null;
+      return await new Promise(function(resolve) {
+        var img = new Image();
+        img.onload = function() {
+          var w = img.width, h = img.height;
+          var scale = Math.min(maxPx / w, maxPx / h, 1);
+          var nw = Math.round(w * scale);
+          var nh = Math.round(h * scale);
+          var canvas = document.createElement('canvas');
+          canvas.width = nw;
+          canvas.height = nh;
+          var ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, nw, nh);
+          ctx.drawImage(img, 0, 0, nw, nh);
+          resolve(canvas.toDataURL('image/jpeg', 0.75));
+        };
+        img.onerror = function() { resolve(null); };
+        img.src = dataUrl;
+      });
+    } catch (_) { return null; }
   }
 
-  function _fmtDateTR(d) {
-    return String(d.getDate()).padStart(2, '0') + '.'
-         + String(d.getMonth() + 1).padStart(2, '0') + '.'
-         + d.getFullYear();
-  }
-
-  /** Kategori/sheet adi -> gorsel dosya adi. */
   function _sheetToFilename(sheetName) {
-    const trMap = { 'ç':'c','ğ':'g','ı':'i','ö':'o','ş':'s','ü':'u',
-                    'Ç':'C','Ğ':'G','İ':'I','Ö':'O','Ş':'S','Ü':'U',' ':'_' };
+    const trMap = { '\u00E7':'c','\u011F':'g','\u0131':'i','\u00F6':'o','\u015F':'s','\u00FC':'u',
+                    '\u00C7':'C','\u011E':'G','\u0130':'I','\u00D6':'O','\u015E':'S','\u00DC':'U',' ':'_' };
     let name = sheetName.trim().split('').map(c => trMap[c] !== undefined ? trMap[c] : c).join('').toLowerCase();
     name = name.split('').filter(c => /[a-z0-9_]/.test(c)).join('');
     while (name.indexOf('__') !== -1) name = name.replace(/__/g, '_');
     return name.replace(/^_+|_+$/g, '');
   }
 
-  /** Modul ve kategori icin gorsel URL'i dondur. */
   function _getImageUrl(item) {
     var folders = { fan: 'fans', santral: 'santral', hucreli: 'hucreli', cihaz: 'cihaz' };
     var folder = folders[item.modul];
@@ -106,15 +110,19 @@ const PdfExportVisual = (() => {
     return '../assets/' + folder + '/' + _sheetToFilename(item.kategori) + '.png';
   }
 
-  // ===== ANA FONKSİYON =====
+  // ===== ANA FONKS\u0130YON =====
   async function exportDIA(items, options) {
     options = options || {};
+    var lang = options.lang || 'tr';
+    var t = PdfI18n.get(lang);
+    var MODUL_LABELS = PdfI18n.getModulLabels(lang);
+
     if (!items || !items.length) {
-      App.showToast('Liste bos, PDF olusturulamaz', 'error');
+      App.showToast(t.toastEmpty, 'error');
       return;
     }
     try { _checkLibs(); }
-    catch (e) { App.showToast('PDF kutuphanesi yuklenemedi', 'error'); return; }
+    catch (e) { App.showToast(t.toastLibFail, 'error'); return; }
 
     try {
       const currency = options.currency
@@ -127,7 +135,14 @@ const PdfExportVisual = (() => {
       const contentW = pageW - ML - MR;
 
       const fontName = await _registerFont(doc);
-      const teklifNo = _generateTeklifNo();
+      var teklifNo;
+      if (typeof QuoteNumberService !== 'undefined') {
+        var quoteResult = await QuoteNumberService.getNextNumber();
+        teklifNo = quoteResult.teklifNo;
+      } else {
+        var _d = new Date();
+        teklifNo = 'OZY-' + _d.getFullYear() + '-' + String(_d.getDate()).padStart(2,'0') + String(_d.getMonth()+1).padStart(2,'0') + '-' + String(_d.getHours()).padStart(2,'0') + String(_d.getMinutes()).padStart(2,'0');
+      }
       const now      = new Date();
 
       // ========== HEADER ==========
@@ -142,57 +157,57 @@ const PdfExportVisual = (() => {
         doc.setFont(fontName, 'bold');
         doc.setFontSize(11);
         doc.setTextColor.apply(doc, DARK_GRAY);
-        doc.text('POINT HAVALANDIRMA SiSTEMLERi', pageW - MR, topY + 4, { align: 'right' });
+        doc.text(t.companyName, pageW - MR, topY + 4, { align: 'right' });
         doc.setFont(fontName, 'normal');
         doc.setFontSize(9);
         doc.setTextColor.apply(doc, MID_GRAY);
-        doc.text('Dagyaka Mah. 2022. Cad. No:18/1',        pageW - MR, topY + 9,  { align: 'right' });
+        doc.text('Da\u011Fyaka Mah. 2022. Cad. No:18/1',        pageW - MR, topY + 9,  { align: 'right' });
         doc.text('KahramanKazan / ANKARA',                 pageW - MR, topY + 13, { align: 'right' });
         doc.text('+90 (312) 394 57 69 | info@pointhvac.com', pageW - MR, topY + 17, { align: 'right' });
         doc.setTextColor.apply(doc, PRIMARY);
         doc.text('www.pointhvac.com', pageW - MR, topY + 21, { align: 'right' });
         const hLineY = topY + logoH + 6;
         doc.setDrawColor.apply(doc, PRIMARY);
-        doc.setLineWidth(0.7);
+        doc.setLineWidth(0.8);
         doc.line(ML, hLineY, pageW - MR, hLineY);
         return hLineY;
       }
 
       const hLineY = drawHeader();
 
-      // ========== TEKLiF BANNER ==========
+      // ========== TEKL\u0130F BANNER ==========
       let y = hLineY + 4;
       doc.setFillColor.apply(doc, PRIMARY);
-      doc.rect(ML, y, contentW, 7.5, 'F');
+      doc.rect(ML, y, contentW, 8.5, 'F');
       doc.setFont(fontName, 'bold');
-      doc.setFontSize(11);
+      doc.setFontSize(12);
       doc.setTextColor.apply(doc, WHITE);
-      doc.text('TEKLiF', ML + 3, y + 5.2);
-      y += 7.5;
+      doc.text(t.banner, ML + 3, y + 5.8);
+      y += 8.5;
 
-      // Meta (4 alan, 2 satir)
+      // Meta (4 alan, 2 sat\u0131r)
       y += 6;
       const col1X = ML + 2;
       const col2X = ML + contentW / 2;
       doc.setFont(fontName, 'normal');
       doc.setFontSize(9);
       doc.setTextColor.apply(doc, DARK_GRAY);
-      doc.text('Teklif No:',   col1X, y);
-      doc.text('Tarih:',       col2X, y);
+      doc.text(t.quoteNo,   col1X, y);
+      doc.text(t.date,      col2X, y);
       doc.setFont(fontName, 'bold');
       doc.text(teklifNo,       col1X + 20, y);
-      doc.text(_fmtDateTR(now), col2X + 13, y);
+      doc.text(PdfI18n.formatDate(now, lang), col2X + 13, y);
       y += 5;
       doc.setFont(fontName, 'normal');
-      doc.text('Para Birimi:', col1X, y);
-      doc.text('Hazirlayan:',  col2X, y);
+      doc.text(t.currency, col1X, y);
+      doc.text(t.preparedBy,  col2X, y);
       doc.setFont(fontName, 'bold');
       doc.text(currency,       col1X + 22, y);
       var _preparedBy = (typeof getSetting === 'function' && getSetting('current_user', null) && getSetting('current_user', null).fullName) || '';
       doc.text(_preparedBy,    col2X + 21, y);
       y += 7;
 
-      // ========== MUSTERI BILGILERI (SAYFA 1) ==========
+      // ========== M\u00DC\u015ETER\u0130 B\u0130LG\u0130LER\u0130 ==========
       const ci = options.customerInfo || {};
       if (ci.firma || ci.kisi || ci.proje) {
         doc.setDrawColor.apply(doc, BORDER);
@@ -203,21 +218,21 @@ const PdfExportVisual = (() => {
         doc.setFontSize(9);
         doc.setTextColor.apply(doc, DARK_GRAY);
         if (ci.firma) {
-          doc.text('Firma:', col1X, y);
+          doc.text(t.company, col1X, y);
           doc.setFont(fontName, 'bold');
           doc.text(ci.firma, col1X + 20, y);
           doc.setFont(fontName, 'normal');
           y += 5;
         }
         if (ci.kisi) {
-          doc.text('Ilgili Kisi:', col1X, y);
+          doc.text(t.contactPerson, col1X, y);
           doc.setFont(fontName, 'bold');
-          doc.text(ci.kisi, col1X + 20, y);
+          doc.text(ci.kisi, col1X + 22, y);
           doc.setFont(fontName, 'normal');
           y += 5;
         }
         if (ci.proje) {
-          doc.text('Proje:', col1X, y);
+          doc.text(t.project, col1X, y);
           doc.setFont(fontName, 'bold');
           doc.text(ci.proje, col1X + 20, y);
           doc.setFont(fontName, 'normal');
@@ -226,24 +241,21 @@ const PdfExportVisual = (() => {
         y += 2;
       }
 
-      // ========== YARDIMCI FONKSIYONLAR ==========
+      // ========== YARDIMCI FONKS\u0130YONLAR ==========
       function fmtPrice(val) {
         if (val == null || val === 0) return '-';
         let conv = val;
         if (currency !== 'EUR' && typeof CurrencyManager !== 'undefined') {
           conv = CurrencyManager.convert(val, currency);
         }
-        return conv.toLocaleString('tr-TR', {
-          minimumFractionDigits: 2, maximumFractionDigits: 2
-        }) + ' ' + currency;
+        return PdfI18n.formatPrice(conv, lang, currency);
       }
       function fmtNum(val) {
-        if (val == null) return '-';
-        return val.toLocaleString('tr-TR', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+        return PdfI18n.formatNumber(val, lang);
       }
-      const fmtKat = (k) => formatKategori(k);
+      const fmtKat = (k) => PdfI18n.formatKategori(k, lang);
 
-      // ========== FiYAT OZETi (SAYFA 1) ==========
+      // ========== F\u0130YAT \u00D6ZET\u0130 ==========
       const araToplam = items.reduce((s, i) => {
         let t = s + (i.netFiyat || i.fiyat || 0);
         if (i.modul === 'santral' && i.otomasyonTotal) t += i.otomasyonTotal;
@@ -254,65 +266,66 @@ const PdfExportVisual = (() => {
       const genelToplamIc  = araToplam + kdvIc;
       const genelToplamDis = araToplam;
 
-      const sumW = contentW * 0.55;
+      const sumW = contentW * 0.62;
       const sumX = pageW - MR - sumW;
-      const rowH = 6.5;
+      const rowH = 7;
 
       function drawSumRow(label, value, opts) {
         opts = opts || {};
+        var rh = opts.height || rowH;
+        var fs = opts.fontSize || 9;
         if (opts.bg) {
           doc.setFillColor.apply(doc, opts.bg);
-          doc.rect(sumX, y, sumW, rowH, 'F');
+          doc.rect(sumX, y, sumW, rh, 'F');
+        } else if (opts.bgLight) {
+          doc.setFillColor.apply(doc, opts.bgLight);
+          doc.rect(sumX, y, sumW, rh, 'F');
         }
         doc.setFont(fontName, opts.bold ? 'bold' : 'normal');
-        doc.setFontSize(9);
+        doc.setFontSize(fs);
         doc.setTextColor.apply(doc, opts.color || DARK_GRAY);
-        doc.text(label, sumX + 3, y + 4.5);
-        doc.text(value, sumX + sumW - 3, y + 4.5, { align: 'right' });
-        y += rowH;
+        doc.text(label, sumX + 4, y + rh * 0.65);
+        doc.text(value, sumX + sumW - 4, y + rh * 0.65, { align: 'right' });
+        y += rh;
       }
 
-      drawSumRow('ARA TOPLAM',                  fmtPrice(araToplam));
-      drawSumRow('YURT ICI - KDV %20',          fmtPrice(kdvIc),         { color: PRIMARY });
-      drawSumRow('GENEL TOPLAM (KDV Dahil)',    fmtPrice(genelToplamIc), { bg: PRIMARY, color: WHITE, bold: true });
+      drawSumRow(t.subtotal, fmtPrice(araToplam), { bold: true, bgLight: LIGHT_GRAY });
+      drawSumRow(t.domesticVat, fmtPrice(kdvIc),         { color: PRIMARY });
+      drawSumRow(t.grandTotalVatIncl,               fmtPrice(genelToplamIc), { bg: PRIMARY, color: WHITE, bold: true, height: 9, fontSize: 11 });
       y += 2;
-      drawSumRow('YURT DISI - KDV %0 (Ihracat)', fmtPrice(0),            { color: BLUE });
-      drawSumRow('GENEL TOPLAM (KDV Haric)',    fmtPrice(genelToplamDis), { bg: BLUE, color: WHITE, bold: true });
+      drawSumRow(t.exportVat, fmtPrice(0),        { color: BLUE });
+      drawSumRow(t.grandTotalVatExcl,          fmtPrice(genelToplamDis), { bg: BLUE, color: WHITE, bold: true, height: 9, fontSize: 11 });
 
       y += 6;
 
-      // ========== NOTLAR (SAYFA 1) ==========
+      // ========== NOTLAR ==========
       doc.setFont(fontName, 'normal');
-      doc.setFontSize(8.5);
+      doc.setFontSize(7.5);
       doc.setTextColor.apply(doc, DARK_GRAY);
-      var notes = [
-        '* Fiyatlar KDV harictir.',
-        '* Bu teklif 30 gun gecerlidir.',
-        '* Yurt disi satislarda KDV %0 uygulanir (ihracat faturasi).'
-      ];
-      for (var n of notes) { doc.text(n, ML, y); y += 4.5; }
+      var notes = t.notes.map(function(n) { return '\u2022 ' + n; });
+      for (var n of notes) { doc.text(n, ML, y); y += 4; }
       y += 4;
 
-      // ========== BANKA BILGILERi (SAYFA 1) ==========
+      // ========== BANKA B\u0130LG\u0130LER\u0130 ==========
       doc.setFillColor.apply(doc, PRIMARY);
       doc.rect(ML, y, contentW, 7, 'F');
       doc.setFont(fontName, 'bold');
-      doc.setFontSize(10);
+      doc.setFontSize(8.5);
       doc.setTextColor.apply(doc, WHITE);
-      doc.text('BANKA BILGILERi', ML + 3, y + 4.9);
+      doc.text(t.bankTitle, ML + 3, y + 4.8);
       y += 7;
 
       doc.autoTable({
         startY: y,
-        head: [['Banka', 'Doviz', 'IBAN']],
+        head: [[t.bankCol, t.currencyCol, 'IBAN']],
         body: [
           ['HALKBANK / SARAY', 'TRY (TL)', 'TR98 0001 2001 4380 0010 1013 58'],
           ['HALKBANK / SARAY', 'USD ($)',  'TR27 0001 2001 4380 0053 1005 05'],
-          ['HALKBANK / SARAY', 'EUR',      'TR83 0001 2001 4380 0058 1004 29']
+          ['HALKBANK / SARAY', 'EUR (\u20AC)',      'TR83 0001 2001 4380 0058 1004 29']
         ],
         margin: { left: ML, right: MR },
         styles: {
-          font: fontName, fontSize: 9, cellPadding: 2.4,
+          font: fontName, fontSize: 8, cellPadding: 2.2,
           lineColor: BORDER, lineWidth: 0.1,
           textColor: DARK_GRAY, valign: 'middle'
         },
@@ -321,22 +334,91 @@ const PdfExportVisual = (() => {
           fontStyle: 'bold', halign: 'left'
         },
         columnStyles: {
-          0: { cellWidth: 55 },
-          1: { cellWidth: 30 },
-          2: { cellWidth: contentW - 85, fontStyle: 'bold', textColor: PRIMARY }
+          0: { cellWidth: 50 },
+          1: { cellWidth: 28 },
+          2: { cellWidth: contentW - 78, fontStyle: 'bold', textColor: PRIMARY }
         }
       });
 
-      // ========== SAYFA 2+: URUN TABLOSU (GORSELLI) ==========
+      // ========== GARANT\u0130 \u015EARTLARI ==========
+      y = doc.lastAutoTable.finalY + 3;
+
+      doc.setFillColor.apply(doc, PRIMARY);
+      doc.rect(ML, y, contentW, 6.5, 'F');
+      doc.setFont(fontName, 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor.apply(doc, WHITE);
+      doc.text(t.warrantyTitle, ML + contentW / 2, y + 4.5, { align: 'center' });
+      y += 9;
+
+      doc.setFont(fontName, 'normal');
+      doc.setFontSize(6.5);
+      doc.setTextColor.apply(doc, DARK_GRAY);
+
+      t.warranty.forEach(function(item) {
+        var lines = doc.splitTextToSize('\u2022  ' + item, contentW - 4);
+        doc.text(lines, ML + 2, y);
+        y += lines.length * 3;
+      });
+
+      y += 4;
+
+      // ========== S\u00D6ZLE\u015EME \u015EARTLARI ==========
+      doc.setFillColor.apply(doc, PRIMARY);
+      doc.rect(ML, y, contentW, 6.5, 'F');
+      doc.setFont(fontName, 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor.apply(doc, WHITE);
+      doc.text(t.contractTitle, ML + contentW / 2, y + 4.5, { align: 'center' });
+      y += 9;
+
+      doc.setFont(fontName, 'normal');
+      doc.setFontSize(6.5);
+      doc.setTextColor.apply(doc, DARK_GRAY);
+
+      t.contract.forEach(function(item, idx) {
+        var prefix = (idx + 1) + ')  ';
+        var lines = doc.splitTextToSize(prefix + item, contentW - 4);
+        doc.text(lines, ML + 2, y);
+        y += lines.length * 3 + 0.5;
+      });
+
+      y += 2;
+      doc.setFont(fontName, 'normal');
+      doc.setFontSize(6);
+      doc.setTextColor.apply(doc, MID_GRAY);
+      var sonNotLines = doc.splitTextToSize(t.finalNoteShort, contentW - 4);
+      doc.text(sonNotLines, ML + 2, y);
+      y += sonNotLines.length * 2.8 + 3;
+
+      // ========== \u00D6NEML\u0130 UYARI NOTU ==========
+      var uyariBoxH = 22;
+      doc.setDrawColor.apply(doc, PRIMARY);
+      doc.setLineWidth(0.4);
+      doc.rect(ML, y, contentW, uyariBoxH, 'S');
+
+      doc.setFont(fontName, 'bold');
+      doc.setFontSize(8);
+      doc.setTextColor.apply(doc, PRIMARY);
+      doc.text(t.warningTitle, ML + contentW / 2, y + 4.5, { align: 'center' });
+
+      var uyariY = y + 7.5;
+      doc.setFont(fontName, 'normal');
+      doc.setFontSize(6);
+      doc.setTextColor.apply(doc, DARK_GRAY);
+      var uyariLines = doc.splitTextToSize(t.warningBody, contentW - 8);
+      doc.text(uyariLines, ML + 4, uyariY);
+
+      // ========== SAYFA: \u00DCR\u00DCN TABLOSU (G\u00D6RSELL\u0130) ==========
       doc.addPage();
       y = MT + 4;
 
-      // Gorselleri onceden yukle
+      // G\u00F6rselleri \u00F6nceden y\u00FCkle
       const imageCache = {};
       for (const it of items) {
         const imgUrl = _getImageUrl(it);
         if (imgUrl && !imageCache[imgUrl]) {
-          imageCache[imgUrl] = await _loadImageDataURL(imgUrl);
+          imageCache[imgUrl] = await _loadCompressedImage(imgUrl, 200);
         }
       }
 
@@ -361,21 +443,21 @@ const PdfExportVisual = (() => {
 
         if (it.modul === 'santral' && it.otomasyonTotal) {
           rows.push([
-            rowNum++, 'Santral', fmtKat(it.kategori), 'Otomasyon (MCC+DCC)',
+            rowNum++, MODUL_LABELS.santral, fmtKat(it.kategori), t.subOtomasyon,
             '-', '-', fmtPrice(it.otomasyonTotal), '-', '-', ''
           ]);
           rowImages.push(null);
         }
         if (it.modul === 'hucreli' && it.g2 && it.g2NetFiyat) {
           rows.push([
-            rowNum++, 'Hucreli', fmtKat(it.kategori), 'G2 Filtre',
+            rowNum++, MODUL_LABELS.hucreli, fmtKat(it.kategori), t.subG2,
             '-', '-', fmtPrice(it.g2NetFiyat), '-', '-', ''
           ]);
           rowImages.push(null);
         }
         if (it.modul === 'hucreli' && it.g4 && it.g4NetFiyat) {
           rows.push([
-            rowNum++, 'Hucreli', fmtKat(it.kategori), 'G4 Filtre',
+            rowNum++, MODUL_LABELS.hucreli, fmtKat(it.kategori), t.subG4,
             '-', '-', fmtPrice(it.g4NetFiyat), '-', '-', ''
           ]);
           rowImages.push(null);
@@ -384,7 +466,7 @@ const PdfExportVisual = (() => {
 
       doc.autoTable({
         startY: y,
-        head: [['#', 'Modul', 'Kategori', 'Model', 'Debi\n(m3/h)', 'Basinc\n(Pa)', 'Net Fiyat', 'Motor\n(kW)', 'Voltaj', 'Gorsel']],
+        head: [['#', t.thModule, t.thCategory, t.thModel, t.thFlowRate, t.thPressure, t.thNetPrice, t.thMotor, t.thVoltage, t.thImage]],
         body: rows,
         margin: { left: ML, right: MR },
         styles: {
@@ -405,7 +487,7 @@ const PdfExportVisual = (() => {
           3: { cellWidth: 20 },
           4: { cellWidth: 16, halign: 'right' },
           5: { cellWidth: 16, halign: 'right' },
-          6: { cellWidth: 22, halign: 'right' },
+          6: { cellWidth: 22, halign: 'right', fontStyle: 'bold' },
           7: { cellWidth: 15, halign: 'center' },
           8: { cellWidth: 15, halign: 'center' },
           9: { cellWidth: 25, halign: 'center' }
@@ -424,7 +506,7 @@ const PdfExportVisual = (() => {
               var ch = data.cell.height - pad * 2;
               var sz = Math.min(cw, ch);
               try {
-                doc.addImage(img, 'PNG',
+                doc.addImage(img, 'JPEG',
                   data.cell.x + (data.cell.width - sz) / 2,
                   data.cell.y + (data.cell.height - sz) / 2,
                   sz, sz);
@@ -445,11 +527,11 @@ const PdfExportVisual = (() => {
         doc.setFont(fontName, 'normal');
         doc.setFontSize(8);
         doc.setTextColor.apply(doc, MID_GRAY);
-        doc.text('Point HVAC | HVAC Secim ve Fiyatlandirma', ML, fY);
-        doc.text('Sayfa ' + p + ' / ' + totalPages, pageW - MR, fY, { align: 'right' });
+        doc.text(t.footerText, ML, fY);
+        doc.text(t.page + ' ' + p + ' / ' + totalPages, pageW - MR, fY, { align: 'right' });
       }
 
-      // ========== KAYDET / PAYLAS ==========
+      // ========== KAYDET / PAYLA\u015E ==========
       const fileName = teklifNo + '.pdf';
 
       if (typeof ShareHelper !== 'undefined' && ShareHelper.isNative()) {
@@ -461,21 +543,21 @@ const PdfExportVisual = (() => {
             fileName: fileName,
             data: base64,
             mimeType: 'application/pdf',
-            dialogTitle: 'Teklifi Paylas',
-            text: 'Point HVAC - Teklif No: ' + teklifNo
+            dialogTitle: t.shareTitle,
+            text: t.shareText + teklifNo
           });
-          App.showToast('PDF paylasildi', 'success');
+          App.showToast(t.toastShared, 'success');
         } catch (se) {
-          console.error('Paylasim hatasi:', se);
+          console.error('Share error:', se);
           doc.save(fileName);
-          App.showToast('PDF kaydedildi', 'success');
+          App.showToast(t.toastSaved, 'success');
         }
       } else {
         doc.save(fileName);
-        App.showToast('Gorselli PDF teklif indirildi', 'success');
+        App.showToast(t.toastDownloadedVis, 'success');
       }
 
-      // ========== SUPABASE UPLOAD (arka planda) ==========
+      // ========== SUPABASE UPLOAD ==========
       if (typeof ProposalStorage !== 'undefined') {
         try {
           var pdfDataUri = doc.output('datauristring');
@@ -490,17 +572,18 @@ const PdfExportVisual = (() => {
             customerInfo: typeof getSetting === 'function' ? getSetting('customerInfo', {}) : {},
             pdfType: 'visual'
           }).then(function(r) {
-            if (r.success) console.log('[PdfExportVisual] Teklif Supabase\'e yuklendi');
-            else console.warn('[PdfExportVisual] Teklif yukleme hatasi:', r.error || r.warning);
+            if (r.success) console.log('[PdfExportVisual] Teklif Supabase\'e y\u00FCklendi');
+            else console.warn('[PdfExportVisual] Teklif y\u00FCkleme hatas\u0131:', r.error || r.warning);
           });
         } catch (uploadErr) {
-          console.warn('[PdfExportVisual] Supabase upload hatasi:', uploadErr);
+          console.warn('[PdfExportVisual] Supabase upload hatas\u0131:', uploadErr);
         }
       }
 
     } catch (e) {
-      console.error('PDF olusturma hatasi:', e);
-      App.showToast('PDF olusturulurken hata olustu', 'error');
+      console.error('PDF olu\u015Fturma hatas\u0131:', e);
+      var _t = (typeof PdfI18n !== 'undefined') ? PdfI18n.get(options.lang || 'tr') : { toastError: 'PDF olu\u015Fturulurken hata olu\u015Ftu' };
+      App.showToast(_t.toastError, 'error');
     }
   }
 

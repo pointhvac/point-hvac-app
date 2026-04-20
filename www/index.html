@@ -103,6 +103,9 @@
         <button class="theme-toggle" onclick="toggleTheme()" title="Tema Degistir">
           <span class="theme-icon">&#9684;</span>
         </button>
+        <button class="theme-toggle" onclick="openDsSettings()" title="Datasheet Sunucu Ayarlari" style="font-size:.85rem;margin-left:4px">
+          &#9881;
+        </button>
         <button class="theme-toggle" onclick="AuthGuard.logout()" title="Cikis Yap" style="font-size:.85rem;margin-left:4px">
           &#x23FB;
         </button>
@@ -206,6 +209,25 @@
 
   </div>
 
+  <!-- Datasheet Sunucu Ayarlari Modal -->
+  <div id="dsSettingsModal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.5);align-items:center;justify-content:center">
+    <div style="background:#fff;border-radius:16px;padding:24px;width:90%;max-width:380px;box-shadow:0 12px 40px rgba(0,0,0,.25)">
+      <h3 style="margin:0 0 16px;font-size:1.05rem;font-weight:700;color:var(--dark)">Datasheet Sunucu Ayarlari</h3>
+      <label style="display:block;font-size:.78rem;font-weight:600;color:var(--gray-600);margin-bottom:4px">Sunucu IP Adresi</label>
+      <input type="text" id="dsIp" placeholder="Ornek: 192.168.1.100" style="width:100%;padding:10px 12px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.92rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+      <label style="display:block;font-size:.78rem;font-weight:600;color:var(--gray-600);margin-bottom:4px">Port</label>
+      <input type="number" id="dsPort" placeholder="1463" value="1463" style="width:100%;padding:10px 12px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.92rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+      <label style="display:block;font-size:.78rem;font-weight:600;color:var(--gray-600);margin-bottom:4px">API Anahtari</label>
+      <input type="text" id="dsKey" placeholder="phvac-mobile-2026-secret" style="width:100%;padding:10px 12px;border:1.5px solid #e0e0e0;border-radius:10px;font-size:.92rem;font-family:inherit;margin-bottom:12px;box-sizing:border-box">
+      <div id="dsTestMsg" style="font-size:.78rem;min-height:1.5em;margin-bottom:8px;font-weight:600"></div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button onclick="closeDsSettings()" style="flex:1;padding:10px;border:none;border-radius:10px;font-size:.88rem;font-weight:700;font-family:inherit;cursor:pointer;background:#f5f5f5;color:#666">Iptal</button>
+        <button onclick="testDs()" style="flex:1;padding:10px;border:none;border-radius:10px;font-size:.88rem;font-weight:700;font-family:inherit;cursor:pointer;background:#1976D2;color:#fff">Test Et</button>
+        <button onclick="saveDs()" style="flex:1;padding:10px;border:none;border-radius:10px;font-size:.88rem;font-weight:700;font-family:inherit;cursor:pointer;background:var(--primary);color:#fff">Kaydet</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== SCRIPTS ==================== -->
   <script src="js/lib/supabase.min.js"></script>
   <script src="js/utils.js"></script>
@@ -213,6 +235,8 @@
   <script src="js/auth-guard.js"></script>
   <script src="js/currency.js"></script>
   <script src="js/back-button.js"></script>
+  <script src="js/share-helper.js"></script>
+  <script src="js/datasheet-service.js"></script>
   <script>
     // ===== TEMA =====
     function toggleTheme() {
@@ -313,6 +337,46 @@
       }
     }
     updateCurrencyWidget();
+
+    // ===== DATASHEET SUNUCU AYARLARI =====
+    function openDsSettings() {
+      var url = DatasheetService.getServerUrl();
+      var apiKey = DatasheetService.getApiKey();
+      var ip = '', port = '1463';
+      if (url) {
+        try { var u = new URL(url); ip = u.hostname; port = u.port || '1463'; } catch(e) { ip = url; }
+      }
+      document.getElementById('dsIp').value = ip;
+      document.getElementById('dsPort').value = port;
+      document.getElementById('dsKey').value = apiKey;
+      document.getElementById('dsTestMsg').textContent = '';
+      var modal = document.getElementById('dsSettingsModal');
+      modal.style.display = 'flex';
+    }
+    function closeDsSettings() {
+      document.getElementById('dsSettingsModal').style.display = 'none';
+    }
+    async function testDs() {
+      var ip = document.getElementById('dsIp').value.trim();
+      var port = document.getElementById('dsPort').value.trim() || '1463';
+      var apiKey = document.getElementById('dsKey').value.trim();
+      var el = document.getElementById('dsTestMsg');
+      if (!ip) { el.textContent = 'IP adresi giriniz'; el.style.color = '#F44336'; return; }
+      DatasheetService.setServerUrl('http://' + ip + ':' + port);
+      if (apiKey) DatasheetService.setApiKey(apiKey);
+      el.textContent = 'Test ediliyor...'; el.style.color = '#999';
+      var result = await DatasheetService.testConnection();
+      el.textContent = result.message;
+      el.style.color = result.ok ? '#4CAF50' : '#F44336';
+    }
+    function saveDs() {
+      var ip = document.getElementById('dsIp').value.trim();
+      var port = document.getElementById('dsPort').value.trim() || '1463';
+      var apiKey = document.getElementById('dsKey').value.trim();
+      if (!ip) { DatasheetService.setServerUrl(''); } else { DatasheetService.setServerUrl('http://' + ip + ':' + port); }
+      if (apiKey) DatasheetService.setApiKey(apiKey);
+      closeDsSettings();
+    }
 
     // ===== SPLASH SCREEN =====
     (function() {

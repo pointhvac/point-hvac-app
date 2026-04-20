@@ -163,6 +163,78 @@
     [data-theme="doga"] .modal-box h3 { color: #E8F5E9; }
     [data-theme="doga"] .modal-box label { color: #A5D6A7; }
     [data-theme="doga"] .modal-box input { background: rgba(15,31,15,.7); border-color: rgba(76,175,80,.3); color: #E8F5E9; }
+
+    /* Dil secim butonlari */
+    .lang-choice-btn { transition: .2s; }
+    .lang-choice-btn:hover { border-color: var(--primary) !important; }
+    .lang-choice-btn:active { transform: scale(.97); }
+    [data-theme="ozel"] .lang-choice-btn { background: #1e2538 !important; border-color: #2a3348 !important; color: #e8ecf4 !important; }
+    [data-theme="ozel"] .lang-choice-btn:hover { border-color: #7eb8da !important; }
+    [data-theme="doga"] .lang-choice-btn { background: rgba(15,31,15,.7) !important; border-color: rgba(76,175,80,.3) !important; color: #E8F5E9 !important; }
+    [data-theme="doga"] .lang-choice-btn:hover { border-color: #4CAF50 !important; }
+
+    /* Datasheet butonu */
+    .dia-item .dia-datasheet-btn {
+      position: absolute; top: 12px; right: 46px;
+      width: 28px; height: 28px; border-radius: 50%;
+      border: none; background: var(--gray-100); color: #1976D2;
+      font-size: .85rem; cursor: pointer; display: flex;
+      align-items: center; justify-content: center; transition: .2s;
+    }
+    .dia-item .dia-datasheet-btn:active { background: #1976D2; color: #fff; }
+    .dia-item .dia-datasheet-btn.loading { animation: crSpin .8s linear infinite; pointer-events: none; opacity: .5; }
+    [data-theme="ozel"] .dia-item .dia-datasheet-btn { background: #1e2538; color: #64B5F6; }
+    [data-theme="doga"] .dia-item .dia-datasheet-btn { background: rgba(15,31,15,.7); color: #81C784; }
+
+    /* Sunucu durum gostergesi */
+    .server-status {
+      display: flex; align-items: center; gap: 6px;
+      font-size: .72rem; font-weight: 600; color: var(--gray-400);
+      margin-bottom: 12px; padding: 6px 10px;
+      background: var(--gray-100); border-radius: 8px;
+      cursor: pointer; transition: .2s;
+    }
+    .server-status:active { opacity: .7; }
+    .server-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #bbb; flex-shrink: 0;
+    }
+    .server-dot.online { background: #4CAF50; }
+    .server-dot.offline { background: #F44336; }
+    [data-theme="ozel"] .server-status { background: #141a2a; color: #7a8599; }
+    [data-theme="doga"] .server-status { background: rgba(15,31,15,.5); color: #A5D6A7; }
+
+    /* Datasheet progress overlay */
+    .ds-progress-overlay {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(0,0,0,.6); align-items: center; justify-content: center;
+    }
+    .ds-progress-overlay.active { display: flex; }
+    .ds-progress-box {
+      background: #fff; border-radius: 16px; padding: 28px 24px;
+      width: 85%; max-width: 340px; text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    .ds-progress-title { font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+    .ds-progress-model { font-size: .82rem; color: var(--gray-500); margin-bottom: 14px; min-height: 1.2em; }
+    .ds-progress-bar {
+      width: 100%; height: 8px; background: var(--gray-200);
+      border-radius: 4px; overflow: hidden; margin-bottom: 10px;
+    }
+    .ds-progress-fill {
+      height: 100%; background: #1976D2; border-radius: 4px;
+      transition: width .3s ease; width: 0;
+    }
+    .ds-progress-text { font-size: .75rem; color: var(--gray-400); }
+    [data-theme="ozel"] .ds-progress-box { background: #1a2035; }
+    [data-theme="ozel"] .ds-progress-title { color: #e8ecf4; }
+    [data-theme="ozel"] .ds-progress-model { color: #7a8599; }
+    [data-theme="ozel"] .ds-progress-bar { background: #2a3348; }
+    [data-theme="doga"] .ds-progress-box { background: rgba(27,46,27,.95); }
+    [data-theme="doga"] .ds-progress-title { color: #E8F5E9; }
+    [data-theme="doga"] .ds-progress-model { color: #81C784; }
+    [data-theme="doga"] .ds-progress-bar { background: rgba(15,31,15,.5); }
+    [data-theme="doga"] .ds-progress-fill { background: #4CAF50; }
   </style>
 </head>
 <body>
@@ -195,6 +267,17 @@
       <button class="btn btn-primary btn-sm" style="flex:1" onclick="doExport()">&#128202; Excel</button>
       <button class="btn btn-secondary btn-sm" style="flex:1" onclick="doClipboard()">&#128203; Kopyala</button>
       <button class="btn btn-danger btn-sm" onclick="doClearAll()">&#128465;</button>
+    </div>
+
+    <!-- Datasheet aksiyon bari -->
+    <div class="action-bar">
+      <button class="btn btn-sm" style="flex:1;background:#1976D2;color:#fff" onclick="doDatasheetExport()">&#128209; Datasheet Indir</button>
+    </div>
+
+    <!-- Sunucu durumu -->
+    <div class="server-status" id="serverStatus" onclick="openServerSettings()">
+      <span class="server-dot" id="serverDot"></span>
+      <span id="serverText">Datasheet sunucusu ayarlanmadi</span>
     </div>
 
     <!-- Doviz secimi -->
@@ -233,6 +316,103 @@
     </div>
   </div>
 
+  <!-- Dil Secim Modal -->
+  <div class="modal-overlay" id="langModal">
+    <div class="modal-box" style="text-align:center">
+      <h3>PDF Dili / PDF Language</h3>
+      <p style="font-size:.82rem;color:var(--gray-400);margin-bottom:16px">Teklif dilini seciniz / Select quotation language</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px">
+        <button class="lang-choice-btn" onclick="selectPdfLang('tr')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="48" height="32" viewBox="0 -30000 90000 60000" style="border-radius:4px"><path fill="#e30a17" d="m0-30000h90000v60000H0z"/><path fill="#fff" d="m41750 0 13568-4408-8386 11541V-7133l8386 11541zm925 8021a15000 15000 0 1 1 0-16042 12000 12000 0 1 0 0 16042z"/></svg>
+          <span>T&uuml;rk&ccedil;e</span>
+        </button>
+        <button class="lang-choice-btn" onclick="selectPdfLang('en')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="48" height="32" viewBox="0 0 60 30" style="border-radius:4px"><clipPath id="ukc"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg>
+          <span>English</span>
+        </button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeLangModal()">Iptal / Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sunucu Ayarlari Modal -->
+  <div class="modal-overlay" id="serverModal">
+    <div class="modal-box">
+      <h3>Datasheet Sunucu Ayarlari</h3>
+      <!-- Baglanti modu secimi -->
+      <div style="display:flex;gap:8px;margin-bottom:12px">
+        <button class="btn btn-sm" id="connModeLan" onclick="setConnMode('lan')" style="flex:1;font-size:.78rem;padding:8px 4px;border:2px solid var(--primary);border-radius:8px;background:var(--primary);color:#fff;cursor:pointer">LAN (Ayni WiFi)</button>
+        <button class="btn btn-sm" id="connModeTunnel" onclick="setConnMode('tunnel')" style="flex:1;font-size:.78rem;padding:8px 4px;border:2px solid var(--gray-200);border-radius:8px;background:#fff;color:var(--gray-600);cursor:pointer">Tunnel (Uzaktan)</button>
+      </div>
+      <!-- LAN modu -->
+      <div id="lanFields">
+        <label>Sunucu IP Adresi</label>
+        <input type="text" id="dsServerIp" placeholder="Ornek: 192.168.1.100">
+        <label>Port</label>
+        <input type="number" id="dsServerPort" placeholder="1463" value="1463">
+      </div>
+      <!-- Tunnel modu -->
+      <div id="tunnelFields" style="display:none">
+        <label>Tunnel URL</label>
+        <input type="url" id="dsTunnelUrl" placeholder="https://xxxx.trycloudflare.com">
+        <p style="font-size:.7rem;color:var(--gray-400);margin:4px 0 8px">Bilgisayarda cloudflared calistirinca verilen adresi yapistirin</p>
+      </div>
+      <label>API Anahtari</label>
+      <input type="text" id="dsApiKey" placeholder="phvac-mobile-2026-secret">
+      <div id="dsTestResult" style="font-size:.78rem;min-height:1.5em;margin-bottom:8px;font-weight:600"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeServerSettings()">Iptal</button>
+        <button class="btn-save" style="background:#1976D2" onclick="testServerBtn()">Test Et</button>
+        <button class="btn-save" onclick="saveServerSettings()">Kaydet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Datasheet Indirme Progress -->
+  <div class="ds-progress-overlay" id="dsProgress">
+    <div class="ds-progress-box">
+      <div class="ds-progress-title">Datasheet Indiriliyor</div>
+      <div class="ds-progress-model" id="dsProgressModel"></div>
+      <div class="ds-progress-bar"><div class="ds-progress-fill" id="dsProgressFill"></div></div>
+      <div class="ds-progress-text" id="dsProgressText">0 / 0</div>
+    </div>
+  </div>
+
+  <!-- Datasheet Dil Secim Modal -->
+  <div class="modal-overlay" id="dsLangModal">
+    <div class="modal-box" style="text-align:center">
+      <h3>Datasheet Dili</h3>
+      <p style="font-size:.82rem;color:var(--gray-400);margin-bottom:16px">Datasheet dilini seciniz</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px">
+        <button class="lang-choice-btn" onclick="startDatasheetDownload('tr')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="48" height="32" viewBox="0 -30000 90000 60000" style="border-radius:4px"><path fill="#e30a17" d="m0-30000h90000v60000H0z"/><path fill="#fff" d="m41750 0 13568-4408-8386 11541V-7133l8386 11541zm925 8021a15000 15000 0 1 1 0-16042 12000 12000 0 1 0 0 16042z"/></svg>
+          <span>T&uuml;rk&ccedil;e</span>
+        </button>
+        <button class="lang-choice-btn" onclick="startDatasheetDownload('en')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.95rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:6px">
+          <svg width="48" height="32" viewBox="0 0 60 30" style="border-radius:4px"><clipPath id="ukc2"><rect width="60" height="30"/></clipPath><g clip-path="url(#ukc2)"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" stroke-width="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" stroke-width="6"/></g></svg>
+          <span>English</span>
+        </button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeDsLangModal()">Iptal</button>
+      </div>
+    </div>
+  </div>
+
   <script src="../js/lib/supabase.min.js"></script>
   <script src="../js/lib/xlsx.full.min.js"></script>
   <script src="../js/lib/jspdf.umd.min.js"></script>
@@ -245,8 +425,11 @@
   <script src="../js/share-helper.js"></script>
   <script src="../js/export.js"></script>
   <script src="../js/currency.js"></script>
+  <script src="../js/quote-number.js"></script>
+  <script src="../js/pdf-i18n.js"></script>
   <script src="../js/pdf-export-visual.js"></script>
   <script src="../js/proposal-storage.js"></script>
+  <script src="../js/datasheet-service.js"></script>
   <script>
     // Tema
     function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme');let n;if(!c||c==='light')n='ozel';else if(c==='ozel')n='doga';else n='light';h.setAttribute('data-theme',n);setSetting('theme',n);const b=document.querySelector('.theme-icon');if(b){if(n==='ozel')b.innerHTML='&#127807;';else if(n==='doga')b.innerHTML='&#9728;';else b.innerHTML='&#9684;';}}
@@ -286,6 +469,7 @@
       for (const item of list) {
         html += '<div class="dia-item" data-id="' + item.id + '">';
         html += '<button class="dia-delete" onclick="deleteItem(\'' + item.id + '\')" title="Sil">&times;</button>';
+        if (item.modul === 'fan') html += '<button class="dia-datasheet-btn" id="dsBtn_' + item.id + '" onclick="downloadSingleDatasheet(\'' + item.id + '\')" title="Datasheet Indir">&#128209;</button>';
         html += '<div class="dia-modul">' + (MODUL_LABELS[item.modul] || item.modul || '-') + '</div>';
         html += '<div class="dia-model">' + (item.model || '-') + '</div>';
         html += '<div class="dia-kategori">' + formatKategori(item.kategori) + '</div>';
@@ -446,10 +630,21 @@
     updateInfoToggle();
 
     // ===== PDF EXPORT =====
-    async function doPdfExportVisual() {
+    function doPdfExportVisual() {
+      var list = App.getDIAList();
+      if (!list.length) { App.showToast('Liste bos', 'error'); return; }
+      document.getElementById('langModal').classList.add('active');
+    }
+
+    function closeLangModal() {
+      document.getElementById('langModal').classList.remove('active');
+    }
+
+    async function selectPdfLang(lang) {
+      closeLangModal();
       var list = App.getDIAList();
       var info = getCustomerInfo();
-      await PdfExportVisual.exportDIA(list, { customerInfo: info });
+      await PdfExportVisual.exportDIA(list, { customerInfo: info, lang: lang });
       resetCustomerInfo();
     }
 
@@ -459,9 +654,237 @@
       updateInfoToggle();
     }
 
+    // ===== DATASHEET SUNUCU =====
+    var _connMode = 'lan';
+
+    function setConnMode(mode) {
+      _connMode = mode;
+      document.getElementById('lanFields').style.display = mode === 'lan' ? '' : 'none';
+      document.getElementById('tunnelFields').style.display = mode === 'tunnel' ? '' : 'none';
+      // Buton stilleri
+      var lanBtn = document.getElementById('connModeLan');
+      var tunBtn = document.getElementById('connModeTunnel');
+      if (mode === 'lan') {
+        lanBtn.style.background = 'var(--primary)'; lanBtn.style.color = '#fff'; lanBtn.style.borderColor = 'var(--primary)';
+        tunBtn.style.background = '#fff'; tunBtn.style.color = 'var(--gray-600)'; tunBtn.style.borderColor = 'var(--gray-200)';
+      } else {
+        tunBtn.style.background = 'var(--primary)'; tunBtn.style.color = '#fff'; tunBtn.style.borderColor = 'var(--primary)';
+        lanBtn.style.background = '#fff'; lanBtn.style.color = 'var(--gray-600)'; lanBtn.style.borderColor = 'var(--gray-200)';
+      }
+    }
+
+    function _getModalUrl() {
+      if (_connMode === 'tunnel') {
+        return document.getElementById('dsTunnelUrl').value.trim();
+      }
+      var ip = document.getElementById('dsServerIp').value.trim();
+      var port = document.getElementById('dsServerPort').value.trim() || '1463';
+      return ip ? ('http://' + ip + ':' + port) : '';
+    }
+
+    function openServerSettings() {
+      var url = DatasheetService.getServerUrl();
+      var apiKey = DatasheetService.getApiKey();
+
+      // Mevcut URL'yi parse et - tunnel mi LAN mi?
+      if (url && url.startsWith('https://')) {
+        _connMode = 'tunnel';
+        document.getElementById('dsTunnelUrl').value = url;
+        document.getElementById('dsServerIp').value = '';
+        document.getElementById('dsServerPort').value = '1463';
+      } else {
+        _connMode = 'lan';
+        var ip = '', port = '1463';
+        if (url) {
+          try {
+            var u = new URL(url);
+            ip = u.hostname;
+            port = u.port || '1463';
+          } catch(e) { ip = url; }
+        }
+        document.getElementById('dsServerIp').value = ip;
+        document.getElementById('dsServerPort').value = port;
+        document.getElementById('dsTunnelUrl').value = '';
+      }
+      setConnMode(_connMode);
+      document.getElementById('dsApiKey').value = apiKey;
+      document.getElementById('dsTestResult').textContent = '';
+      document.getElementById('serverModal').classList.add('active');
+    }
+
+    function closeServerSettings() {
+      document.getElementById('serverModal').classList.remove('active');
+    }
+
+    function saveServerSettings() {
+      var url = _getModalUrl();
+      var apiKey = document.getElementById('dsApiKey').value.trim();
+      if (!url) {
+        DatasheetService.setServerUrl('');
+        DatasheetService.setApiKey('');
+      } else {
+        DatasheetService.setServerUrl(url);
+        if (apiKey) DatasheetService.setApiKey(apiKey);
+      }
+      closeServerSettings();
+      updateServerStatus();
+      App.showToast('Sunucu ayarlari kaydedildi', 'success');
+    }
+
+    async function testServerBtn() {
+      var url = _getModalUrl();
+      var apiKey = document.getElementById('dsApiKey').value.trim();
+      var el = document.getElementById('dsTestResult');
+
+      if (!url) {
+        el.textContent = _connMode === 'tunnel' ? 'Tunnel URL giriniz' : 'IP adresi giriniz';
+        el.style.color = '#F44336';
+        return;
+      }
+
+      // Gecici olarak kaydet
+      DatasheetService.setServerUrl(url);
+      if (apiKey) DatasheetService.setApiKey(apiKey);
+
+      el.textContent = 'Test ediliyor...';
+      el.style.color = 'var(--gray-400)';
+
+      var result = await DatasheetService.testConnection();
+      if (result.ok) {
+        el.textContent = 'Baglanti basarili!';
+        el.style.color = '#4CAF50';
+      } else {
+        el.textContent = result.message;
+        el.style.color = '#F44336';
+      }
+      updateServerStatus();
+    }
+
+    async function updateServerStatus() {
+      var dot = document.getElementById('serverDot');
+      var text = document.getElementById('serverText');
+      if (!DatasheetService.isConfigured()) {
+        dot.className = 'server-dot';
+        text.textContent = 'Datasheet sunucusu ayarlanmadi - dokunarak ayarlayin';
+        return;
+      }
+      text.textContent = 'Kontrol ediliyor...';
+      var result = await DatasheetService.testConnection();
+      if (result.ok) {
+        dot.className = 'server-dot online';
+        text.textContent = 'Sunucu bagli: ' + DatasheetService.getServerUrl().replace(/^https?:\/\//, '');
+      } else {
+        dot.className = 'server-dot offline';
+        text.textContent = 'Sunucu erisilemiyor - dokunarak ayarlayin';
+      }
+    }
+
+    // ===== DATASHEET INDIRME =====
+    function doDatasheetExport() {
+      var list = App.getDIAList();
+      var fanItems = list.filter(function(i) { return i.modul === 'fan'; });
+      if (!fanItems.length) { App.showToast('Listede fan urunu yok', 'error'); return; }
+      if (!DatasheetService.isConfigured()) {
+        App.showToast('Once sunucu ayarlarini yapin', 'error');
+        openServerSettings();
+        return;
+      }
+      // Dil secim modali ac
+      document.getElementById('dsLangModal').classList.add('active');
+    }
+
+    function closeDsLangModal() {
+      document.getElementById('dsLangModal').classList.remove('active');
+    }
+
+    async function startDatasheetDownload(lang) {
+      closeDsLangModal();
+      var list = App.getDIAList();
+      var fanCount = list.filter(function(i) { return i.modul === 'fan'; }).length;
+
+      console.log('[DIA-DS] ZIP indirme basliyor, lang:', lang, 'Fan:', fanCount);
+
+      // Progress goster
+      var overlay = document.getElementById('dsProgress');
+      var fill = document.getElementById('dsProgressFill');
+      var modelEl = document.getElementById('dsProgressModel');
+      var textEl = document.getElementById('dsProgressText');
+      fill.style.width = '0%';
+      modelEl.textContent = '';
+      textEl.textContent = 'Sunucuda PDF\'ler olusturuluyor...';
+      overlay.classList.add('active');
+
+      try {
+        // Sunucuya tek istek - tum PDF'ler ZIP olarak donecek
+        var zipBlob = await DatasheetService.downloadAllDatasheets(list, lang, function(step, msg) {
+          if (step === 'prepare') {
+            fill.style.width = '30%';
+            textEl.textContent = msg;
+          } else if (step === 'download') {
+            fill.style.width = '80%';
+            textEl.textContent = msg;
+          }
+        });
+
+        fill.style.width = '100%';
+        textEl.textContent = 'ZIP paylasiliyor...';
+
+        // ZIP'i paylas/indir
+        var zipName = 'Datasheets_' + new Date().toISOString().slice(0,10).replace(/-/g, '') + '.zip';
+        await DatasheetService.shareFile(zipBlob, zipName, 'application/zip');
+
+        overlay.classList.remove('active');
+        App.showToast(fanCount + ' datasheet ZIP olarak indirildi', 'success');
+        console.log('[DIA-DS] ZIP paylasim basarili:', zipName, zipBlob.size, 'bytes');
+
+      } catch (err) {
+        overlay.classList.remove('active');
+        console.error('[DIA-DS] ZIP hata:', err);
+        App.showToast('Hata: ' + err.message, 'error');
+      }
+    }
+
+    async function downloadSingleDatasheet(itemId) {
+      if (!DatasheetService.isConfigured()) {
+        App.showToast('Once sunucu ayarlarini yapin', 'error');
+        openServerSettings();
+        return;
+      }
+
+      var list = App.getDIAList();
+      var item = list.find(function(i) { return i.id === itemId; });
+      if (!item) { App.showToast('Urun bulunamadi', 'error'); return; }
+
+      // Buton animasyonu
+      var btn = document.getElementById('dsBtn_' + itemId);
+      if (btn) btn.classList.add('loading');
+
+      try {
+        var blob = await DatasheetService.downloadDatasheet({
+          model: item.model,
+          debi: item.debi,
+          basinc: item.basinc,
+          sheet: item.kategori || '',
+          lang: 'tr'
+        });
+
+        var safeModel = (item.model || 'fan').replace(/[^a-zA-Z0-9\-_. ]/g, '_');
+        var debiStr = item.debi ? Math.round(parseFloat(item.debi)) + 'm3h' : '';
+        var basincStr = item.basinc ? Math.round(parseFloat(item.basinc)) + 'Pa' : '';
+        var fileName = safeModel + (debiStr ? '_' + debiStr : '') + (basincStr ? '_' + basincStr : '') + '.pdf';
+        await DatasheetService.sharePdf(blob, fileName);
+        App.showToast('Datasheet indirildi', 'success');
+      } catch (err) {
+        App.showToast('Hata: ' + err.message, 'error');
+      } finally {
+        if (btn) btn.classList.remove('loading');
+      }
+    }
+
     // Baslat
     updateCurrencyUI();
     renderList();
+    updateServerStatus();
   </script>
 </body>
 </html>

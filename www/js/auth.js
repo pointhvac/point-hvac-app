@@ -4,6 +4,9 @@
  * Yalnizca login.html sayfasinda yuklenir.
  */
 
+// Admin e-postalari - cihaz kontrolu uygulanmaz
+var ADMIN_EMAILS = ['admin@pointhvac.com'];
+
 // Zaten oturum aciksa anasayfaya yonlendir
 (async function checkExistingSession() {
   if (!SupabaseConfig.isConfigured()) return;
@@ -59,49 +62,53 @@ async function handleLogin(event) {
     }
 
     var userId = authResult.data.user.id;
+    var isAdmin = ADMIN_EMAILS.indexOf(email.toLowerCase()) >= 0;
 
     // 2. Cihaz ID al
     var deviceId = await _getDeviceId();
 
-    // 3. Cihaz kaydi kontrol
-    var devResult = await client
-      .from('user_devices')
-      .select('device_id')
-      .eq('user_id', userId)
-      .single();
-
-    if (devResult.error && devResult.error.code !== 'PGRST116') {
-      // PGRST116 = satir bulunamadi (ilk giris) - bu normal
-      throw new Error('Cihaz dogrulama hatasi: ' + devResult.error.message);
-    }
-
-    if (!devResult.data) {
-      // ILK GIRIS - bu cihazi kaydet
-      var insertResult = await client
+    // 3. Cihaz kaydi kontrol (admin icin atlanir)
+    if (!isAdmin) {
+      var devResult = await client
         .from('user_devices')
-        .insert({
-          user_id: userId,
-          device_id: deviceId,
-          device_info: {
-            platform: _getPlatform(),
-            userAgent: navigator.userAgent.substring(0, 200),
-            registered_at: new Date().toISOString()
-          }
-        });
+        .select('device_id')
+        .eq('user_id', userId)
+        .single();
 
-      if (insertResult.error) {
-        throw new Error('Cihaz kaydedilemedi: ' + insertResult.error.message);
+      if (devResult.error && devResult.error.code !== 'PGRST116') {
+        // PGRST116 = satir bulunamadi (ilk giris) - bu normal
+        throw new Error('Cihaz dogrulama hatasi: ' + devResult.error.message);
       }
 
-    } else if (devResult.data.device_id !== deviceId) {
-      // FARKLI CIHAZ - TAMAMEN ENGELLE
-      await client.auth.signOut();
-      throw new Error(
-        'Bu hesap baska bir cihaza kayitlidir.\n' +
-        'Cihaz degisikligi icin yoneticiyle iletisime gecin.'
-      );
+      if (!devResult.data) {
+        // ILK GIRIS - bu cihazi kaydet
+        var insertResult = await client
+          .from('user_devices')
+          .insert({
+            user_id: userId,
+            device_id: deviceId,
+            device_info: {
+              platform: _getPlatform(),
+              userAgent: navigator.userAgent.substring(0, 200),
+              registered_at: new Date().toISOString()
+            }
+          });
+
+        if (insertResult.error) {
+          throw new Error('Cihaz kaydedilemedi: ' + insertResult.error.message);
+        }
+
+      } else if (devResult.data.device_id !== deviceId) {
+        // FARKLI CIHAZ - TAMAMEN ENGELLE
+        await client.auth.signOut();
+        throw new Error(
+          'Bu hesap baska bir cihaza kayitlidir.\n' +
+          'Cihaz degisikligi icin yoneticiyle iletisime gecin.'
+        );
+      }
+      // else: ayni cihaz - devam
     }
-    // else: ayni cihaz - devam
+    // Admin kullanici: cihaz kontrolu atlanir, her yerden giris yapabilir
 
     // 4. Profil bilgisini cek
     var fullName = '';
