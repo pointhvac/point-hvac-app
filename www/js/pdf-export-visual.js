@@ -86,7 +86,7 @@ const PdfExportVisual = (() => {
           ctx.fillStyle = '#FFFFFF';
           ctx.fillRect(0, 0, nw, nh);
           ctx.drawImage(img, 0, 0, nw, nh);
-          resolve(canvas.toDataURL('image/jpeg', 0.75));
+          resolve(canvas.toDataURL('image/jpeg', 0.85));
         };
         img.onerror = function() { resolve(null); };
         img.src = dataUrl;
@@ -418,7 +418,7 @@ const PdfExportVisual = (() => {
       for (const it of items) {
         const imgUrl = _getImageUrl(it);
         if (imgUrl && !imageCache[imgUrl]) {
-          imageCache[imgUrl] = await _loadCompressedImage(imgUrl, 200);
+          imageCache[imgUrl] = await _loadCompressedImage(imgUrl, 400);
         }
       }
 
@@ -477,7 +477,8 @@ const PdfExportVisual = (() => {
         },
         headStyles: {
           fillColor: PRIMARY, textColor: WHITE, fontStyle: 'bold',
-          fontSize: 8, halign: 'center', valign: 'middle'
+          fontSize: 7, halign: 'center', valign: 'middle',
+          cellPadding: 1.8
         },
         alternateRowStyles: { fillColor: LIGHT_GRAY },
         columnStyles: {
@@ -496,6 +497,10 @@ const PdfExportVisual = (() => {
           if (data.section === 'body' && rowImages[data.row.index]) {
             data.cell.styles.minCellHeight = 22;
           }
+          // Görsel kolonu arka planı her zaman beyaz
+          if (data.column.index === 9 && data.section === 'body') {
+            data.cell.styles.fillColor = [255, 255, 255];
+          }
         },
         didDrawCell: function(data) {
           if (data.section === 'body' && data.column.index === 9) {
@@ -505,11 +510,10 @@ const PdfExportVisual = (() => {
               var cw = data.cell.width - pad * 2;
               var ch = data.cell.height - pad * 2;
               var sz = Math.min(cw, ch);
+              var imgX = data.cell.x + (data.cell.width - sz) / 2;
+              var imgY = data.cell.y + (data.cell.height - sz) / 2;
               try {
-                doc.addImage(img, 'JPEG',
-                  data.cell.x + (data.cell.width - sz) / 2,
-                  data.cell.y + (data.cell.height - sz) / 2,
-                  sz, sz);
+                doc.addImage(img, 'JPEG', imgX, imgY, sz, sz);
               } catch(_) {}
             }
           }

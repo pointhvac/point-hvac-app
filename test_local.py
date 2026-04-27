@@ -13,7 +13,7 @@ import sys
 import webbrowser
 import threading
 
-PORT = 8092
+PORT = 8093
 DIRECTORY = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'www')
 
 
