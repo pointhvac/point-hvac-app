@@ -30,7 +30,7 @@
 
 /* ==================== Reset ==================== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+html { font-size: 16px; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
 
 body {
   font-family: var(--font);
@@ -43,6 +43,7 @@ body {
   color: var(--gray-800);
   -webkit-tap-highlight-color: transparent;
   overscroll-behavior: none;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -64,6 +65,7 @@ body::before {
   margin: 0 auto;
   position: relative;
   z-index: 1;
+  overflow-x: hidden;
 }
 
 /* ==================== Header ==================== */
@@ -78,6 +80,7 @@ body::before {
   box-shadow: 0 20px 60px rgba(0,0,0,.3);
   border-top: 4px solid var(--secondary);
   animation: slideDown .6s ease;
+  overflow: hidden;
 }
 @keyframes slideDown { from { opacity: 0; transform: translateY(-20px) } to { opacity: 1; transform: none } }
 
@@ -85,7 +88,7 @@ body::before {
 .header-left img { height: 48px; }
 .header-left h1 { color: #fff; font-size: 1.4rem; font-weight: 800; }
 .header-left .subtitle { color: rgba(255,255,255,.65); font-size: .82rem; margin-top: 2px; }
-.header-right { display: flex; align-items: center; gap: 10px; }
+.header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
 /* Greeting */
 .header-greeting {
@@ -648,7 +651,7 @@ body::before {
   .header-left { flex-direction: column; gap: 6px; }
   .header-left img { height: 40px; }
   .header-left h1 { font-size: 1.15rem; }
-  .header-right { width: 100%; justify-content: center; }
+  .header-right { width: 100%; justify-content: center; flex-wrap: wrap; max-width: 100%; overflow: hidden; }
   .header-greeting { justify-content: center; }
   .modules-grid { grid-template-columns: 1fr; gap: 10px; }
   .module-card { padding: 20px; border-radius: 16px; }

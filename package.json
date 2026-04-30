@@ -1,6 +1,6 @@
 {
   "name": "point-hvac-app",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Point HVAC - Secim ve Fiyatlandirma Uygulamasi (Android)",
   "main": "www/index.html",
   "scripts": {
