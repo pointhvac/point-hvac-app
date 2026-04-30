@@ -17,7 +17,9 @@ set /p NEW_VER="Yeni versiyon girin (Enter = degistirme): "
 if not "%NEW_VER%"=="" (
     echo   Versiyon %CURRENT_VER% -^> %NEW_VER% olarak guncelleniyor...
     powershell -Command "(Get-Content 'package.json') -replace '\"version\": \"%CURRENT_VER%\"', '\"version\": \"%NEW_VER%\"' | Set-Content 'package.json'"
-    echo   Versiyon guncellendi!
+    powershell -Command "(Get-Content 'www\index.html') -replace 'v%CURRENT_VER%', 'v%NEW_VER%' | Set-Content 'www\index.html'"
+    powershell -Command "(Get-Content 'www\login.html') -replace 'v%CURRENT_VER%', 'v%NEW_VER%' | Set-Content 'www\login.html'"
+    echo   Versiyon guncellendi! ^(package.json + index.html + login.html^)
 ) else (
     echo   Versiyon degistirilmedi: %CURRENT_VER%
 )
