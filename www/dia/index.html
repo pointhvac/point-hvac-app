@@ -343,6 +343,33 @@
     </div>
   </div>
 
+  <!-- Firma Secim Modal -->
+  <div class="modal-overlay" id="firmaModal">
+    <div class="modal-box" style="text-align:center">
+      <h3>Firma Secimi</h3>
+      <p style="font-size:.82rem;color:var(--gray-400);margin-bottom:16px">Teklif hangi firma adina duzenlecek?</p>
+      <div style="display:flex;gap:10px;justify-content:center;margin-bottom:16px">
+        <button class="firma-choice-btn" onclick="selectFirma('point')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:8px;transition:.2s">
+          <img src="../assets/logos/logo_siyah.png" alt="Point" style="height:28px;object-fit:contain">
+          <span>Point HVAC</span>
+        </button>
+        <button class="firma-choice-btn" onclick="selectFirma('hg')"
+          style="flex:1;padding:16px 10px;border:2px solid var(--gray-200);border-radius:12px;
+                 background:#fff;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;
+                 display:flex;flex-direction:column;align-items:center;gap:8px;transition:.2s">
+          <img src="../assets/logos/hg.png" alt="HG" style="height:28px;object-fit:contain">
+          <span>Havalandirma Grup</span>
+        </button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeFirmaModal()">Iptal</button>
+      </div>
+    </div>
+  </div>
+
   <!-- Sunucu Ayarlari Modal -->
   <div class="modal-overlay" id="serverModal">
     <div class="modal-box">
@@ -428,6 +455,7 @@
   <script src="../js/quote-number.js"></script>
   <script src="../js/pdf-i18n.js"></script>
   <script src="../js/pdf-export-visual.js"></script>
+  <script src="../js/pdf-export-visual-hg.js"></script>
   <script src="../js/proposal-storage.js"></script>
   <script src="../js/datasheet-service.js"></script>
   <script>
@@ -640,11 +668,30 @@
       document.getElementById('langModal').classList.remove('active');
     }
 
-    async function selectPdfLang(lang) {
+    var _selectedPdfLang = 'tr';
+
+    function selectPdfLang(lang) {
       closeLangModal();
+      _selectedPdfLang = lang;
+      // Dil secildikten sonra firma secim modalini ac
+      document.getElementById('firmaModal').classList.add('active');
+    }
+
+    function closeFirmaModal() {
+      document.getElementById('firmaModal').classList.remove('active');
+    }
+
+    async function selectFirma(firma) {
+      closeFirmaModal();
       var list = App.getDIAList();
       var info = getCustomerInfo();
-      await PdfExportVisual.exportDIA(list, { customerInfo: info, lang: lang });
+      var lang = _selectedPdfLang;
+
+      if (firma === 'hg') {
+        await PdfExportVisualHG.exportDIA(list, { customerInfo: info, lang: lang });
+      } else {
+        await PdfExportVisual.exportDIA(list, { customerInfo: info, lang: lang });
+      }
       resetCustomerInfo();
     }
 
